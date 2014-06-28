@@ -11,15 +11,18 @@
                 e.preventDefault()
                 $(this).tab('show')
             })
-            $('.toggle-popover').popover();
+
+            $('.member-list a').click(function() {
+            $('.member-list a.active').removeClass('active');
+                $(this).addClass('active');
+            });
         
-        });
-        
-        $('.save-button').click(function () {
-            var btn = $(this)
-            btn.button('loading')
-            $.ajax(...).always(function () {
-                btn.button('reset')
+            $('.save-button').click(function () {
+                var btn = $(this)
+                btn.button('loading')
+                $.ajax(...).always(function () {
+                    btn.button('reset')
+                });
             });
         });
         </script>
