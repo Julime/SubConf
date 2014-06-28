@@ -40,7 +40,7 @@
 		
                           </div>
                         </div>
-                        <div class="col-lg-7 col-md-5 col-sm-5 tab-content border-left">
+                        <div class="col-lg-8 col-md-5 col-sm-5 tab-content border-left">
                             <div class="tab-pane" id="mn">
                                 <h3>Michael</h3>
                                 <ul class="list-group">
