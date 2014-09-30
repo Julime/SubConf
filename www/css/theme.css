@@ -1,0 +1,13 @@
+/* border between collums */
+.border-left{
+    border-left: 1px solid #DDDDDD;
+}
+
+.member-list > div {
+    margin-bottom: 5px;
+}
+
+.member-list .list-group-item {
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0;
+}
