@@ -24,134 +24,136 @@
                             
                             <div class="tab-pane" id="mn">
                                 <h3>Michael <span class="badge">5€</span></h3>
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <span class="lead clearfix">Brot</span>
-                                        
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> Honey Oat
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> Italian
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> Irgendwas anderes
-                                            </label>
-                                        </div>
-                                        
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="lead clearfix">Größe</span>
-                                        
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> 15cm
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> 30cm
-                                            </label>
-                                        </div>
-                                        
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="lead clearfix">Fleisch</span>
-                                        
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> Chicken Faijta
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> Tuna
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="radio"> Kein Fleisch
-                                            </label>
-                                        </div>
-                                        
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Doppelt Fleisch
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="lead clearfix">Käse</span>
-                                        
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Scheibenkäse
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Frischkäse
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Cheddar
-                                            </label>
-                                        </div>
-                                        
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="lead clearfix">Gemüse</span>
-                                        
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Salat
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Gurke
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Tomate
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Pepperoni
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Oliven
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Tomate
-                                            </label>
-                                        </div>
-                                        
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="lead clearfix">Sauce</span>
-                                        
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Sweet Onion
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Chipotle Southwest
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> BBQ
-                                            </label>
-                                        </div>
-                                        
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="lead clearfix">Extras</span>
-                                        
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Salz
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Pfeffer
-                                            </label>
-                                            <label class="btn btn-primary">
-                                                <input type="checkbox"> Oregano
-                                            </label>
-                                        </div>
-                                        
-                                    </li>
-                                </ul>
-                                
-                                <div><p><button type="button" class="btn btn-default pull-right clearfix save-btn" data-loading-text="Wird gespeichert ...">Speichern</button></p></div>
-                                
+                                <form action="helper/write.php" method="post">
+                                    <input type="hidden" name="email" value="example@example.com">
+                                    
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="lead clearfix">Brot</span>
+
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="bread" value="Honey Oat"> Honey Oat
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="bread" value="Italian"> Italian
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="bread" value="Vollkorn"> Vollkorn
+                                                </label>
+                                            </div>
+
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="lead clearfix">Größe</span>
+
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="size" value="15cm"> 15cm
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="size" value="30cm"> 30cm
+                                                </label>
+                                            </div>
+
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="lead clearfix">Fleisch</span>
+
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="meat" value="Chicken Faijta"> Chicken Faijta
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="meat" value="Tuna"> Tuna
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input required type="radio" name="meat" value="Kein Fleisch"> Kein Fleisch
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="doublemeat" value="Doppelt Fleisch"> Doppelt Fleisch
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="lead clearfix">Käse</span>
+
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="cheese[]" value="Scheibenkäse"> Scheibenkäse
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="cheese[]" value="Frischkäse"> Frischkäse
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="cheese[]" value="Cheddar"> Cheddar
+                                                </label>
+                                            </div>
+
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="lead clearfix">Gemüse</span>
+
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="salad[]" value="Salat"> Salat
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="salad[]" value="Gurke"> Gurke
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="salad[]" value="Tomate"> Tomate
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="salad[]" value="Pepperoni"> Pepperoni
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="salad[]" value="Oliven"> Oliven
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="salad[]" value="Tomate"> Tomate
+                                                </label>
+                                            </div>
+
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="lead clearfix">Sauce</span>
+
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="sauce[]" value="Sweet Onion"> Sweet Onion
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="sauce[]" value="Chipotle Southwest"> Chipotle Southwest
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="sauce[]" value="BBQ"> BBQ
+                                                </label>
+                                            </div>
+
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="lead clearfix">Extras</span>
+
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="extra[]" value="Salz"> Salz
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="extra[]" value="Pfeffer"> Pfeffer
+                                                </label>
+                                                <label class="btn btn-primary">
+                                                    <input type="checkbox" name="extra[]" value="Oregano"> Oregano
+                                                </label>
+                                            </div>
+
+                                        </li>
+                                    </ul>
+                                <div><p><button type="submit" class="btn btn-default pull-right clearfix save-btn" data-loading-text="Wird gespeichert ...">Speichern</button></p></div>
+                                </form>
                             </div>
                             
                         </div>
