@@ -24,7 +24,8 @@
                             
                             <div class="tab-pane" id="mn">
                                 <h3>Michael <span class="badge">5€</span></h3>
-                                <form action="helper/write.php" method="post">
+                                <form id="editform">
+                                    <input type="hidden" name="name" value="Michael">
                                     <input type="hidden" name="email" value="example@example.com">
                                     
                                     <ul class="list-group">
@@ -140,13 +141,13 @@
 
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-primary">
-                                                    <input type="checkbox" name="extra[]" value="Salz"> Salz
+                                                    <input type="checkbox" name="extras[]" value="Salz"> Salz
                                                 </label>
                                                 <label class="btn btn-primary">
-                                                    <input type="checkbox" name="extra[]" value="Pfeffer"> Pfeffer
+                                                    <input type="checkbox" name="extras[]" value="Pfeffer"> Pfeffer
                                                 </label>
                                                 <label class="btn btn-primary">
-                                                    <input type="checkbox" name="extra[]" value="Oregano"> Oregano
+                                                    <input type="checkbox" name="extras[]" value="Oregano"> Oregano
                                                 </label>
                                             </div>
 
