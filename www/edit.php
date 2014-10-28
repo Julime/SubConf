@@ -153,7 +153,7 @@
 
                                         </li>
                                     </ul>
-                                <div><p><button type="submit" class="btn btn-default pull-right clearfix save-btn" data-loading-text="Wird gespeichert ...">Speichern</button></p></div>
+                                <div><p><button type="submit" class="btn btn-default pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Speichern</button></p></div>
                                 </form>
                             </div>
                             

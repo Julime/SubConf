@@ -1,0 +1,3 @@
+[submodule "www/js/jQuery.wait"]
+	path = www/js/jQuery.wait
+	url = https://github.com/madbook/jquery.wait.git

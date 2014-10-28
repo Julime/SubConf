@@ -4,7 +4,9 @@
         <script src="js/jquery-2.1.1-min.js"></script>
         <!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
         <script src="js/bootstrap.min.js"></script>
-
+        
+        <script src="js/jQuery.wait/jquery.wait.js"></script>
+        
         <script>
         $(function(){
  
@@ -18,7 +20,6 @@
                 $(this).addClass('active');
             });
             
-            $('#editform .save-btn').removeClass('disabled');
             $('#editform .save-btn').click(function ( event ) {
                     
                     var btn = $(this);
@@ -29,17 +30,14 @@
                         data: $("#editform").serialize(), // serializes the form's elements.
                         success: function(data)
                         {
-                            alert(data); // show response from the php script.
+                            $('#editform .save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
                         }
                     });
 
                     return false; // avoid to execute the actual submit of the form.
-                    $(this).preventDefault()
-                    
                 
             });
             
-            $('#addform .save-btn').removeClass('disabled');
             $('#addform .save-btn').click(function ( event ) {
                     
                     var btn = $(this);
@@ -50,14 +48,12 @@
                         data: $("#addform").serialize(), // serializes the form's elements.
                         success: function(data)
                         {
-                            alert(data); // show response from the php script.
+                            $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
                         }
                     });
 
                     return false; // avoid to execute the actual submit of the form.
-                    $(this).preventDefault()
                     
-                
             });
             
         });
