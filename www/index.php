@@ -1,5 +1,4 @@
 <?php include 'header.php'; ?>
-<?php include 'helper/read.php'; ?>
 
             <div class="page-header">
                 <h1>SubConf</h1>
@@ -7,6 +6,16 @@
                     <div class="panel-body">
 
                         <div class="col-sm-4">
+                            <h3>Besteller
+                                <div class="pull-right">
+                                    <button class="btn btn-default" type="button">
+                                        <span>Bearbeiten</span>
+                                    </button>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AddNewProfile">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </h3>
                             <div class="list-group member-list">
                             
                             <?php
@@ -20,7 +29,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><input type="checkbox"></span>
                                         <a href="#<?php echo $profile["hash"]; ?>" data-toggle="tab" class="list-group-item">
-                                            <h4 class="list-group-item-heading"><?php echo $profile["name"]; ?> <span class="badge pull-right">5€</span></h4>
+                                            <h4 class="list-group-item-heading"><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> <span class="badge pull-right">5€</span></h4>
                                             <p class="list-group-item-text">
                                                 <small><?php echo $profile["meat"]; ?> - <?php echo $profile["size"]; ?></small>
                                             </p>
@@ -41,7 +50,7 @@
                                 ?>
                             
                                 <div class="tab-pane" id="<?php echo $profile["hash"]; ?>">
-                                    <h3>Michael</h3>
+                                    <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             <span class="lead clearfix">Brot</span>

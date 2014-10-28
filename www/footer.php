@@ -18,8 +18,8 @@
                 $(this).addClass('active');
             });
             
-            $('.save-btn').removeClass('disabled');
-            $('.save-btn').click(function ( event ) {
+            $('#editform .save-btn').removeClass('disabled');
+            $('#editform .save-btn').click(function ( event ) {
                     
                     var btn = $(this);
                     btn.button('loading');                
@@ -27,6 +27,27 @@
                         type: "POST",
                         url: "helper/write.php",
                         data: $("#editform").serialize(), // serializes the form's elements.
+                        success: function(data)
+                        {
+                            alert(data); // show response from the php script.
+                        }
+                    });
+
+                    return false; // avoid to execute the actual submit of the form.
+                    $(this).preventDefault()
+                    
+                
+            });
+            
+            $('#addform .save-btn').removeClass('disabled');
+            $('#addform .save-btn').click(function ( event ) {
+                    
+                    var btn = $(this);
+                    btn.button('loading');                
+                    $.ajax({
+                        type: "POST",
+                        url: "helper/write.php",
+                        data: $("#addform").serialize(), // serializes the form's elements.
                         success: function(data)
                         {
                             alert(data); // show response from the php script.

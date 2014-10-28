@@ -18,4 +18,8 @@
         <![endif]-->
     </head>
     <body>
+        
+        <?php include 'helper/read.php'; ?>
+        <?php include 'helper/add.php'; ?>
+        
         <div class="container">
