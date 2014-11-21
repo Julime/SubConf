@@ -20,6 +20,7 @@
                 $(this).addClass('active');
             });
             
+            // save-button in edit view
             $('#editform .save-btn').click(function ( event ) {
                     
                     var btn = $(this);
@@ -30,6 +31,7 @@
                         data: $("#editform").serialize(), // serializes the form's elements.
                         success: function(data)
                         {
+                            alert(data); // show response from the php script.
                             $('#editform .save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
                         }
                     });
@@ -38,6 +40,7 @@
                 
             });
             
+            // save-button in "new-profile" view
             $('#addform .save-btn').click(function ( event ) {
                     
                     var btn = $(this);
@@ -48,12 +51,18 @@
                         data: $("#addform").serialize(), // serializes the form's elements.
                         success: function(data)
                         {
+                            alert(data); // show response from the php script.
                             $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
                         }
                     });
 
                     return false; // avoid to execute the actual submit of the form.
                     
+            });
+            
+            // edit-button in show view
+            $('#LoadEditForm').click(function() {
+                $( ".tab-pane" ).load("helper/edit.php");
             });
             
         });
