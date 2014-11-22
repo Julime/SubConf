@@ -3,8 +3,15 @@
     <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
 
-    <?php echo $_POST['profileid']; ?>
-    <?php print_r($profile); ?>
+    <?php 
+    
+    $profileid = $_GET['profileid'];
+    
+    $path = '../profiles/'.$profileid.'.json';
+    $string = file_get_contents($path);
+    $profile=json_decode($string, true);
+    
+    ?>
     
     <ul class="list-group">
         <li class="list-group-item">
