@@ -61,8 +61,11 @@
             });
             
             // edit-button in show view
+            var profileid = $(this).attr("data-profileid");
+            
             $('#LoadEditForm').click(function() {
-                $( ".tab-pane" ).load("helper/edit.php");
+                alert ('helper/edit.php?profileid='+profileid);
+                //$( ".tab-pane" ).load("helper/edit.php?profileid="+profileid);
             });
             
         });

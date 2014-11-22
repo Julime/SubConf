@@ -3,6 +3,7 @@
     <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
 
+    <?php echo $_POST['profileid']; ?>
     <?php print_r($profile); ?>
     
     <ul class="list-group">

@@ -6,7 +6,7 @@ foreach ($profiles as $path)
 
     ?>
 
-    <div class="tab-pane" id="<?php echo $profile["hash"]; ?>">
+    <div class="tab-pane" id="<?php echo $profile["profileid"]; ?>">
         <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
 
         <?php if
@@ -64,10 +64,13 @@ foreach ($profiles as $path)
                     </li>
                 <?php } ?>
             </ul>
+        
+        
+        
         <?php } else {
             include 'helper/edit.php';
         } ?>
 
-        <div><p><button id="LoadEditForm" type="button" class="btn btn-default pull-right clearfix">Bearbeiten</button></p></div>
+        <div><p><button id="LoadEditForm" type="button" class="btn btn-default pull-right clearfix" data-profileid="<?php echo $profile["profileid"]; ?>">Bearbeiten</button></p></div>
     </div>
 <?php } ?>
