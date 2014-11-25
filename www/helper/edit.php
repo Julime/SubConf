@@ -11,6 +11,7 @@
     $string = file_get_contents($path);
     $profile=json_decode($string, true);
     
+    print_r($profile);
     ?>
     
     <ul class="list-group">
@@ -84,7 +85,7 @@
             <span class="lead clearfix">Gemüse</span>
 
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if($profile["salad"]=="Salat"): echo "active"; endif; ?>">
+                <label class="btn btn-primary <?php if(in_array("Salat", $profile["salad"])): echo "active"; endif; ?>">
                     <input type="checkbox" name="salad[]" value="Salat"> Salat
                 </label>
                 <label class="btn btn-primary <?php if($profile["salad"]=="Gurke"): echo "active"; endif; ?>">
