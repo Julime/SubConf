@@ -31,7 +31,7 @@
                         data: $("#editform").serialize(), // serializes the form's elements.
                         success: function(data)
                         {
-                            alert(data); // show response from the php script.
+                            console.log(data); // show response from the php script.
                             $('#editform .save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
                         }
                     });
@@ -51,7 +51,7 @@
                         data: $("#addform").serialize(), // serializes the form's elements.
                         success: function(data)
                         {
-                            alert(data); // show response from the php script.
+                            console.log(data); // show response from the php script.
                             $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
                         }
                     });
@@ -62,6 +62,7 @@
             
             // edit-button in show view
             $('#LoadEditForm').click(function() {
+                console.log("Loading Edit Form");
                 var profileid = $(this).data("profileid");
                 $( ".tab-pane" ).load("helper/edit.php?profileid="+profileid);
             });
