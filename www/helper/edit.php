@@ -1,11 +1,6 @@
-<form id="editform" action="">
-    <input type="hidden" name="vorname" value="<?php echo $profile["vorname"]; ?>">
-    <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
-    <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
-
     <?php 
     
-    if ($profile["profileid"] == "")
+    if (!isset($profile["profileid"]))
     {
         echo "##";
         $profileid = $_GET['profileid'];
@@ -17,6 +12,11 @@
         print_r($profile);
     }
     ?>
+
+<form id="editform">
+    <input type="hidden" name="vorname" value="<?php echo $profile["vorname"]; ?>">
+    <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
+    <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
     
     <ul class="list-group">
         <li class="list-group-item">

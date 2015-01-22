@@ -21,8 +21,7 @@
             });
             
             // save-button in edit view
-            $('#editform .save-btn').click(function ( event ) {
-                    
+            $('.container').on('click', '#editform .save-btn', function ( event ) {
                     var btn = $(this);
                     btn.button('loading');                
                     $.ajax({
