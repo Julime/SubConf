@@ -1,18 +1,39 @@
 {
-    "Typ": [
+    "Type": [
         "Sandwich",
         "Wrap",
         "Salat"
     ],
-    "Brot": [
-        "Honey Oat",
-        "Vollkorn",
-        "Cheese Oregano",
-        "Sesam",
-        "Italian"
+    "Bread": [
+		{
+			"name": "Honey Oat"
+		},
+		{
+			"name": "Vollkorn"
+		},
+		{
+			"name": "Cheese Oregano"
+		},
+		{
+			"name": "Sesam"
+		},
+		{
+			"name": "Italian"
+		}
     ],
-    "Fleisch": {
-        "sorten": [
+	"Size": [
+		{
+			"name": "15cm",
+			"price": "+0"
+		},
+		{
+			"name": "30cm",
+			"price": "+2,69"
+		}
+	],
+    "Meat": {
+        "required": "true",
+        "sorts": [
             {
                 "number": "1",
                 "name": "Turkey&Ham",
@@ -93,37 +114,94 @@
                 "name": "Doppelt Fleisch",
                 "price": "x2"
             }
-        ],
-        "required": "true"
+        ]
     },
-    "Käse": [
-        "Schmelzkäse",
-        "Frischkäse",
-        "Monterey Cheddar Käse"
+    "Cheese": [
+		{
+			"name": "Schmelzkäse"
+		},
+		{
+			"name": "Frischkäse"
+		},
+		{
+			"name": "Monterey Cheddar Käse"
+		}
     ],
-    "Salat": [
-        "Gurken",
-        "Tomaten",
-        "Paprika",
-        "Zwiebeln",
-        "Oliven",
-        "Jalapenos",
-        "Gewürzgurken"
+    "Salad": [
+		{
+			"name": "Gurken"
+		},
+		{
+			"name": "Tomaten"
+		},
+		{
+			"name": "Paprika"
+		},
+		{
+			"name": "Zwiebeln"
+		},
+		{
+			"name": "Oliven"
+		},
+		{
+			"name": "Jalapenos"
+		},
+		{
+			"name": "Gewürzgurken"
+		}
     ],
-    "Soße": [
-        "Asiago Caesar",
-        "Sweet Onion",
-        "Honey Mustard",
-        "BBQ-Soße",
-        "Chipotle Southwest",
-        "Light Mayonaise",
-        "Joghurt",
-        "Hot Sauce",
-        "Essig",
-        "Öl",
-        "Salz",
-        "Pfeffer"
+    "Sauce": [
+		{
+			"name": "Asiago Caesar"
+		},
+		{
+			"name": "Sweet Onion"
+		},
+		{
+			"name": "Honey Mustard"
+		},
+		{
+			"name": "BBQ-Soße"
+		},
+		{
+			"name": "Chipotle Southwest"
+		},
+		{
+			"name": "Light Mayonaise"
+		},
+		{
+			"name": "Joghurt"
+		},
+		{
+			"name": "Hot Sauce"
+		},
+		{
+			"name": "Essig"
+		},
+		{
+			"name": "Öl"
+		},
+		{
+			"name": "Salz"
+		},
+		{
+			"name": "Pfeffer"
+		}
     ],
+	"Extras": [
+		{
+			"name": "Salz"
+		},
+		{
+			"name": "Pfeffer"
+		},
+		{
+			"name": "Parmesan"
+		},
+		{
+			"name": "Oregano"
+		}
+	],
     "Cookie": [
         {
             "name": "Chocolate Chip",

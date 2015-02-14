@@ -1,6 +1,7 @@
 <?php
 
-$profiles = glob('profiles/*.{json}', GLOB_BRACE);
+// get profiles
+$profiles = glob($_SERVER['DOCUMENT_ROOT'].'/profiles/*.{json}', GLOB_BRACE);
 
 /* Use in template like this:
 
@@ -16,4 +17,7 @@ foreach ($profiles as $path)
 
 */
 
+// get config
+$config_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/config.json');
+$config = json_decode($config_file, true);//glob('config.json', GLOB_BRACE);
 ?>

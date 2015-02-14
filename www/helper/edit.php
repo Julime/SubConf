@@ -2,14 +2,13 @@
     
     if (!isset($profile["profileid"]))
     {
-        echo "##";
+        echo '<div class="alert alert-info" role="alert">Profile-ID nachgeladen</div>';
+        include($_SERVER['DOCUMENT_ROOT'].'/helper/read.php');
         $profileid = $_GET['profileid'];
 
-        $path = '../profiles/'.$profileid.'.json';
+        $path = $_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json';
         $string = file_get_contents($path);
         $profile=json_decode($string, true);
-
-        print_r($profile);
     }
     ?>
 
@@ -21,30 +20,37 @@
     <ul class="list-group">
         <li class="list-group-item">
             <span class="lead clearfix">Brot</span>
-
+            
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if($profile["bread"]=="Honey Oat"): echo "active"; endif; ?>">
-                    <input type="radio" name="bread" <?php // if(isset($profile["bread"])&&$profile["bread"]=="Honey Oat") {} ?> value="Honey Oat"> Honey Oat
-                </label>
-                <label class="btn btn-primary <?php if($profile["bread"]=="Italian"): echo "active"; endif; ?>">
-                    <input type="radio" name="bread" value="Italian"> Italian
-                </label>
-                <label class="btn btn-primary <?php if($profile["bread"]=="Vollkorn"): echo "active"; endif; ?>">
-                    <input type="radio" name="bread" value="Vollkorn"> Vollkorn
-                </label>
-            </div>
+            
+                <?php
+                foreach ($config['Bread'] as $bread)
+                { ?>
 
+                    <label class="btn btn-primary <?php if($profile['bread'] == $bread['name']): echo 'active'; endif; ?>">
+                        <input type="radio" name="bread" value="<?php echo $bread['name']; ?>" <?php if($profile['bread'] == $bread['name']): echo 'checked'; endif; ?>> <?php echo $bread['name']; ?>
+                    </label>
+
+                <?php } ?>
+                
+            </div>
+            
         </li>
         <li class="list-group-item">
             <span class="lead clearfix">Größe</span>
 
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if($profile["size"]=="15cm"): echo "active"; endif; ?>">
-                    <input type="radio" name="size" value="15cm"> 15cm
-                </label>
-                <label class="btn btn-primary <?php if($profile["size"]=="30cm"): echo "active"; endif; ?>">
-                    <input type="radio" name="size" value="30cm"> 30cm
-                </label>
+            
+                <?php
+                foreach ($config['Size'] as $size)
+                { ?>
+                
+                    <label class="btn btn-primary <?php if($profile['size'] == $size['name']): echo 'active'; endif; ?>">
+                        <input type="radio" name="size" value="<?php echo $size['name']; ?>" <?php if($profile['size'] == $size['name']): echo 'checked'; endif; ?>> <?php echo $size['name']; ?>
+                    </label>
+                
+                <?php } ?>
+                
             </div>
 
         </li>
@@ -52,36 +58,35 @@
             <span class="lead clearfix">Fleisch</span>
 
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if($profile["meat"]=="Chicken Faijta"): echo "active"; endif; ?>">
-                    <input type="radio" name="meat" value="Chicken Faijta"> Chicken Faijta
-                </label>
-                <label class="btn btn-primary <?php if($profile["meat"]=="Tuna"): echo "active"; endif; ?>">
-                    <input type="radio" name="meat" value="Tuna"> Tuna
-                </label>
-                <label class="btn btn-primary <?php if($profile["meat"]=="Kein Fleisch"): echo "active"; endif; ?>">
-                    <input type="radio" name="meat" value="Kein Fleisch"> Kein Fleisch
-                </label>
+            
+                <?php
+                foreach ($config['Meat']['sorts'] as $meat)
+                { ?>
+                
+                    <label class="btn btn-primary <?php if($profile['meat'] == $meat['name']): echo 'active'; endif; ?>">
+                        <input type="radio" name="meat" value="<?php echo $meat['name']; ?>" <?php if($profile['meat'] == $meat['name']): echo 'checked'; endif; ?>> <?php echo $meat['name']; ?>
+                    </label>
+                
+                <?php } ?>
+                
             </div>
 
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="doublemeat" value="Doppelt Fleisch"> Doppelt Fleisch
-                </label>
-            </div>
         </li>
         <li class="list-group-item">
             <span class="lead clearfix">Käse</span>
 
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if($profile["cheese"]=="Scheibenkäse"): echo "active"; endif; ?>">
-                    <input type="checkbox" name="cheese[]" value="Scheibenkäse"> Scheibenkäse
-                </label>
-                <label class="btn btn-primary <?php if($profile["cheese"]=="Frischkäse"): echo "active"; endif; ?>">
-                    <input type="checkbox" name="cheese[]" value="Frischkäse"> Frischkäse
-                </label>
-                <label class="btn btn-primary <?php if($profile["cheese"]=="Cheddar"): echo "active"; endif; ?>">
-                    <input type="checkbox" name="cheese[]" value="Cheddar"> Cheddar
-                </label>
+            
+                <?php
+                foreach ($config['Cheese'] as $cheese)
+                { ?>
+                
+                    <label class="btn btn-primary <?php if($profile['cheese'] == $cheese['name']): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="cheese" value="<?php echo $cheese['name']; ?>" <?php if($profile['cheese'] == $cheese['name']): echo 'checked'; endif; ?>> <?php echo $cheese['name']; ?>
+                    </label>
+                
+                <?php } ?>
+                
             </div>
 
         </li>
@@ -89,40 +94,35 @@
             <span class="lead clearfix">Gemüse</span>
 
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if(in_array("Salat", $profile["salad"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="salad[]" value="Salat"> Salat
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Gurke", $profile["salad"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="salad[]" value="Gurke"> Gurke
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Tomate", $profile["salad"])): echo "active"; endif; ?>>">
-                    <input type="checkbox" name="salad[]" value="Tomate"> Tomate
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Pepperoni", $profile["salad"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="salad[]" value="Pepperoni"> Pepperoni
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Oliven", $profile["salad"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="salad[]" value="Oliven"> Oliven
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Tomate", $profile["salad"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="salad[]" value="Tomate"> Tomate
-                </label>
+            
+                <?php
+                foreach ($config['Salad'] as $salad)
+                { ?>
+                
+                    <label class="btn btn-primary <?php if($profile['salad'] == $salad['name']): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="salad" value="<?php echo $salad['name']; ?>" <?php if($profile['salad'] == $salad['name']): echo 'checked'; endif; ?>> <?php echo $salad['name']; ?>
+                    </label>
+                
+                <?php } ?>
+                
             </div>
 
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Sauce</span>
+            <span class="lead clearfix">Soße</span>
 
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if(in_array("Sweet Onion", $profile["sauce"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="sauce[]" value="Sweet Onion"> Sweet Onion
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Chipotle Southwest", $profile["sauce"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="sauce[]" value="Chipotle Southwest"> Chipotle Southwest
-                </label>
-                <label class="btn btn-primary <?php if(in_array("BBQ", $profile["sauce"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="sauce[]" value="BBQ"> BBQ
-                </label>
+            
+                <?php
+                foreach ($config['Sauce'] as $sauce)
+                { ?>
+                
+                    <label class="btn btn-primary <?php if($profile['sauce'] == $sauce['name']): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="sauce" value="<?php echo $sauce['name']; ?>" <?php if($profile['sauce'] == $sauce['name']): echo 'checked'; endif; ?>> <?php echo $sauce['name']; ?>
+                    </label>
+                
+                <?php } ?>
+                
             </div>
 
         </li>
@@ -130,15 +130,17 @@
             <span class="lead clearfix">Extras</span>
 
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?php if(in_array("Salat", $profile["extras"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="extras[]" value="Salz"> Salz
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Pfeffer", $profile["extras"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="extras[]" value="Pfeffer"> Pfeffer
-                </label>
-                <label class="btn btn-primary <?php if(in_array("Oregano", $profile["extras"])): echo "active"; endif; ?>">
-                    <input type="checkbox" name="extras[]" value="Oregano"> Oregano
-                </label>
+            
+                <?php
+                foreach ($config['Extras'] as $extras)
+                { ?>
+                
+                    <label class="btn btn-primary <?php if($profile['extras'] == $extras['name']): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="extras" value="<?php echo $extras['name']; ?>" <?php if($profile['extras'] == $extras['name']): echo 'checked'; endif; ?>> <?php echo $extras['name']; ?>
+                    </label>
+                
+                <?php } ?>
+                
             </div>
 
         </li>
