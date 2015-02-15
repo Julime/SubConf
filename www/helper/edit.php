@@ -2,7 +2,6 @@
     
     if (!isset($profile["profileid"]))
     {
-        echo '<div class="alert alert-info" role="alert">Profile-ID nachgeladen</div>';
         include($_SERVER['DOCUMENT_ROOT'].'/helper/read.php');
         $profileid = $_GET['profileid'];
 
@@ -81,8 +80,8 @@
                 foreach ($config['Cheese'] as $cheese)
                 { ?>
                 
-                    <label class="btn btn-primary <?php if($profile['cheese'] == $cheese['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="cheese[]" value="<?php echo $cheese['name']; ?>" <?php if($profile['cheese'] == $cheese['name']): echo 'checked'; endif; ?>> <?php echo $cheese['name']; ?>
+                    <label class="btn btn-primary <?php if(in_array($cheese['name'], $profile['cheese'])): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="cheese[]" value="<?php echo $cheese['name']; ?>" <?php if(in_array($cheese['name'], $profile['cheese'])): echo 'checked'; endif; ?>> <?php echo $cheese['name']; ?>
                     </label>
                 
                 <?php } ?>
@@ -99,8 +98,8 @@
                 foreach ($config['Salad'] as $salad)
                 { ?>
                 
-                    <label class="btn btn-primary <?php if($profile['salad'] == $salad['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="salad[]" value="<?php echo $salad['name']; ?>" <?php if($profile['salad'] == $salad['name']): echo 'checked'; endif; ?>> <?php echo $salad['name']; ?>
+                    <label class="btn btn-primary <?php if(in_array($salad['name'], $profile['salad'])): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="salad[]" value="<?php echo $salad['name']; ?>" <?php if(in_array($salad['name'], $profile['salad'])): echo 'checked'; endif; ?>> <?php echo $salad['name']; ?>
                     </label>
                 
                 <?php } ?>
@@ -117,8 +116,8 @@
                 foreach ($config['Sauce'] as $sauce)
                 { ?>
                 
-                    <label class="btn btn-primary <?php if($profile['sauce'] == $sauce['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="sauce[]" value="<?php echo $sauce['name']; ?>" <?php if($profile['sauce'] == $sauce['name']): echo 'checked'; endif; ?>> <?php echo $sauce['name']; ?>
+                    <label class="btn btn-primary <?php if(in_array($sauce['name'], $profile['sauce'])): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="sauce[]" value="<?php echo $sauce['name']; ?>" <?php if(in_array($sauce['name'], $profile['sauce'])): echo 'checked'; endif; ?>> <?php echo $sauce['name']; ?>
                     </label>
                 
                 <?php } ?>
@@ -135,8 +134,8 @@
                 foreach ($config['Extras'] as $extras)
                 { ?>
                 
-                    <label class="btn btn-primary <?php if($profile['extras'] == $extras['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="extras[]" value="<?php echo $extras['name']; ?>" <?php if($profile['extras'] == $extras['name']): echo 'checked'; endif; ?>> <?php echo $extras['name']; ?>
+                    <label class="btn btn-primary <?php if(in_array($extras['name'], $profile['extras'])): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="extras[]" value="<?php echo $extras['name']; ?>" <?php if(in_array($extras['name'], $profile['extras'])): echo 'checked'; endif; ?>> <?php echo $extras['name']; ?>
                     </label>
                 
                 <?php } ?>
