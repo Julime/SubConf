@@ -82,7 +82,7 @@
                 { ?>
                 
                     <label class="btn btn-primary <?php if($profile['cheese'] == $cheese['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="cheese" value="<?php echo $cheese['name']; ?>" <?php if($profile['cheese'] == $cheese['name']): echo 'checked'; endif; ?>> <?php echo $cheese['name']; ?>
+                        <input type="checkbox" name="cheese[]" value="<?php echo $cheese['name']; ?>" <?php if($profile['cheese'] == $cheese['name']): echo 'checked'; endif; ?>> <?php echo $cheese['name']; ?>
                     </label>
                 
                 <?php } ?>
@@ -100,7 +100,7 @@
                 { ?>
                 
                     <label class="btn btn-primary <?php if($profile['salad'] == $salad['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="salad" value="<?php echo $salad['name']; ?>" <?php if($profile['salad'] == $salad['name']): echo 'checked'; endif; ?>> <?php echo $salad['name']; ?>
+                        <input type="checkbox" name="salad[]" value="<?php echo $salad['name']; ?>" <?php if($profile['salad'] == $salad['name']): echo 'checked'; endif; ?>> <?php echo $salad['name']; ?>
                     </label>
                 
                 <?php } ?>
@@ -118,7 +118,7 @@
                 { ?>
                 
                     <label class="btn btn-primary <?php if($profile['sauce'] == $sauce['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="sauce" value="<?php echo $sauce['name']; ?>" <?php if($profile['sauce'] == $sauce['name']): echo 'checked'; endif; ?>> <?php echo $sauce['name']; ?>
+                        <input type="checkbox" name="sauce[]" value="<?php echo $sauce['name']; ?>" <?php if($profile['sauce'] == $sauce['name']): echo 'checked'; endif; ?>> <?php echo $sauce['name']; ?>
                     </label>
                 
                 <?php } ?>
@@ -136,7 +136,7 @@
                 { ?>
                 
                     <label class="btn btn-primary <?php if($profile['extras'] == $extras['name']): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="extras" value="<?php echo $extras['name']; ?>" <?php if($profile['extras'] == $extras['name']): echo 'checked'; endif; ?>> <?php echo $extras['name']; ?>
+                        <input type="checkbox" name="extras[]" value="<?php echo $extras['name']; ?>" <?php if($profile['extras'] == $extras['name']): echo 'checked'; endif; ?>> <?php echo $extras['name']; ?>
                     </label>
                 
                 <?php } ?>
