@@ -16,51 +16,56 @@
             })
 
             $('.member-list a').click(function() {
-            $('.member-list a.active').removeClass('active');
+                $('.member-list a.active').removeClass('active');
                 $(this).addClass('active');
             });
             
             // save-button in edit view
             $('.container').on('click', '#editform .save-btn', function ( event ) {
-                    var btn = $(this);
-                    btn.button('loading');                
-                    $.ajax({
-                        type: "POST",
-                        url: "helper/write.php",
-                        data: $("#editform").serialize(), // serializes the form's elements.
-                        success: function(data)
-                        {
-                            console.log(data); // show response from the php script.
-                            $('#editform .save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
-                        }
-                    });
+                var btn = $(this);
+                btn.button('loading');
+                $.ajax({
+                    type: "POST",
+                    url: "helper/write.php",
+                    data: $("#editform").serialize(), // serializes the form's elements.
+                    success: function(data)
+                    {
+                        console.log(data); // show response from the php script.
+                        $('#editform .save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
+                    }
+                });
 
-                    return false; // avoid to execute the actual submit of the form.
+                return false; // avoid to execute the actual submit of the form.
                 
             });
             
-            // save-button in "new-profile" view
-            $('#addform .save-btn').click(function ( event ) {
-                    
-                    var btn = $(this);
-                    btn.button('loading');                
-                    $.ajax({
-                        type: "POST",
-                        url: "helper/write.php",
-                        data: $("#addform").serialize(), // serializes the form's elements.
-                        success: function(data)
-                        {
-                            console.log(data); // show response from the php script.
-                            $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
-                        }
-                    });
+            // dismiss-button in edit view
+            $('.container').on('click', '#editform .dismiss-btn', function ( event ) {
+                console.log("Loading show view");
+                $( ".tab-pane" ).load("helper/show.php");
+            });
 
-                    return false; // avoid to execute the actual submit of the form.
+            // save-button in "new-profile" view
+            $('html').on('click', '#addform .save-btn', function ( event ) {
+                var btn = $(this);
+                btn.button('loading');
+                $.ajax({
+                    type: "POST",
+                    url: "helper/write.php",
+                    data: $("#addform").serialize(), // serializes the form's elements.
+                    success: function(data)
+                    {
+                        alert(data); // show response from the php script.
+                        $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
+                    }
+                });
+
+                return false; // avoid to execute the actual submit of the form.
                     
             });
             
             // edit-button in show view
-            $('#LoadEditForm').click(function() {
+            $('.container').on('click', '#LoadEditForm', function ( event ) {
                 console.log("Loading Edit Form");
                 var profileid = $(this).data("profileid");
                 $( ".tab-pane" ).load("helper/edit.php?profileid="+profileid);
