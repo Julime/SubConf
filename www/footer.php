@@ -9,11 +9,6 @@
         
         <script>
         $(function(){
- 
-            $('.nav-tabs a').click(function (e) {
-                e.preventDefault()
-                $(this).tab('show')
-            })
 
             $('.member-list a').click(function() {
                 $('.member-list a.active').removeClass('active');
@@ -32,6 +27,10 @@
                     {
                         console.log(data); // show response from the php script.
                         $('#editform .save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
+                        
+                        //load show view
+                        console.log("Loading show view");
+                        $( ".tab-content" ).load("helper/show.php");
                     }
                 });
 
@@ -67,6 +66,9 @@
             // edit-button in show view
             $('.container').on('click', '#LoadEditForm', function ( event ) {
                 console.log("Loading Edit Form");
+                
+                $('.member-list a').addClass('disabled');
+                
                 var profileid = $(this).data("profileid");
                 $( ".tab-pane" ).load("helper/edit.php?profileid="+profileid);
             });
