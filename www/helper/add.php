@@ -15,7 +15,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-                    <button type="submit" class="btn btn-primary save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Änderungen speichern</button>
+                    <button type="submit" class="btn btn-primary save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!" data-dismiss="modal">Änderungen speichern</button>
                 </div>
             </form>
         </div>

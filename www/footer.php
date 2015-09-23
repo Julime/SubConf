@@ -54,6 +54,7 @@
                     data: $("#addform").serialize(), // serializes the form's elements.
                     success: function(data)
                     {
+                        btn.button(data-dismiss);
                         alert(data); // show response from the php script.
                         $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
                     }
