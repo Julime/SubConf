@@ -17,6 +17,9 @@
             
             // save-button in edit view
             $('.container').on('click', '#editform .save-btn', function ( event ) {
+                console.log("Loading show view");
+                $( ".tab-pane" ).load("helper/show.php");//load show view
+
                 var btn = $(this);
                 btn.button('loading');
                 $.ajax({
@@ -30,7 +33,7 @@
                         
                         //load show view
                         console.log("Loading show view");
-                        $( ".tab-content" ).load("helper/show.php");
+                        $( ".tab-pane" ).load("helper/show.php");
                     }
                 });
 
@@ -46,6 +49,8 @@
 
             // save-button in "new-profile" view
             $('html').on('click', '#addform .save-btn', function ( event ) {
+                parent.location.reload(true);
+
                 var btn = $(this);
                 btn.button('loading');
                 $.ajax({
@@ -54,15 +59,13 @@
                     data: $("#addform").serialize(), // serializes the form's elements.
                     success: function(data)
                     {
-                        btn.button(data-finished-text);
-                        btn.button(data-dismiss);
                         alert(data); // show response from the php script.
                         $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
                     }
                 });
 
                 return false; // avoid to execute the actual submit of the form.
-                    
+                btn.button(data-dismiss);
             });
             
             // edit-button in show view
