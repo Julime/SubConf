@@ -61,6 +61,8 @@
                     {
                         alert(data); // show response from the php script.
                         $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
+                $('.member-list a.active').removeClass('active');
+                $(data["profileid"]).addClass('active');
                     }
                 });
 
