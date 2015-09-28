@@ -49,7 +49,7 @@
 
             // save-button in "new-profile" view
             $('html').on('click', '#addform .save-btn', function ( event ) {
-                parent.location.reload(true);
+                save-btn.location.reload(true);
 
                 var btn = $(this);
                 btn.button('loading');
