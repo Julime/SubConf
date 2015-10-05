@@ -4,6 +4,7 @@
                 <h1>SubConf</h1>
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        <div class="user-list">
 
                         <div class="col-sm-4">
                             <h3>Besteller
@@ -39,6 +40,7 @@
 		
                             </div>
                         </div>
+                    </div>
                         <div class="col-lg-8 col-md-5 col-sm-5 tab-content border-left">
                             
                             <?php include 'helper/show.php'; ?>

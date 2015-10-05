@@ -10,12 +10,14 @@
         $profile=json_decode($string, true);
     }
     ?>
-
 <form id="editform">
     <input type="hidden" name="vorname" value="<?php echo $profile["vorname"]; ?>">
     <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
     
+    <div class="tab-pane" id="<?php echo $profile["profileid"]; ?>">
+        <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3></div>
+
     <ul class="list-group">
         <li class="list-group-item">
             <span class="lead clearfix">Brot</span>

@@ -25,6 +25,7 @@
                 $.ajax({
                     type: "POST",
                     url: "helper/write.php",
+                    dataType: "JSON",
                     data: $("#editform").serialize(), // serializes the form's elements.
                     success: function(data)
                     {
@@ -44,30 +45,30 @@
             // dismiss-button in edit view
             $('.container').on('click', '#editform .dismiss-btn', function ( event ) {
                 console.log("Loading show view");
-                $( ".tab-pane" ).load("helper/show.php");
+                $( ".tab-content" ).load("helper/show.php");
             });
 
             // save-button in "new-profile" view
             $('html').on('click', '#addform .save-btn', function ( event ) {
-                save-btn.location.reload(true);
-
                 var btn = $(this);
                 btn.button('loading');
                 $.ajax({
                     type: "POST",
                     url: "helper/write.php",
+                    dataType: "JSON",
                     data: $("#addform").serialize(), // serializes the form's elements.
                     success: function(data)
                     {
-                        alert(data); // show response from the php script.
+                        console.log(data.profileid); // show response from the php script.
+                        $( ".user-list" ).load("index.php .user-list", function() {
+                        $( ".tab-content" ).load("helper/edit.php?profileid="+data.profileid);
+                        });
                         $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
-                $('.member-list a.active').removeClass('active');
-                $(data["profileid"]).addClass('active');
                     }
                 });
-
+                $(".form-control").val('');
+                btn.button('loading').button('reset');
                 return false; // avoid to execute the actual submit of the form.
-                btn.button(data-dismiss);
             });
             
             // edit-button in show view
