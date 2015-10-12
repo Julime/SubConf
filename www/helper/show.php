@@ -17,12 +17,12 @@ foreach ($profiles as $path)
 
     ?>
 
-    <div class="tab-pane" id="<?php echo $profile["profileid"]; ?>">
+    <div class="tab-pane" id="user-<?php echo $profile["profileid"]; ?>">
         <?php if
             (
-                isset($profile["bread"])&&
-                isset($profile["size"])&&
-                isset($profile["meat"])
+                !empty($profile["bread"])&&
+                !empty($profile["size"])&&
+                !empty($profile["meat"])
             ) { ?>
             <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
 
@@ -80,6 +80,5 @@ foreach ($profiles as $path)
         <?php } else {
             include 'edit.php';
         } ?>
-
     </div>
 <?php } ?>

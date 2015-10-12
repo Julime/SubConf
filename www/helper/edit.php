@@ -18,7 +18,7 @@
     <div class="tab-pane" id="<?php echo $profile["profileid"]; ?>">
         <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3></div>
 
-    <ul class="list-group">
+    <ul class="list-group" id="edit-list">
         <li class="list-group-item">
             <span class="lead clearfix">Brot</span>
             
@@ -146,7 +146,7 @@
 
         </li>
     </ul>
-    <div class="modal-footer">
+    <div class="modal-footer" id="modal-footer-edit">
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
         <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Speichern</button>
     </div>

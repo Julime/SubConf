@@ -14,12 +14,9 @@
                 $('.member-list a.active').removeClass('active');
                 $(this).addClass('active');
             });
-            
+
             // save-button in edit view
             $('.container').on('click', '#editform .save-btn', function ( event ) {
-                console.log("Loading show view");
-                $( ".tab-pane" ).load("helper/show.php");//load show view
-
                 var btn = $(this);
                 btn.button('loading');
                 $.ajax({
@@ -29,12 +26,18 @@
                     data: $("#editform").serialize(), // serializes the form's elements.
                     success: function(data)
                     {
-                        console.log(data); // show response from the php script.
-                        $('#editform .save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
-                        
-                        //load show view
+                        console.log(data.profileid); // show response from the php script.
                         console.log("Loading show view");
-                        $( ".tab-pane" ).load("helper/show.php");
+                        $( "#edit-list" ).remove();
+                        $( "#modal-footer-edit" ).remove();
+                        $( ".tab-pane" ).load("helper/show.php #user-"+data.profileid); //load show view
+                        $( ".user-list" ).load("index.php .user-list");
+
+                        /*$('.save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');*/
+
+                        //load show view (überflüssig? weil doppelt)
+//                        console.log("Loading show view");
+//                        $( ".tab-pane" ).load("helper/show.php");
                     }
                 });
 
@@ -63,7 +66,7 @@
                         $( ".user-list" ).load("index.php .user-list", function() {
                         $( ".tab-content" ).load("helper/edit.php?profileid="+data.profileid);
                         });
-                        $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
+//                        $('#addform .save-btn').wait(800).button('complete').wait(800).button('reset').removeAttr('disabled').removeClass('disabled');
                     }
                 });
                 $(".form-control").val('');

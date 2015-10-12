@@ -29,7 +29,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon"><input type="checkbox"></span>
-                                        <a href="#<?php echo $profile["profileid"]; ?>" data-toggle="tab" class="list-group-item">
+                                        <a href="#user-<?php echo $profile["profileid"]; ?>" data-toggle="tab" class="list-group-item">
                                             <h4 class="list-group-item-heading"><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?><?php if(isset($profile["price"])) { ?> <span class="badge pull-right"><?php echo $profile["price"]; ?></span><?php } ?></h4>
                                             <p class="list-group-item-text">
                                                 <?php if(isset($profile["meat"])&&isset($profile["size"])) { ?><small><?php echo $profile["meat"]; ?> - <?php echo $profile["size"]; ?></small><?php } ?>
