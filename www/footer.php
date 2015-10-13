@@ -30,10 +30,10 @@
                         console.log("Loading show view");
                         $( "#edit-list" ).remove();
                         $( "#modal-footer-edit" ).remove();
-                        $( ".tab-pane" ).load("helper/show.php #user-"+data.profileid); //load show view
+                        $( ".tab-content" ).load("helper/show.php?profileid="+data.profileid, function() { //load show view
                         $( ".user-list" ).load("index.php .user-list");
-
-                        /*$('.save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');*/
+                        });
+//                        $('#editform.save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
 
                         //load show view (überflüssig? weil doppelt)
 //                        console.log("Loading show view");
@@ -81,7 +81,7 @@
                 $('.member-list a').addClass('disabled');
                 
                 var profileid = $(this).data("profileid");
-                $( ".tab-pane" ).load("helper/edit.php?profileid="+profileid);
+                $( ".tab-content" ).load("helper/edit.php?profileid="+profileid);
             });
             
         });
