@@ -30,8 +30,8 @@
                         console.log("Loading show view");
                         $( "#edit-list" ).remove();
                         $( "#modal-footer-edit" ).remove();
-                        $( ".tab-content" ).load("helper/show.php?profileid="+data.profileid, function() { //load show view
-                        $( ".user-list" ).load("index.php .user-list");
+                        $(".user-list").load("index.php .user-list", function() { //wenn auskommentiert der kleine text unter den namenaktuallisiert nicht aber werden blau markiert wenn klickt.
+                        $( ".tab-content" ).load("helper/show.php")
                         });
 //                        $('#editform.save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
 
@@ -84,6 +84,13 @@
                 $( ".tab-content" ).load("helper/edit.php?profileid="+profileid);
             });
             
+            //send-button in index.php
+            $('#send').on('click', function () {
+            var $btn = $(this).button('loading');
+
+            $(this).button('toggle');
+            })
+
         });
         </script>
 
