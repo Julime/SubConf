@@ -1,5 +1,4 @@
-    <?php 
-    
+    <?php
     if (!isset($profile["profileid"]))
     {
         include($_SERVER['DOCUMENT_ROOT'].'/helper/read.php');

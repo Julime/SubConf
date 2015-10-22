@@ -11,8 +11,10 @@ if (!isset($profile["profileid"]))
 }
 foreach ($profiles as $path)
 {
+
     $string = file_get_contents($path);
     $profile=json_decode($string, true);
 
     include "selected.php";
-} ?>
+}
+include "users.php"; ?>

@@ -4,16 +4,19 @@
         <script src="js/jquery-2.1.1-min.js"></script>
         <!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
         <script src="js/bootstrap.min.js"></script>
-        
-        <script src="js/jQuery.wait/jquery.wait.js"></script>
+        <!-- phpMailer (wird für das einfache Versenden von e-mails mit Anhang benötigt) -->
+<!--        <script src="php/PHPMailer-master/class.phpmailer.php"></script>-->
+
+<!-- folgendes sorgt für Fehler -->
+<!--        <script src="js/jQuery.wait/jquery.wait.js"></script> -->
         
         <script>
         $(function(){
 
-            $('.member-list a').click(function() {
-                $('.member-list a.active').removeClass('active');
-                $(this).addClass('active');
-            });
+//            $('.member-list a').click(function() {
+//                $('.member-list a.active').removeClass('active');
+//                $(this).addClass('active');
+//            });
 
             // save-button in edit view
             $('.container').on('click', '#editform .save-btn', function ( event ) {
@@ -30,9 +33,12 @@
                         console.log("Loading show view");
                         $( "#edit-list" ).remove();
                         $( "#modal-footer-edit" ).remove();
-                        $(".user-list").load("index.php .user-list", function() { //wenn auskommentiert der kleine text unter den namenaktuallisiert nicht aber werden blau markiert wenn klickt.
-                        $( ".tab-content" ).load("helper/show.php")
+                        $( ".tab-pane" ).remove();  //sorgt dafür das die alten Inhalte sofort verschwinden
+                        $('.member-list a.active').removeClass('active');
+                        $( ".member-list" ).load( "index.php .member-list", function() {
+                        $( ".tab-content" ).load( "helper/load.php" );
                         });
+
 //                        $('#editform.save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
 
                         //load show view (überflüssig? weil doppelt)
@@ -79,18 +85,25 @@
                 console.log("Loading Edit Form");
                 
                 $('.member-list a').addClass('disabled');
-                
+
                 var profileid = $(this).data("profileid");
                 $( ".tab-content" ).load("helper/edit.php?profileid="+profileid);
             });
-            
+
             //send-button in index.php
             $('#send').on('click', function () {
             var $btn = $(this).button('loading');
-
-            $(this).button('toggle');
-            })
-
+            $( ".tab-content" ).load( "helper/create.php", function(){
+                $(".user-list").load("helper/mail.php", function(){
+                    $( ".user-list").load("index.php .user-list", function(){
+                        $( ".tab-content" ).load( "helper/load.php", function(){
+                            alert("Erfolgreich gesendet");
+                            $(this).button("reset");
+                        });
+                    });
+                });
+            });
+            });
         });
         </script>
 
