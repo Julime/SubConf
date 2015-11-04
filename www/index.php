@@ -6,20 +6,17 @@
                     <div class="panel-body">
                         <div class="user-list">
 
-                        <div class="col-sm-4">
-                            <h3>Besteller
-                                <div class="pull-right">
-                                    <button class="btn btn-default" type="button">
-                                        <span>Bearbeiten</span>
-                                    </button>
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AddNewProfile">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                    </button>
-                                </div>
-                            </h3>
+                            <div class="col-sm-4">
+                                <h3>Besteller
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AddNewProfile">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </div>
+                                </h3>
 
                             <div class="list-group member-list">
-                            
+
                             <?php
                             foreach ($profiles as $path)
                             {
@@ -29,35 +26,30 @@
                                 ?>
 
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input type="checkbox" name="<?php echo $profile["profileid"]; ?>" value="1"></span>
-                                        <a href="#user-<?php echo $profile["profileid"]; ?>" data-toggle="tab" class="list-group-item">
+                                        <span class="input-group-addon"><input type="checkbox" id="<?php echo $profile["profileid"]; ?>"  onClick="
+$('.tab-content').load('helper/teilnehmer.php?profileid=<?php echo $profile["profileid"]; ?>', function(){$('.tab-content').load('helper/show.php')});" <?php
+        if($profile["signed"]=="true") {
+            echo "checked ";
+        }
+?>></span>
+                                        <a href="#user-<?php echo $profile["profileid"]; ?>" data-toggle="tab" class="list-group-item" onClick="if($(this).hasClass('active')) { $('.tab-content').load('helper/show.php'); } else { $('.tab-content').load('helper/edit.php?profileid=<?php echo $profile["profileid"]; ?>') }">
                                             <h4 class="list-group-item-heading"><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?><?php if(isset($profile["price"])) { ?> <span class="badge pull-right"><?php echo $profile["price"]; ?></span><?php } ?></h4>
-                                            <p class="list-group-item-text">
-                                                <?php if(isset($profile["meat"])&&isset($profile["size"])) { ?><small><?php echo $profile["meat"]; ?> - <?php echo $profile["size"]; ?></small><?php } ?>
+                                            <p class="list-group-item-text" id="list-group-item-text-<?php echo $profile["profileid"]; ?>">
+                                                <?php
+if(isset($profile["meat"])&&isset($profile["size"])) { ?><small><?php print(implode(", ", $profile["meat"])); ?> - <?php echo $profile["size"]; ?> - <?php include "helper/getprice.php"; ?></small><?php } ?>
                                             </p>
                                         </a>
                                     </div>
                             <?php
-//                            $input=$_GET[$profile["profileid"]];
-//                            if ($input != "1") {
-//                                printf($input);
-//                                };
                             }
                             ?>
                             </div>
-                            <button type="button" id="send" data-loading-text="sende..." data-complete-text="gesendet" class="btn btn-primary" autocomplete="on">
-  senden
-</button>
                         </div>
                     </div>
-                        <div class="col-lg-8 col-md-5 col-sm-5 tab-content border-left">
-                            
-                            <?php include 'helper/show.php'; ?>
-                            
-                        </div>
+                    <div class="col-lg-8 col-md-5 col-sm-5 tab-content border-left">
                     </div>
                 </div>
             </div>
+        </div>
 
 <?php include 'footer.php'; ?>
-<?php include "helper/users.php"; ?>

@@ -12,11 +12,37 @@
         
         <script>
         $(function(){
+        $(".tab-content").load("helper/show.php");
 
-//            $('.member-list a').click(function() {
-//                $('.member-list a.active').removeClass('active');
-//                $(this).addClass('active');
+        $('.member-list a').click(function() {
+            if($(this).hasClass("active")) {
+                $('.member-list a.active').removeClass('active');
+            } else {
+                $('.member-list a.active').removeClass('active');
+                $(this).addClass('active');
+            };
+        });
+            <?php
+//            $subday = file_get_contents("helper/subday.txt");
+//           if(date("D")=="Tue" && $subday == " ") { ?>
+//            $(".user-list").load("helper/mail.php", function(){
+//                $( ".user-list").load("index.php .user-list", function(){
+//                    $(".tab-content").load("helper/show.php");
+//                });
 //            });
+            <?php //} ?>
+            <?php
+//            if(date("D")=="Tue") {
+//                unlink("helper/subday.txt");
+//                ob_start();
+//                echo " ";
+//                $content = ob_get_contents();
+//
+//                $file = fopen("helper/subday.txt", "w");
+//                fwrite($file, $content);
+//                ob_clean();
+//           } ?>
+
 
             // save-button in edit view
             $('.container').on('click', '#editform .save-btn', function ( event ) {
@@ -30,13 +56,13 @@
                     success: function(data)
                     {
                         console.log(data.profileid); // show response from the php script.
-                        console.log("Loading show view");
+                        console.log("Loading load view");
                         $( "#edit-list" ).remove();
                         $( "#modal-footer-edit" ).remove();
                         $( ".tab-pane" ).remove();  //sorgt dafür das die alten Inhalte sofort verschwinden
+                        $( ".tab-content" ).load( "helper/show.php", function () {
                         $('.member-list a.active').removeClass('active');
-                        $( ".member-list" ).load( "index.php .member-list", function() {
-                        $( ".tab-content" ).load( "helper/load.php" );
+                        $( "#list-group-item-text-"+data.profileid ).load( "index.php #list-group-item-text-"+data.profileid );
                         });
 
 //                        $('#editform.save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
@@ -55,6 +81,7 @@
             $('.container').on('click', '#editform .dismiss-btn', function ( event ) {
                 console.log("Loading show view");
                 $( ".tab-content" ).load("helper/show.php");
+                $('.member-list a.active').removeClass('active');
             });
 
             // save-button in "new-profile" view
@@ -88,21 +115,6 @@
 
                 var profileid = $(this).data("profileid");
                 $( ".tab-content" ).load("helper/edit.php?profileid="+profileid);
-            });
-
-            //send-button in index.php
-            $('#send').on('click', function () {
-            var $btn = $(this).button('loading');
-            $( ".tab-content" ).load( "helper/create.php", function(){
-                $(".user-list").load("helper/mail.php", function(){
-                    $( ".user-list").load("index.php .user-list", function(){
-                        $( ".tab-content" ).load( "helper/load.php", function(){
-                            alert("Erfolgreich gesendet");
-                            $(this).button("reset");
-                        });
-                    });
-                });
-            });
             });
         });
         </script>

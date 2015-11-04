@@ -2,7 +2,6 @@
 
 // get profiles
 $profiles = glob($_SERVER['DOCUMENT_ROOT'].'/profiles/*.{json}', GLOB_BRACE);
-
 /* Use in template like this:
 
 foreach ($profiles as $path)

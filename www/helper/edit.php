@@ -1,4 +1,4 @@
-    <?php
+<?php
     if (!isset($profile["profileid"]))
     {
         include($_SERVER['DOCUMENT_ROOT'].'/helper/read.php');
@@ -8,24 +8,24 @@
         $string = file_get_contents($path);
         $profile=json_decode($string, true);
     }
-    ?>
+
+?>
 <form id="editform">
+    <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
+    <input type="hidden" name="signed" value="<?php echo $profile["signed"] ?>"</div>
     <input type="hidden" name="vorname" value="<?php echo $profile["vorname"]; ?>">
     <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
     
-    <div class="tab-pane" id="<?php echo $profile["profileid"]; ?>">
-        <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3></div>
-
-    <ul class="list-group" id="edit-list">
+    <ul class="list-group">
         <li class="list-group-item">
             <span class="lead clearfix">Brot</span>
             
             <div class="btn-group" data-toggle="buttons">
             
                 <?php
-                foreach ($config['Bread'] as $bread)
-                { ?>
+                foreach ($config["Bread"] as $bread)
+                {  ?>
 
                     <label class="btn btn-primary <?php if($profile['bread'] == $bread['name']): echo 'active'; endif; ?>">
                         <input type="radio" name="bread" value="<?php echo $bread['name']; ?>" <?php if($profile['bread'] == $bread['name']): echo 'checked'; endif; ?>> <?php echo $bread['name']; ?>
@@ -46,7 +46,7 @@
                 { ?>
                 
                     <label class="btn btn-primary <?php if($profile['size'] == $size['name']): echo 'active'; endif; ?>">
-                        <input type="radio" name="size" value="<?php echo $size['name']; ?>" <?php if($profile['size'] == $size['name']): echo 'checked'; endif; ?>> <?php echo $size['name']; ?>
+                        <input type="radio" name="size" id="<?php echo $size['name']; ?>" value="<?php echo $size['name']; ?>" <?php if($profile['size'] == $size['name']){ echo 'checked'; }; ?>> <?php echo $size['name'];?> <small> <?php echo $size["price"]; ?> </small>
                     </label>
                 
                 <?php } ?>
@@ -60,14 +60,20 @@
             <div class="btn-group" data-toggle="buttons">
             
                 <?php
-                foreach ($config['Meat']['sorts'] as $meat)
-                { ?>
-                
-                    <label class="btn btn-primary <?php if($profile['meat'] == $meat['name']): echo 'active'; endif; ?>">
-                        <input type="radio" name="meat" value="<?php echo $meat['name']; ?>" <?php if($profile['meat'] == $meat['name']): echo 'checked'; endif; ?>> <?php echo $meat['name']; ?>
+                    foreach ($config['Meat']['sorts'] as $meat) {
+                    if($meat["name"]!="Doppelt Fleisch") {
+                ?>
+
+                    <label class="btn btn-primary <?php if(in_array($meat['name'], $profile["meat"])): echo 'active'; endif; ?>">
+                        <input type="radio" name="meat[]" value="<?php echo $meat['name']; ?>" <?php if(in_array($meat['name'], $profile["meat"])){ echo 'checked'; }; ?>> <?php echo $meat['name'];?> <small> <?php echo $meat["price"]; ?></small>
                     </label>
                 
-                <?php } ?>
+                <?php } else { ?>
+                    <label class="btn btn-primary <?php if(in_array($meat['name'], $profile["meat"])): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="meat[]" value="<?php echo $meat['name']; ?>" <?php if(in_array($meat['name'], $profile["meat"])){ echo 'checked'; }; ?>> <?php echo $meat['name'];?> <small> <?php echo $meat["price"];?></small>
+                    </label>
+                <?php }
+                }; ?>
                 
             </div>
 
@@ -142,11 +148,10 @@
                 <?php } ?>
                 
             </div>
-
         </li>
     </ul>
-    <div class="modal-footer" id="modal-footer-edit">
+    <div class="modal-footer">
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
-        <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Speichern</button>
+        <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Änderungen speichern</button>
     </div>
 </form>

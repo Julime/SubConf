@@ -11,11 +11,12 @@
                         <div class="col-lg-4"><input class="form-control" type="text" required name="vorname" placeholder="Vorname"></div>
                         <div class="col-lg-4"><input class="form-control" type="text" required name="nachname" placeholder="Nachname"></div>
                         <div class="col-lg-4"><input class="form-control" type="email" required name="email" placeholder="E-Mail"></div>
+                        <input type="hidden" name="signed" value="false"</div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-                    <button type="submit" class="btn btn-primary save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!" data-dismiss="modal">Änderungen speichern</button>
+                    <button type="submit" class="btn btn-primary save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!" data-dismiss="modal">Speichern</button>
                 </div>
             </form>
         </div>
