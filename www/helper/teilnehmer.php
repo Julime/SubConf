@@ -6,9 +6,17 @@
 
     if($profile["signed"]=="true") {
         $profile["signed"]="false";
-    } else {
-        $profile["signed"]=true;
-    };
+    } else if (
+                !empty($profile["bread"])&&
+                !empty($profile["size"])&&
+                !empty($profile["meat"])
+            ) {
+        include"paypal.php";
+    } else { ?>
+    <script>
+        alert("Stellen sie sicher das Brot, Größe und Fleisch festgelegt sind!");
+    </script>
+    <?php };
     $file = $_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json';
     file_put_contents($file, json_encode($profile));
 ?>

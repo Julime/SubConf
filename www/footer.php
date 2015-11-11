@@ -15,9 +15,11 @@
         $(".tab-content").load("helper/show.php");
 
         $('.member-list a').click(function() {
+            var str = this.toString();
+            var profileid = str.substring(21);
             if($(this).hasClass("active")) {
                 $('.member-list a.active').removeClass('active');
-            } else {
+            } else if (!document.getElementById("cb-"+profileid).checked==true){
                 $('.member-list a.active').removeClass('active');
                 $(this).addClass('active');
             };
@@ -63,6 +65,9 @@
                         $( ".tab-content" ).load( "helper/show.php", function () {
                         $('.member-list a.active').removeClass('active');
                         $( "#list-group-item-text-"+data.profileid ).load( "index.php #list-group-item-text-"+data.profileid );
+                        document.getElementById('cb-'+data.profileid).checked=false;
+                        document.getElementById('cb-'+data.profileid).disabled=false;
+                        $("#cb-"+data.profileid).load("index.php #cb-"+data.profileid);
                         });
 
 //                        $('#editform.save-btn').wait(800).button('complete').wait(1500).button('reset').removeAttr('disabled').removeClass('disabled');
@@ -116,6 +121,13 @@
                 var profileid = $(this).data("profileid");
                 $( ".tab-content" ).load("helper/edit.php?profileid="+profileid);
             });
+
+            // dismiss-button in paypal.php
+            $('.container').on("click","#paypalModal #paypalNein" ,function (event)             {
+//                alert("wait");
+                $(".tab-content").load("helper/show.php");
+            });
+
         });
         </script>
 

@@ -149,6 +149,7 @@
                 
             </div>
         </li>
+        <input type="hidden" name="signed" value="false">
     </ul>
     <div class="modal-footer">
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>

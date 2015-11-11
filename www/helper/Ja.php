@@ -8,6 +8,9 @@
         <script>
         <?php
             include "read.php";
+            $pw=$_GET["pw"];
+            $passwort=file_get_contents("pw.txt");
+            if ($pw==$passwort) {
             foreach ($profiles as $path)
             {
                 $string = file_get_contents($path);
@@ -17,10 +20,6 @@
                 $file =$_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profile["profileid"].'.json';
                 file_put_contents($file, json_encode($profile));
             };
-
-            $pw=$_GET["pw"];
-            $passwort=file_get_contents("pw.txt");
-            if ($pw==$passwort) {
 
             unlink("subday.txt");
             ob_start();
