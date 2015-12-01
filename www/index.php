@@ -26,8 +26,8 @@
                                 ?>
 
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input type="checkbox" id="cb-<?php echo $profile["profileid"]; ?>"  onClick="if(<?php if((isset($profile["bread"])) and (isset($profile["size"])) and (isset($profile["meat"]))) { echo "true"; } else { echo "false"; }; ?> == true) { $('.tab-content').load('helper/teilnehmer.php?profileid=<?php echo $profile["profileid"]; ?>');} else { alert('stellen sie sicher das Brot, Größe und Fleisch ausgewählt sind');}; document.getElementById('cb-<?php echo $profile["profileid"] ?>').checked=false;" <?php
-        if($profile["signed"]=="true") {
+                                        <span class="input-group-addon"><input type="checkbox" id="cb-<?php echo $profile["profileid"]; ?>"  onClick="$('.tab-content').load('helper/teilnehmer.php?profileid=<?php echo $profile["profileid"]; ?>'); document.getElementById('cb-<?php echo $profile["profileid"] ?>').checked=false;" <?php
+        if(isset($profile["signed"]) and $profile["signed"]=="true") {
             echo "checked ";
             echo "disabled";
         }
@@ -36,7 +36,7 @@
                                             <h4 class="list-group-item-heading"><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?><?php if(isset($profile["price"])) { ?> <span class="badge pull-right"><?php echo $profile["price"]; ?></span><?php } ?></h4>
                                             <p class="list-group-item-text" id="list-group-item-text-<?php echo $profile["profileid"]; ?>">
                                                 <?php
-if(isset($profile["meat"])&&isset($profile["size"])) { ?><small><?php print(implode(", ", $profile["meat"])); ?> - <?php echo $profile["size"]; ?> - <?php include "helper/getprice.php"; ?></small><?php } ?>
+if(isset($profile["meat"])&&isset($profile["size"])) { ?><small><?php print(implode(", ", $profile["meat"])); ?> - <?php echo $profile["size"]; ?> - <?php include "helper/getprice.php"; echo $price; ?>€</small><?php } ?>
                                             </p>
                                         </a>
                                     </div>

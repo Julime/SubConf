@@ -34,14 +34,14 @@
 </script>
 </head>
 
-<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" methode="post" notify_url="https://www.bing.com">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" methode="post">
 
-<div class="modal fade" id="paypalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="paypalModal" data-backdrop="static" data-keyboard=false tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="paypalModalLabel"><center>Bestellung für <?php echo $profile["vorname"]; echo " "; echo $profile["nachname"] ?> - <?php include"getprice.php" ?></center></h4>
+                <h4 class="modal-title" id="paypalModalLabel"><center>Bestellung für <?php echo $profile["vorname"]; echo " "; echo $profile["nachname"] ?> - <?php include"getprice.php"; echo $price; ?>€</center></h4>
 
             </div>
             <div class="modal-title">
@@ -105,8 +105,9 @@
             </div>
             <div class="modal-body">
                 <center>
-                    <button type="submit" class="btn btn-primary" id="paypalJa">Mit Paypal bezahlen</button>
-                    <button type="button" class="btn btn-secondary" id="paypalNein" data-dismiss="modal">Abbrechen</button>
+                    <button type="submit" class="btn btn-primary" id="paypalYes">Mit Paypal bezahlen</button>
+                    <a href="#kunde-<?php echo $profile["profileid"]; ?>" type="button" class="btn btn-primary" id="barYes">Bar bezahlen</a>
+                    <button type="button" class="btn btn-secondary" id="paypalNo">Abbrechen</button>
                 </center>
             </div>
         </div>
@@ -120,7 +121,6 @@
    <input type="hidden" name="item_name_1"
       value="Dein Sub" />
     <input type="hidden" name="amount_1" value="<?php echo $cost ?>" />
-    <input type="hidden" name="currency_code" value="EUR">
    <input type="hidden" name="item_name_2"
       value="Brot: <?php echo $profile["bread"]; ?>" />
     <input type="hidden" name="amount_2" value="0.00" />
@@ -142,6 +142,8 @@
    <input type="hidden" name="item_name_8"
       value="Extras: <?php echo implode(", ", $profile["extras"]); ?>" />
     <input type="hidden" name="amount_8" value="0.00" />
+   <input type="hidden" name="currency_code" value="EUR">
+   <input type="hidden" name="custom" value="<?php echo $profile["profileid"]; ?>" />
    <input type="submit" hidden/>
 
 </form>

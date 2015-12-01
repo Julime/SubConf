@@ -1,6 +1,12 @@
 <?php
     $config_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/config.json');
     $config = json_decode($config_file, true);
+if(!isset($profile)) {
+    $profile=file_get_contents($_SERVER['DOCUMENT_ROOT']."/profiles/".$payer.".json");
+    $profile=json_decode($profile,true);
+}
+$gutschein_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/helper/gutscheine.json');
+$gutschein = json_decode($gutschein_file, true);
 
     foreach($config["Size"] as $size) {
         if($size["name"]==$profile["size"]) {
@@ -18,6 +24,14 @@
             };
         };
     };
-    $price.="€";
-    echo $price;
+
+    foreach($gutschein as $gutscheine) {
+        foreach($gutscheine as $Sub) {
+            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub)) {
+                if (in_array($Sub["name"], $profile["coupon"])){
+                    $price=$price+$Sub["price"];
+                }
+            }
+        }
+    }
 ?>

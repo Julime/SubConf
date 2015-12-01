@@ -11,7 +11,6 @@
                         <div class="col-lg-4"><input class="form-control" type="text" required name="vorname" placeholder="Vorname"></div>
                         <div class="col-lg-4"><input class="form-control" type="text" required name="nachname" placeholder="Nachname"></div>
                         <div class="col-lg-4"><input class="form-control" type="email" required name="email" placeholder="E-Mail"></div>
-                        <input type="hidden" name="signed" value="false"</div>
                     </div>
                 </div>
                 <div class="modal-footer">

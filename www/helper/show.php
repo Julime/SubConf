@@ -8,7 +8,7 @@
         if($profile["signed"]=="true"){
 ?>
 
-    <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; ?></h3>
+    <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
 
     <?php
         if
@@ -74,5 +74,5 @@
     };
 ?>
 <script>
-    window.location.href="#top"
+    window.location.href="#top";
 </script>

@@ -15,6 +15,7 @@
     } else { ?>
     <script>
         alert("Stellen sie sicher das Brot, Größe und Fleisch festgelegt sind!");
+        $(".tab-content").load("helper/show.php");
     </script>
     <?php };
     $file = $_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json';

@@ -10,14 +10,17 @@
     }
 
 ?>
+<h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
+
 <form id="editform">
-    <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
-    <input type="hidden" name="signed" value="<?php echo $profile["signed"] ?>"</div>
+
+    <input type="hidden" name="signed" value="<?php echo $profile["signed"]; ?>">
     <input type="hidden" name="vorname" value="<?php echo $profile["vorname"]; ?>">
     <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
     
     <ul class="list-group">
+        <span class="lead clearfix">Sub</span>
         <li class="list-group-item">
             <span class="lead clearfix">Brot</span>
             
@@ -149,6 +152,23 @@
                 
             </div>
         </li>
+            <span class="lead clearfix"><br>Gutscheine</span>
+        <?php foreach ($gutschein as $gutscheine) { ?>
+                <li class="list-group-item">
+                    <div class="btn-group" data-toggle="buttons">
+                        <span class="lead clearfix"><?php echo $gutscheine["name"]; ?></span><?php
+                        foreach ($gutscheine as $Sub) {
+                            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub)) {
+                ?>
+
+                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?>> <?php echo $Sub['name'];?>
+                    </label>
+
+                <?php } }?>
+                    </div>
+                </li>
+                <?php }?>
         <input type="hidden" name="signed" value="false">
     </ul>
     <div class="modal-footer">

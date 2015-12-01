@@ -15,7 +15,8 @@
             {
                 $string = file_get_contents($path);
                 $profile=json_decode($string,true);
-//
+
+                $profile["coupon"]="";
                 $profile["signed"]="false";
                 $file =$_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profile["profileid"].'.json';
                 file_put_contents($file, json_encode($profile));
