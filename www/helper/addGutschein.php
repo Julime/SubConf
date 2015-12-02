@@ -74,8 +74,11 @@
                         <input class="form-control" type="date" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][datee]" id="datee-<?php echo $Sub["name"]; ?>" value="<?php echo $Sub["datee"]; ?>">
                         <br>price:
                         <input class="form-control" type="number" step="0.01" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][price]" id="price-<?php echo $Sub["name"]; ?>" value="<?php echo $Sub["price"]; ?>">
-                        <br>sub requiered:
-                        <input class="form-control" type="checkbox" name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][sub]" id="sub-<?php echo $Sub["name"]; ?>" <?php if(isset($Sub["sub"]) and $Sub["sub"]=="on") { echo "checked"; } ?>>
+                        <br>sub:
+                            <select class="form-control" name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][sub]">
+                                <option <?php if($Sub["sub"]=="None"){echo "selected";}; ?>>None</option>
+                                <option <?php if($Sub["sub"]=="coustom"){echo "selected";}; ?>>coustom</option>
+                            </select>
                         <br>
                         </li>
                         </div><?php
@@ -124,7 +127,7 @@
                 var divnew = document.createElement("div");
                 divnew.id = newid;
 
-                divnew.innerHTML = '<div id="last-group"><li class="list-group-item"><div class="input-group"><input class="form-control" type="text" name="group'+number+'[name]" value="group'+groupnumber+'"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+number+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="'+newid+'">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+number+'New'+number+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub requiered:<input class="form-control" type="checkbox" name="'+newid+'[sub]"><br></li></div></ul></li></ul></div>';
+                divnew.innerHTML = '<div id="last-group"><li class="list-group-item"><div class="input-group"><input class="form-control" type="text" name="group'+number+'[name]" value="group'+groupnumber+'"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+number+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="'+newid+'">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+number+'New'+number+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div></ul></li></ul></div>';
 
                 objTo.appendChild(divnew);
                 window.scrollTo(0,document.body.scrollHeight);
@@ -140,7 +143,7 @@
             };
             newid = newid.replace("[New]","[New"+number+"]");
 
-            divnew.innerHTML = '<div id="'+newid+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="'+newid+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub requiered:<input class="form-control" type="checkbox" name="'+newid+'[sub]"><br></li></div>';
+            divnew.innerHTML = '<div id="'+newid+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="'+newid+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div>';
             objTo.appendChild(divnew);
             }
 
@@ -155,7 +158,7 @@
 
 
 <!--
-a coupon example in a group
+a coupon example
 
 {
     "group1":
