@@ -75,8 +75,8 @@
                         <br>price:
                         <input class="form-control" type="number" step="0.01" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][price]" id="price-<?php echo $Sub["name"]; ?>" value="<?php echo $Sub["price"]; ?>">
                         <br>sub:
-                            <select class="form-control" name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][sub]">
-                                <option <?php if($Sub["sub"]=="None"){echo "selected";}; ?>>None</option>
+                            <select class="form-control" id="sub-<?php echo $Sub["name"]; ?>" name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][sub]">
+                                <option <?php if((!isset($Sub["sub"])) or ($Sub["sub"]=="None")){echo "selected";}; ?>>None</option>
                                 <option <?php if($Sub["sub"]=="coustom"){echo "selected";}; ?>>coustom</option>
                             </select>
                         <br>
