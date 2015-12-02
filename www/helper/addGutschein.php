@@ -73,7 +73,7 @@
                         <br>date to:
                         <input class="form-control" type="date" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][datee]" id="datee-<?php echo $Sub["name"]; ?>" value="<?php echo $Sub["datee"]; ?>">
                         <br>price:
-                        <input class="form-control" type="number" step="0.01" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][price]" id="price-<?php echo $Sub["name"]; ?>" value="<?php echo $Sub["price"]; ?>">
+                            <div class="input-group price"><input class="form-control" type="text" step="0.01" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][price]" id="price-<?php echo $gutscheine["name"]; echo"-"; echo $Sub["name"]; ?>" value="<?php echo $Sub["price"]; ?>"><span class="input-group-btn"><Button type="Button" class="btn btn-default einheit" id="price-<?php echo $gutscheine["name"]; echo"-"; echo $Sub["name"]; ?>-button-eu" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-<?php echo $gutscheine["name"]; echo"-"; echo $Sub["name"]; ?>-button-pr" value="%">%</Button></span></div>
                         <br>sub:
                             <select class="form-control" id="sub-<?php echo $Sub["name"]; ?>" name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][sub]">
                                 <option <?php if((!isset($Sub["sub"])) or ($Sub["sub"]=="None")){echo "selected";}; ?>>None</option>
@@ -127,7 +127,7 @@
                 var divnew = document.createElement("div");
                 divnew.id = newid;
 
-                divnew.innerHTML = '<div id="last-group"><li class="list-group-item"><div class="input-group"><input class="form-control" type="text" name="group'+number+'[name]" value="group'+groupnumber+'"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+number+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="'+newid+'">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+number+'New'+number+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div></ul></li></ul></div>';
+                divnew.innerHTML = '<div id="last-group"><li class="list-group-item"><div class="input-group"><input class="form-control" type="text" name="group'+number+'[name]" value="group'+groupnumber+'"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+number+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="'+newid+'">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupons">  <div id="group'+number+'New'+number+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="text" required name="'+newid+'[price]" id="price-group'+groupnumber+'-New'+number+'" value="0€"><span class="input-group-btn"><Button type="Button" class="btn btn-default einheit" id="price-group'+groupnumber+'-New'+number+'-button-eu" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-group'+groupnumber+'-New'+number+'-button-pr" value="%">%</Button></span></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div></ul></li></ul></div>';
 
                 objTo.appendChild(divnew);
                 window.scrollTo(0,document.body.scrollHeight);
@@ -143,7 +143,7 @@
             };
             newid = newid.replace("[New]","[New"+number+"]");
 
-            divnew.innerHTML = '<div id="'+newid+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="'+newid+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div>';
+            divnew.innerHTML = '<div id="'+newid+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="'+newid+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="text" required name="'+newid+'[price]" value="0€"><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div>';
             objTo.appendChild(divnew);
             }
 
@@ -152,6 +152,21 @@
         $(document).on("click",".entfernen", function(){
            var element = document.getElementById(this.value);
            element.parentNode.removeChild(element);
+        });
+
+        $(document).on("click",".einheit",function(){
+            var inputid=this.id.replace("-button-pr","").replace("-button-eu","");
+            var element=document.getElementById(inputid);
+            element.value=element.value.replace("€","").replace("%","")+this.value;
+        });
+
+        $(document).on("keydown",".price",function(event){
+//            alert(event.keyCode);
+            if ((event.keyCode<48 || event.keyCode>57) && (event.keyCode!=8 && event.keyCode!=46 && (event.keyCode<37 || event.keyCode>40))) {
+               this.value=this.value;
+                return false;
+
+            }
         });
     });
 </script>

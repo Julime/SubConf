@@ -13,11 +13,11 @@
 }
 
 .coupon-li {
-  display: flex;
+  display: inline-flex;
 }
 
 .coupons {
-    width: 200px;
+    width: 10em;
 }
 
 #allcoupons {
