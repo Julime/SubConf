@@ -60,7 +60,7 @@
                 <?php foreach ($gutscheine as $Sub)
                 {
                     if (is_array($Sub) and array_key_exists("count",$Sub)) { ?>
-                        <div id="<?php echo $gutscheine["name"]; echo $Sub["name"]; ?>" >
+                        <div id="<?php echo $gutscheine["name"]; echo $Sub["name"]; ?>" class="coupons">
 
                         <li class="list-group-item"> <!-- list items for single coupons -->
                         <button type="button" class="entfernen btn btn-default" value="<?php echo $gutscheine["name"]; echo $Sub["name"]; ?>">Delete</button>

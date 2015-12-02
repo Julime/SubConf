@@ -16,6 +16,10 @@
   display: flex;
 }
 
+.coupons {
+    width: 200px;
+}
+
 #allcoupons {
     margin-left: 9em;
 }
