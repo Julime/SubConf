@@ -155,8 +155,8 @@
             <span class="lead clearfix"><br>Gutscheine</span>
         <?php foreach ($gutschein as $gutscheine) { ?>
                 <li class="list-group-item">
-                    <div class="btn-group" data-toggle="buttons">
-                        <span class="lead clearfix"><?php echo $gutscheine["name"]; ?></span><?php
+                    <span class="lead clearfix"><?php echo $gutscheine["name"]; ?></span>
+                    <div class="btn-group" data-toggle="buttons"><?php
                         foreach ($gutscheine as $Sub) {
                             if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub)) {
                 ?>
@@ -171,6 +171,8 @@
                 <?php }?>
         <input type="hidden" name="signed" value="false">
     </ul>
+    <?php //include"addgutschein.php"; ?>
+
     <div class="modal-footer">
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
         <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Änderungen speichern</button>

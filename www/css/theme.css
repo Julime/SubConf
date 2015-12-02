@@ -11,3 +11,23 @@
     border-top-right-radius: 4px;
     border-bottom-left-radius: 0;
 }
+
+.coupon-li {
+  display: flex;
+}
+
+#allcoupons {
+    margin-left: 9em;
+}
+
+.test {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15em;
+    background-color: #f1f1f1;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    z-index: 999;
+}

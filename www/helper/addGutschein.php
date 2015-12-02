@@ -1,18 +1,20 @@
         <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
         <script src="../js/jquery-2.1.1-min.js"></script>
-        <!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
-        <script src="../js/bootstrap.min.js"></script>
+
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="../css/theme.css" rel="stylesheet">
+
 
 <?php include "read.php"; ?>
 
-
-<ul class="list-group">
-        <div class="btn-group" data-toggle="hidden">
+        <nav class="test">
+            <ul class="list-group">
         <?php
             foreach ($gutschein as $gutscheine) {
         ?>
 
-       <li class="list-group-item">
+       <li class="list-group-item" >
             <span class="lead clearfix"><?php if (!array_key_exists("count",$gutscheine)) {echo $gutscheine["name"];} else { echo "ohne"; } ?>:  </span><br>
 
                 <?php
@@ -21,7 +23,7 @@
                 {
                     if (is_array($Sub) and array_key_exists("count",$Sub)) {
                 ?>
-                       - <?php echo $Sub["name"]; ?> <br>
+                - <?php echo $Sub["name"]; ?> <br>
 
                 <?php }
                 };
@@ -30,29 +32,40 @@
                     - <?php echo $gutscheine["name"]; ?> <br>
                 <?php }; ?>
 
-        </li><br>
+        </li>
 
         <?php
             }?>
-        </div>
-</ul>
-Inhalt:
-<button type="button" class="hinzufügen" value="Newgroup" >+</button>
+
+            </ul>
+            <button type="button" class="hinzufügen btn btn-default" value="Newgroup" >+</button>
+        <button type="button" class="btn btn-primary save-btn " id="savebtngutschein" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Speichern</button>
+</nav>
+
+<div class="col-xs-2">
+<h3>
 <form id="formgutschein">
     <div id="allcoupons">
     <input type="hidden" name="ignore[ignore]" value="ignore" > <!-- ignore this. This exists to help creat the rigth array, without this the first point will be his own array, it will be removed in writeGutschein.php -->
+        <ul class="group-list coupon-li" >
         <?php foreach ($gutschein as $gutscheine) {?>
-        <div id='<?php echo $gutscheine["name"];?>-group'>
-            <?php if (!array_key_exists("count",$gutscheine)) { ?>
-                <div id="<?php echo $gutscheine["name"]; ?>">
-                <br><br><br><input type="Text" name="<?php echo $gutscheine["name"]; ?>[name]" value="<?php echo $gutscheine["name"]; ?>"><button type="button" class="hinzufügen" value="<?php echo $gutscheine["name"];?>[New]">+</button><button type="button" class="entfernen" value="<?php echo $gutscheine["name"];?>">-</button><br>
+        <div id='last-group'>
 
+            <li id="<?php echo $gutscheine["name"];?>-li"  class="list-group-item"> <!-- list items for categories -->
+            <?php if (!array_key_exists("count",$gutscheine)) { ?>
+                <div id="<?php echo $gutscheine["name"]; ?>-input" class="input-group">
+                    <input class="form-control" type="text" name="<?php echo $gutscheine["name"]; ?>[name]" value="<?php echo $gutscheine["name"]; ?>"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="<?php echo $gutscheine["name"];?>[New]">+</button><button type="button" class="entfernen btn btn-default" value="<?php echo $gutscheine["name"];?>-li">-</button></span>
+                </div>
+                <ul id="<?php echo $gutscheine["name"]; ?>" class="list-group coupon-li">
                 <?php foreach ($gutscheine as $Sub)
                 {
                     if (is_array($Sub) and array_key_exists("count",$Sub)) { ?>
-                        <div id="<?php echo $gutscheine["name"]; echo $Sub["name"]; ?>">
+                        <div id="<?php echo $gutscheine["name"]; echo $Sub["name"]; ?>" >
+
+                        <li class="list-group-item"> <!-- list items for single coupons -->
+                        <button type="button" class="entfernen btn btn-default" value="<?php echo $gutscheine["name"]; echo $Sub["name"]; ?>">Delete</button>
                         <br>name:
-                        <input class="form-control" type="text" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][name]" id="name-<?php echo $Sub["name"]; ?>-<?php echo $gutscheine["name"];?>" value="<?php echo $Sub["name"]; ?>"><button type="button" class="entfernen" value="<?php echo $gutscheine["name"]; echo $Sub["name"]; ?>">-</button>
+                        <input class="form-control" type="text" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][name]" id="name-<?php echo $Sub["name"]; ?>-<?php echo $gutscheine["name"];?>" value="<?php echo $Sub["name"]; ?>">
                         <br>count:
                         <input class="form-control" type="number" required name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][count]" id="count-<?php echo $Sub["name"]; ?>" value="<?php echo $Sub["count"]; ?>">
                         <br>date from:
@@ -64,38 +77,24 @@ Inhalt:
                         <br>sub requiered:
                         <input class="form-control" type="checkbox" name="<?php echo $gutscheine["name"]; ?>[<?php echo $Sub["name"]; ?>][sub]" id="sub-<?php echo $Sub["name"]; ?>" <?php if(isset($Sub["sub"]) and $Sub["sub"]=="on") { echo "checked"; } ?>>
                         <br>
+                        </li>
                         </div><?php
                     }
-                }?>
-                </div> <?php
-            } else {?>
-                <br><br><br><br>
-                Ohne:<br>
-                <button type="button" class="hinzufügen" value="<?php echo $gutscheine["name"]; ?>">Hinzufügen</button> <br>
-                name:
-                <input class="form-control" type="text" required name="<?php echo $gutscheine["name"]; ?>[name]" id="name-<?php echo $gutscheine["name"]; ?>-<?php echo $gutscheine["name"];?>" value="<?php echo $gutscheine["name"]; ?>"><button type="button" class="entfernen" value="<?php echo $gutscheine["name"]; ?>">-</button>
-                <br>count:
-                <input class="form-control" type="number" required name="<?php echo $gutscheine["name"]; ?>[count]" id="count-<?php echo $gutscheine["name"]; ?>" value="<?php echo $gutscheine["count"]; ?>">
-                <br>date from:
-                <input class="form-control" type="date" required name="<?php echo $gutscheine["name"]; ?>[dates]" id="dates-<?php echo $gutscheine["name"]; ?>" value="<?php echo $gutscheine["dates"]; ?>">
-                <br>date to:
-                <input class="form-control" type="date" required name="<?php echo $gutscheine["name"]; ?>[datee]" id="datee-<?php echo $gutscheine["name"]; ?>" value="<?php echo $gutscheine["datee"]; ?>">
-                <br>price:
-                <input class="form-control" type="number" step="0.01" required name="<?php echo $gutscheine["name"]; ?>[price]" id="price-<?php echo $gutscheine["name"]; ?>" value="<?php echo $gutscheine["price"]; ?>">
-                <br>sub requiered:
-                <input class="form-control" type="checkbox" name="<?php echo $gutscheine["name"]; ?>[sub]" id="sub-<?php echo $gutscheine["name"]; ?>" <?php if($gutscheine["sub"]=="on") { echo "checked"; } ?>>
-                <br><?php
-            }?>
-        </div><?php
-        }?>
+                } ?>
+            </ul>
+            <?php } ?>
+            </li>
+            <?php } ?>
+                </ul>
     </div>
-        <br><br>
-        <button type="button" class="btn btn-primary save-btn" id="savebtngutschein" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Speichern</button>
 </form>
+    </h3>
+</div>
 
 <script>
     $(function(){
         var number = 0;
+        var groupnumber=0;
         $("#savebtngutschein").on("click", function(){
             var serialized = $("#formgutschein").serialize();
             $.ajax({
@@ -115,15 +114,17 @@ Inhalt:
 
         $(document).on("click",".hinzufügen",function(){
             number = number+1; //creat new number so that the new coupons not overwrite themself
+
             var newid = this.value;
 
             if (newid=="Newgroup") { //new group
-                newid = "group"+number+"[New"+number+"]";
-                var objTo = document.getElementById("allcoupons");
+                groupnumber = groupnumber+1;
+                newid = "group"+groupnumber+"[New"+number+"]";
+                var objTo = document.getElementById("last-group");
                 var divnew = document.createElement("div");
                 divnew.id = newid;
 
-                divnew.innerHTML = '<div id="group'+number+'"><br><br><br><input type="text" name="group'+number+'[name]" value="group'+number+'"><button type="button" class="hinzufügen" value="group'+number+'[New]">+</button><button type="button" class="entfernen" value="group'+number+'">-</button><br>name: <input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count: <input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from: <input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to: <input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date("Y-m-d"); ?>"><br>price: <input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub requiered: <input class="form-control" type="checkbox" name="'+newid+'[sub]" value="off"><br></div>';
+                divnew.innerHTML = '<div id="last-group"><li class="list-group-item"><div class="input-group"><input class="form-control" type="text" name="group'+number+'[name]" value="group'+groupnumber+'"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+number+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="'+newid+'">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+number+'New'+number+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub requiered:<input class="form-control" type="checkbox" name="'+newid+'[sub]"><br></li></div></ul></li></ul></div>';
 
                 objTo.appendChild(divnew);
                 window.scrollTo(0,document.body.scrollHeight);
@@ -139,7 +140,7 @@ Inhalt:
             };
             newid = newid.replace("[New]","[New"+number+"]");
 
-            divnew.innerHTML = '<div id="'+newid+'"><br>name: <input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><button type="button" class="entfernen" value="'+newid+'">-</button><br>count: <input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from: <input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to: <input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date("Y-m-d"); ?>"><br>price: <input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub requiered: <input class="form-control" type="checkbox" name="'+newid+'[sub]" value="off"><br></div>';
+            divnew.innerHTML = '<div id="'+newid+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="'+newid+'">Delete</button><br>name:<input class="form-control" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" value="0"><br>sub requiered:<input class="form-control" type="checkbox" name="'+newid+'[sub]"><br></li></div>';
             objTo.appendChild(divnew);
             }
 
@@ -172,17 +173,3 @@ a coupon example in a group
     }
 }
 
-a coupon without a group
-
-{
-    "without":
-    {
-        "name":"without",
-        "count":"1",
-        "dates":"2015-12-01",
-        "datee":"2015-12-03",
-        "price":"0.00",
-        "sub":"on"
-    }
-}
--->
