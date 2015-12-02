@@ -29,7 +29,15 @@ $gutschein = json_decode($gutschein_file, true);
         foreach($gutscheine as $Sub) {
             if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and isset($profile["coupon"]) and is_array($profile["coupon"])) {
                 if (in_array($Sub["name"], $profile["coupon"])){
-                    $price=$price+$Sub["price"];
+                    if (strpos($Sub["price"],"€")!==false) {
+                        $subprice=str_replace("€","",$Sub["price"]);
+                        $subprice=intval($subprice);
+                        $price=$price+$subprice;
+                    } else if (strpos($Sub["price"],"%")!==false){
+                        $subprice=str_replace("%","",$Sub["price"]);
+                        $subprice=intval($subprice);
+                        $price=round(($price/100)*$subprice,2);
+                    }
                 }
             }
         }
