@@ -161,7 +161,7 @@
                             if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub)) {
                 ?>
 
-                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>">
+                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>" data-toggle="popover" data-trigger="hover" title="Deine Bestellung kostet nur <?php echo $Sub["price"]; if(strpos($Sub["price"],"€")){echo" mehr";}; ?>. <?php echo $Sub["count"]; ?> verfügbar vom <?php echo $Sub["dates"]; ?> bis zum <?php echo $Sub["datee"]; ?>">
                         <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?>> <?php echo $Sub['name'];?>
                     </label>
 
@@ -171,7 +171,6 @@
                 <?php }?>
         <input type="hidden" name="signed" value="false">
     </ul>
-    <?php //include"addgutschein.php"; ?>
 
     <div class="modal-footer">
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
