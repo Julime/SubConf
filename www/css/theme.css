@@ -20,6 +20,14 @@
     margin-left: 9em;
 }
 
+.coupons {
+    max-width: 17em;
+}
+
+.groupname {
+    max-width: 34em;
+}
+
 .test {
     list-style-type: none;
     margin: 0;
