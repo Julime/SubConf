@@ -25,21 +25,30 @@ $gutschein = json_decode($gutschein_file, true);
         };
     };
 
+foreach($gutschein as $gutscheine) {
+        foreach($gutscheine as $Sub) {
+            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and isset($profile["coupon"]) and is_array($profile["coupon"])) {
+        if (strpos($Sub["price"],"%")!==false){
+                        $subprice=str_replace("%","",$Sub["price"]);
+                        $subprice=intval($subprice);
+                        $price=round(($price/100)*$subprice,2);
+                     }
+                }
+            }
+        }
+
     foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
             if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and isset($profile["coupon"]) and is_array($profile["coupon"])) {
                 if (in_array($Sub["name"], $profile["coupon"])){
                     if (strpos($Sub["price"],"€")!==false) {
                         $subprice=str_replace("€","",$Sub["price"]);
-                        $subprice=intval($subprice);
+                        $subprice=floatval($subprice);
                         $price=$price+$subprice;
-                    } else if (strpos($Sub["price"],"%")!==false){
-                        $subprice=str_replace("%","",$Sub["price"]);
-                        $subprice=intval($subprice);
-                        $price=round(($price/100)*$subprice,2);
                     }
                 }
             }
         }
     }
+
 ?>
