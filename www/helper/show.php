@@ -7,7 +7,7 @@
 
         if($profile["signed"]=="true"){
 ?>
-
+<div id="print" class="visible-print-block">
     <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
 
     <?php
@@ -65,6 +65,12 @@
                         <p><?php print(implode( ', ', $profile["extras"])); ?></p>
                     </li>
                 <?php } ?>
+                <?php if(isset($profile["coupon"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Gutscheine</span>
+                        <p><?php print(implode(", ",$profile["coupon"])); ?></p>
+                    </li>
+                <?php } ?>
             </ul>
 
         <?php } else {
@@ -73,6 +79,7 @@
         };
     };
 ?>
+</div>
 <script>
     window.location.href="#top";
 </script>

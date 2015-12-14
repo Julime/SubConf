@@ -16,14 +16,13 @@
 
        <li class="list-group-item group-li" id="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>-li-nav">
             <span class="lead clearfix" id="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>-span"><?php echo str_replace(" ","_",$gutscheine["name"]);?> </span><br>
-
                 <?php
                 if (!array_key_exists("count",$gutscheine)) {
                 foreach ($gutscheine as $Sub)
                 {
                     if (is_array($Sub) and array_key_exists("count",$Sub)) {
                 ?>
-                <span id="<?php echo str_replace(" ","_",$gutscheine["name"]); echo str_replace(" ","_",$Sub["name"]); ?>-navbar-span" class="coupon-li">-<?php echo str_replace(" ","_",$Sub["name"]); ?> <br></span>
+                <span id="<?php echo str_replace(" ","_",$gutscheine["name"]); echo str_replace(" ","_",$Sub["name"]); ?>-navbar-span" class="coupon-nav-li">-<?php echo str_replace(" ","_",$Sub["name"]); ?></span>
 
                 <?php }
                 };
@@ -125,7 +124,7 @@
                 var divnew = document.createElement("div");
                 divnew.id = newid;
 
-                divnew.innerHTML = '<div id="last-group"><li class="list-group-item" id="group'+groupnumber+'-li"><div class="input-group"><input class="form-control name" type="text" name="group'+groupnumber+'[name]" value="group'+groupnumber+'" id="group'+groupnumber+'-input-group"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+groupnumber+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'-li">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+groupnumber+'New'+number+'"><li class="list-group-item"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control name" id="group'+groupnumber+'New'+number+'-input-coupon" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="text" required name="'+newid+'[price]" id="price-group'+groupnumber+'-New'+number+'" value="0€"><span class="input-group-btn"><Button type="Button" class="btn btn-default einheit" id="price-group'+groupnumber+'-New'+number+'-button-eu" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-group'+groupnumber+'-New'+number+'-button-pr" value="%">%</Button></span></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div></ul></li></ul></div>';
+                divnew.innerHTML = '<div id="last-group"><li class="list-group-item" id="group'+groupnumber+'-li"><div class="input-group"><input class="form-control name" type="text" name="group'+groupnumber+'[name]" value="group'+groupnumber+'" id="group'+groupnumber+'-input-group"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+groupnumber+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'-li">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+groupnumber+'New'+number+'"><li class="list-group-item coupons"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control name" id="group'+groupnumber+'New'+number+'-input-coupon" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="text" required name="'+newid+'[price]" id="price-group'+groupnumber+'-New'+number+'" value="0€"><span class="input-group-btn"><Button type="Button" class="btn btn-default einheit" id="price-group'+groupnumber+'-New'+number+'-button-eu" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-group'+groupnumber+'-New'+number+'-button-pr" value="%">%</Button></span></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div></ul></li></ul></div>';
 
                 objTo.appendChild(divnew);
 
@@ -133,7 +132,7 @@
                 newli=document.createElement("li");
                 newli.setAttribute("id","group"+groupnumber+"-li-nav");
                 newli.className="list-group-item group-li";
-                newli.innerHTML='<span class="lead clearfix" id="group'+groupnumber+'-span">group'+groupnumber+'  </span><br><span id="group'+groupnumber+'New'+number+'-navbar-span">-New'+number+' <br></span>';
+                newli.innerHTML='<span class="lead clearfix" id="group'+groupnumber+'-span">group'+groupnumber+'  </span><br><span id="group'+groupnumber+'New'+number+'-navbar-span">-New'+number+' </span>';
                 idnew.appendChild(newli);
 
                 window.scrollTo(0,document.body.scrollHeight);
@@ -148,11 +147,11 @@
                 newid = "New"+number;
             };
             newid = newid.replace("[New]","[New"+number+"]");
-            divnew.innerHTML = '<div id="'+id+'New'+number+'"><li class="list-group-item" id=group'+groupnumber+'-li><button type="button" class="entfernen btn btn-default" value="'+id+'New'+number+'">Delete</button><br>name:<input class="form-control name" type="text" id="'+id+'New'+number+'-input-coupon" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="text" step="0.01" required name="'+newid+'[price]" id="price-'+id+'-New'+number+'" value="0€"><span class="input-group-btn"><Button type="Button" class="btn btn-default einheit" id="price-'+id+'-New'+number+'-button-pr" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-'+id+'-New'+number+'-button-pr" value="%">%</Button></span></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div>';
+            divnew.innerHTML = '<div id="'+id+'New'+number+'"><li class="list-group-item coupons" id=group'+groupnumber+'-li><button type="button" class="entfernen btn btn-default" value="'+id+'New'+number+'">Delete</button><br>name:<input class="form-control name" type="text" id="'+id+'New'+number+'-input-coupon" required name="'+newid+'[name]" value="New'+number+'"><br>count:<input class="form-control" type="number" required name="'+newid+'[count]" value="1"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="text" step="0.01" required name="'+newid+'[price]" id="price-'+id+'-New'+number+'" value="0€"><span class="input-group-btn"><Button type="Button" class="btn btn-default einheit" id="price-'+id+'-New'+number+'-button-pr" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-'+id+'-New'+number+'-button-pr" value="%">%</Button></span></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div>';
             objTo.appendChild(divnew);
 
             var idnew=document.getElementById(this.value.replace("[New]","-li-nav"));
-            idnew.innerHTML=idnew.innerHTML+'<span id="'+this.value.replace("[New]","")+'New'+number+'-navbar-span">-New'+number+' <br></span>';
+            idnew.innerHTML=idnew.innerHTML+'<span id="'+this.value.replace("[New]","")+'New'+number+'-navbar-span" class="coupon-nav-li">-New'+number+' </span>';
             }
 
         });
@@ -161,11 +160,9 @@
            var element = document.getElementById(this.value);
            element.parentNode.removeChild(element);
            if(this.value.match("-li")==null) {
-               alert("coupon");
                element = document.getElementById(this.value+"-navbar-span");
                element.parentNode.removeChild(element);
            } else {
-               alert("group");
                element = document.getElementById(this.value+"-nav");
                element.parentNode.removeChild(element);
            }
@@ -179,7 +176,7 @@
 
         $(document).on("keydown",".price",function(event){
 //            alert(event.keyCode);
-            if ((event.keyCode<48 || event.keyCode>57) && (event.keyCode!=8 && event.keyCode!=46 && (event.keyCode<37 || event.keyCode>40))) {
+            if ((event.keyCode<48 || event.keyCode>57) && (event.keyCode!=8 && event.keyCode!=190 && event.keyCode!=46 && (event.keyCode<37 || event.keyCode>40))) {
                this.value=this.value;
                 return false;
 
@@ -191,15 +188,15 @@
         var id=this.id.replace("-input-group","-span").replace("-input-coupon","-navbar-span");
         var element=document.getElementById(id);
         if (element.innerHTML.charAt(0)=="-") {
-            element.innerHTML="-"+this.value+"<br>";
+            element.innerHTML="-"+this.value;
         } else {
-            element.innerHTML=this.value+"<br>";
+            element.innerHTML=this.value;
         }
     })
 
-        $(document).on("click",".coupon-li",function(){
+        $(document).on("click",".coupon-nav-li",function(){
          $('html, body').animate({
-            scrollLeft: $("#"+this.id.replace("-navbar-span","")).offset().left
+            scrollLeft: $("#"+this.id.replace("-navbar-span","")).offset().left+100
          }, 800);
     })
 
