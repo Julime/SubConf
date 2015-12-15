@@ -4,7 +4,7 @@
     $content=json_encode($_POST);
     $content=str_replace('\"', '', $content);
     $content=str_replace('{"ignore":{"ignore":"ignore"},', '{', $content);
-    $content=str_replace('_', '', $content);
+//    $content=str_replace('_', '', $content);
 
 
 

@@ -68,7 +68,7 @@
                 <?php if(isset($profile["coupon"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Gutscheine</span>
-                        <p><?php print(implode(", ",$profile["coupon"])); ?></p>
+                        <p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p>
                     </li>
                 <?php } ?>
             </ul>
