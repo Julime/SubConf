@@ -25,6 +25,16 @@ $gutschein = json_decode($gutschein_file, true);
         };
     };
 
+    foreach($config["Cheese"] as $cheese) {
+        if(in_array($cheese["name"],$profile["cheese"]) and $cheese["name"]=="Doppelt") {
+            if ($profile["size"]=="15cm") {
+                $price=$price+0.3;
+            } else {
+                $price=$price+0.6;
+            }
+        };
+    };
+
 foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
             if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and isset($profile["coupon"]) and is_array($profile["coupon"])) {

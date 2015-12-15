@@ -125,7 +125,11 @@
 		},
 		{
 			"name": "Monterey Cheddar Käse"
-		}
+		},
+        {
+            "name": "Doppelt",
+            "price": " 15cm: +0.30€, 30cm: +0.60€"
+        }
     ],
     "Salad": [
 		{
