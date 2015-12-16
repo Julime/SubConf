@@ -14,7 +14,7 @@
                 !empty($profile["bread"])&&
                 !empty($profile["size"])&&
                 !empty($profile["meat"])&&
-                $profile["onlycoupon"]!=="on"
+                !key_exists("onlycoupon",$profile)
             ) { ?>
 <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
             <ul class="list-group">
@@ -72,7 +72,7 @@
                 <?php } ?>
             </ul>
 
-        <?php } else if($profile["onlycoupon"]=="on") { ?>
+        <?php } else if(key_exists("onlycoupon",$profile)) { ?>
         <ul class="list-group">  <?php
            if(isset($profile["coupon"])) { ?>
             <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>

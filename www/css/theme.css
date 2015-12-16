@@ -21,11 +21,12 @@
 }
 
 .coupons {
-    max-width: 17em;
+    min-width: 10em;
+    max-width: 20em;
 }
 
 .groupname {
-    max-width: 34em;
+    max-width: 40em;
 }
 
 .test {
