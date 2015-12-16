@@ -62,14 +62,16 @@
     //      $mail->WordWrap = 50; <-wird vorgegeben macht aber keinen Unterschied
             if(!$mail->Send()) {
                 exit;
+                alert("gespeichert");
 //                printf("Message was not sent.");
 //                printf("Mailer error: ".$mail->ErrorInfo);
             } else {
 //                printf("Message has been sent.\n");
             };
-            };
+            } else {
+                echo "</script><br>Fehler: Falsches Passwort. <script>";
+            }
         ?>
-        alert("gespeichert");
         setTimeout("location.href='http://subconf'",1);
     </script>
 </html>

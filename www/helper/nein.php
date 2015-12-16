@@ -17,10 +17,12 @@
             $file = fopen("subday.txt", "a");
             fwrite($file, $content);
             ob_clean();
+            alert("gespeichert");
+            } else {
+                echo "</script>Fehler: Falsches Passwort.<script>";
             }
         ?>
 
-        alert("gespeichert");
         setTimeout("location.href='http://subconf'",1);
     </script>
 </html>
