@@ -40,7 +40,7 @@ if (!key_exists("onlycoupon", $profile)) {
 
     foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
-            if (is_array($Sub) and key_exists("coupon",$profile) and in_array($Sub["name"],$profile["coupon"])) {
+            if (is_array($Sub) and key_exists("coupon",$profile) and !empty($profile["coupon"]) and in_array($Sub["name"],$profile["coupon"])) {
                 $Subprice=str_replace("=€","",$Sub["price"]);
                 $Subprice=floatval($Subprice);
                 $price=$Subprice;
