@@ -7,3 +7,9 @@ deny from all
 <FilesMatch "^ipn\.log$>
 deny from all
 </FilesMatch>
+<FilesMatch "^write\.php$>
+deny from all
+</FilesMatch>
+<FilesMatch "^writegutschein\.php$>
+deny from all
+</FilesMatch>
