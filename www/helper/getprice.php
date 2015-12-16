@@ -8,6 +8,7 @@ if(!isset($profile)) {
 $gutschein_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/helper/gutscheine.json');
 $gutschein = json_decode($gutschein_file, true);
 
+if ($profile["onlycoupon"]!=="on") {
     foreach($config["Size"] as $size) {
         if($size["name"]==$profile["size"]) {
             $price=$size["price"];
@@ -34,6 +35,9 @@ $gutschein = json_decode($gutschein_file, true);
             }
         };
     };
+ } else {
+    $price=0;
+}
 
 foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {

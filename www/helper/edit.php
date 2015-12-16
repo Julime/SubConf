@@ -152,16 +152,16 @@
                 
             </div>
         </li>
-            <span class="lead clearfix"><br>Gutscheine</span>
+        <span class="lead clearfix"><br>Gutscheine</span>
         <?php foreach ($gutschein as $gutscheine) { ?>
                 <li class="list-group-item">
                     <span class="lead clearfix"><?php echo $gutscheine["name"]; ?></span>
                     <div class="btn-group" data-toggle="buttons"><?php
                         foreach ($gutscheine as $Sub) {
-                            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("count",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
+                            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
                 ?>
 
-                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>" data-toggle="popover" data-trigger="hover" title="Deine Bestellung kostet nur <?php echo $Sub["price"]; if(strpos($Sub["price"],"€")){echo" mehr";}; ?>. <?php echo $Sub["count"]; ?> verfügbar vom <?php echo $Sub["dates"]; ?> bis zum <?php echo $Sub["datee"]; ?>">
+                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>" data-toggle="popover" data-trigger="hover" title="Deine Bestellung kostet nur <?php echo $Sub["price"]; if(strpos($Sub["price"],"€")){echo" mehr";}; ?>. Verfügbar vom <?php echo $Sub["dates"]; ?> bis zum <?php echo $Sub["datee"];?>. Dieser Gutschein bezieht sich <?php if ($Sub["sub"]=="None"){echo "nicht ";}?>auf deinen Sub">
                         <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(isset($profile["coupon"]) and in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?>> <?php echo str_replace("_"," ",$Sub['name']);?>
                     </label>
 
@@ -173,6 +173,9 @@
     </ul>
 
     <div class="modal-footer">
+        <label class="btn btn-secondary <?php if(in_array($salad['name'], $profile['salad'])): echo 'active'; endif; ?>">
+        <input type="checkbox" name="onlycoupon" <?php if($profile["onlycoupon"]=="on"){echo "checked";} ?>> Nur Gutschein
+    </label>
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
         <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Änderungen speichern</button>
     </div>

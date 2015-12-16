@@ -7,17 +7,16 @@
 
         if($profile["signed"]=="true"){
 ?>
-<div id="print" class="visible-print-block">
-    <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
 
     <?php
         if
             (
                 !empty($profile["bread"])&&
                 !empty($profile["size"])&&
-                !empty($profile["meat"])
+                !empty($profile["meat"])&&
+                $profile["onlycoupon"]!=="on"
             ) { ?>
-
+<h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
             <ul class="list-group">
                 <?php if(isset($profile["bread"])) { ?>
                     <li class="list-group-item">
@@ -73,13 +72,20 @@
                 <?php } ?>
             </ul>
 
-        <?php } else {
-            include 'edit.php';
+        <?php } else if($profile["onlycoupon"]=="on") { ?>
+        <ul class="list-group">  <?php
+           if(isset($profile["coupon"])) { ?>
+            <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Gutscheine</span>
+                        <p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p>
+                    </li>
+                <?php } ?>
+        </ul> <?php
             };
         };
     };
 ?>
-</div>
 <script>
     window.location.href="#top";
 </script>
