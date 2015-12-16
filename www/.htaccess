@@ -4,3 +4,6 @@ php_value error_reporting 6143
 <FilesMatch "^pw\.txt$>
 deny from all
 </FilesMatch>
+<FilesMatch "^ipn\.log$>
+deny from all
+</FilesMatch>
