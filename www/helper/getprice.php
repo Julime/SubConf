@@ -40,7 +40,7 @@ if (!key_exists("onlycoupon", $profile)) {
 
     foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
-            if (is_array($Sub) and key_exists("coupon",$profile) and !empty($profile["coupon"]) and in_array($Sub["name"],$profile["coupon"]) and strpos($Sub["name"],"=€")!==false) {
+            if (is_array($Sub) and key_exists("coupon",$profile) and !empty($profile["coupon"]) and in_array($Sub["name"],$profile["coupon"]) and strpos($Sub["name"],"=€")!==false and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
                 $Subprice=str_replace("=€","",$Sub["price"]);
                 $Subprice=floatval($Subprice);
                 $price=$Subprice;
@@ -53,7 +53,7 @@ if (!key_exists("onlycoupon", $profile)) {
 
 foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
-            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and isset($profile["coupon"]) and is_array($profile["coupon"]) and in_array($Sub["name"], $profile["coupon"])) {
+            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and isset($profile["coupon"]) and is_array($profile["coupon"]) and in_array($Sub["name"], $profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
         if (strpos($Sub["price"],"%")!==false){
                         $subprice=str_replace("%","",$Sub["price"]);
                         $subprice=floatval($subprice);
@@ -65,7 +65,7 @@ foreach($gutschein as $gutscheine) {
 
     foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
-            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and !empty($profile["coupon"]) and is_array($profile["coupon"])) {
+            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and !empty($profile["coupon"]) and is_array($profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
                 if (in_array($Sub["name"], $profile["coupon"])){
                     if (strpos($Sub["price"],"€")!==false and strpos($Sub["price"],"=")===false) {
                         $subprice=str_replace("€","",$Sub["price"]);

@@ -6,9 +6,7 @@
     $profile=json_decode($string,true);
 
         if($profile["signed"]=="true"){
-?>
 
-    <?php
         if
             (
                 !empty($profile["bread"])&&
@@ -16,6 +14,7 @@
                 !empty($profile["meat"])&&
                 !key_exists("onlycoupon",$profile)
             ) { ?>
+<!--<div class="hidden-print">-->
 <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
             <ul class="list-group">
                 <?php if(isset($profile["bread"])) { ?>
@@ -64,17 +63,30 @@
                         <p><?php print(implode( ', ', $profile["extras"])); ?></p>
                     </li>
                 <?php } ?>
-                <?php if(isset($profile["coupon"])) { ?>
+                <?php if(!empty($profile["coupon"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Gutscheine</span>
-                        <p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p>
+                        <?php foreach ($gutschein as $gutscheine) {
+                                    foreach ($gutscheine as $Sub) {
+                                        if (is_array($Sub) and in_array($Sub["name"],$profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
+                                            ?><p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p> <?php
+                                        };
+                                    };
+                              };?>
+
+                </li>
+                <?php } ?>
+                <?php if(!empty($profile["Bemerkung"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Bemerkung</span>
+                        <p><?php echo $profile["Bemerkung"]; ?></p>
                     </li>
                 <?php } ?>
             </ul>
 
         <?php } else if(key_exists("onlycoupon",$profile)) { ?>
         <ul class="list-group">  <?php
-           if(isset($profile["coupon"])) { ?>
+           if(!empty($profile["coupon"])) { ?>
             <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
                     <li class="list-group-item">
                         <span class="lead clearfix">Gutscheine</span>
@@ -86,6 +98,7 @@
         };
     };
 ?>
+<!--</div>-->
 <script>
     window.location.href="#top";
 </script>

@@ -9,15 +9,21 @@
     } else if (
                 !empty($profile["bread"])&&
                 !empty($profile["size"])&&
-                !empty($profile["meat"])
+                !empty($profile["meat"])&&
+                file_get_contents("subday.txt")=="ja"
             ) {
         include"paypal.php";
-    } else { ?>
+    } else if(file_get_contents("subday.txt")=="ja") { ?>
     <script>
         alert("Stellen sie sicher das Brot, Größe und Fleisch festgelegt sind!");
         $(".tab-content").load("helper/show.php");
     </script>
-    <?php };
+    <?php } else { ?>
+    <script>
+        alert("Heute ist kein Subday");
+        $(".tab-content").load("helper/show.php");
+    </script> <?php
+    }
     $file = $_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json';
     file_put_contents($file, json_encode($profile));
 ?>
