@@ -152,6 +152,10 @@
                 
             </div>
         </li>
+        <li class="list-group-item">
+            <span class ="lead clearfix">Bemerkung</span>
+            <textarea rows="4" cols="25" name="Bemerkung"><?php if(isset($profile["Bemerkung"])){echo $profile["Bemerkung"];} ?></textarea>
+        </li>
         <span class="lead clearfix"><br>Gutscheine</span>
         <?php foreach ($gutschein as $gutscheine) { ?>
                 <li class="list-group-item">
@@ -162,14 +166,14 @@
                 ?>
 
                     <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>" data-toggle="popover" data-trigger="hover" title="Deine Bestellung kostet nur <?php echo str_replace("=","",$Sub["price"]); if(strpos($Sub["price"],"€") and strpos($Sub["price"],"=")===false){echo" mehr";}; ?>. Verfügbar vom <?php echo $Sub["dates"]; ?> bis zum <?php echo $Sub["datee"];?>. Dieser Gutschein bezieht sich <?php if ($Sub["sub"]=="None"){echo "nicht ";}?>auf deinen Sub">
-                        <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(isset($profile["coupon"]) and in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?>> <?php echo str_replace("_"," ",$Sub['name']);?>
+                        <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(!empty($profile["coupon"]) and in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?>> <?php echo str_replace("_"," ",$Sub['name']);?>
                     </label>
 
                 <?php } }?>
                     </div>
                 </li>
                 <?php }?>
-        <input type="hidden" name="signed" value="false">
+            <input type="hidden" name="signed" value="false">
     </ul>
 
     <div class="modal-footer">

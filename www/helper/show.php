@@ -93,6 +93,12 @@
                         <p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p>
                     </li>
                 <?php } ?>
+            <?php if(!empty($profile["Bemerkung"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Bemerkung</span>
+                        <p><?php echo $profile["Bemerkung"]; ?></p>
+                    </li>
+                <?php } ?>
         </ul> <?php
             };
         };
