@@ -146,6 +146,10 @@
                     alert("E-mail wird gesendet");
                 });
             });
+
+            $("#Print").on("click", function(){
+                document.location.href = "helper/Print.php";
+            })
         });
         </script>
 
