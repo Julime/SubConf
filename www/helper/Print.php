@@ -1,6 +1,15 @@
-<body OnLoad="window.print(); document.location.href = '../../';">
+        <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
+        <script src="../js/jquery-2.1.1-min.js"></script>
 
-<?php
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="../css/theme.css" rel="stylesheet">
+
+<body OnLoad="window.print(); document.location.href = '../../';">
+<table class="table table-striped table-bordered klein">
+<tr>
+    <th>Name</th>
+    <?php
     include"read.php";
     $number=0;
     foreach ($profiles as $path)
@@ -14,16 +23,166 @@
                 (
                     !empty($profile["bread"])&&
                     !empty($profile["size"])&&
-                    !empty($profile["meat"])&&
-                    !key_exists("onlycoupon",$profile)
-                ) {
-                $number=$number+1;
-                echo $number.". ". $profile["vorname"]." ".$profile["nachname"]." - "; include "getprice.php"; echo $price."€ | Brot:  ".$profile["bread"]." | Größe:  ".$profile["size"]." | Fleisch:  ".implode(", ",$profile["meat"]); if(!empty($profile["cheese"])) { echo " | Käse:  ".implode(", ", $profile["cheese"]);}; if(!empty($profile["salad"])) { echo " | Gemüse:  ".implode(", ", $profile["salad"]);};  if(!empty($profile["sauce"])) { echo " | Sauce:  ".implode(", ", $profile["sauce"]);};  if(!empty($profile["extras"])) { echo " | Extras:  ".implode(", ", $profile["extras"]);}; if(!empty($profile["Bemerkung"])) { echo " | Bemerkung:  ".$profile["Bemerkung"];};  if(!empty($profile["coupon"])) { echo " | Gutscheine:  ".implode(", ", str_replace("_"," ", $profile["coupon"]));};?><br><br><?php
-            } else if (key_exists("onlycoupon",$profile)) {
+                    !empty($profile["meat"])||
+                    isset($profile["onlycoupon"])
+                ) { $number=$number+1;?>
+    <th><?php echo $number.". ". $profile["vorname"]." ".$profile["nachname"]; ?></th>
+    <?php } } }?>
+</tr><tr><td>Brot</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
 
-                $number=$number+1;
-                echo $number.". ". $profile["vorname"]." ".$profile["nachname"]." - "; include "getprice.php"; echo $price."€ "; if(!empty($profile["coupon"])) { echo " | Gutscheine:  ".implode(", ", str_replace("_"," ", $profile["coupon"]));}; if(!empty($profile["Bemerkung"])) { echo " | Bemerkung:  ".$profile["Bemerkung"];};?><br><br><?php
-            }
+            if($profile["signed"]=="true"){
+
+                if(!isset($profile["onlycoupon"])) { ?>
+                <td><?php echo $profile["bread"]; ?></td>
+<!--    <tr><td><?php echo $number.". ". $profile['vorname']." ". $profile['nachname']; ?></td><td><?php echo $profile["bread"]; ?></td><td><?php echo $profile["size"]; ?></td><td><?php if(isset($profile["meat"])){ echo implode(", ",$profile["meat"]); }?></td><td><?php if(isset($profile["cheese"])){echo implode(", ",$profile["cheese"]);} ?></td><td><?php  if(isset($profile["salad"])){ echo implode(", ",$profile["salad"]);} ?></td><td><?php if(isset($profile["sauce"])){ echo implode(", ",$profile["sauce"]);} ?></td><td><?php if(isset($profile["extras"])){ echo implode(", ",$profile["extras"]);} ?></td><td><?php if(isset($profile["coupon"])){ echo str_replace("_"," ",implode(", ",$profile["coupon"]));} ?></td><td><?php if(isset($profile["bemerkung"])){ echo $profile["bemerkung"];} ?></td></tr>--> <?php
+                } else {?>
+    <td>-</td>
+                <?php }
             }
     }?>
+    </tr>
+    <tr><td>Größe</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!isset($profile["onlycoupon"])) { ?>
+                <td><?php echo $profile["size"]; ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+    <tr><td>Fleisch</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!isset($profile["onlycoupon"])) { ?>
+                <td><?php echo implode(", ",$profile["meat"]); ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+    <tr><td>Käse</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!isset($profile["onlycoupon"]) && !empty($profile["cheese"])) { ?>
+                <td><?php echo implode(", ",$profile["cheese"]); ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+    <tr><td>Gemüse</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!isset($profile["onlycoupon"]) && !empty($profile["salad"])) { ?>
+                <td><?php echo implode(", ",$profile["salad"]); ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+    <tr><td>Sauce</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true" ){
+
+                if(!isset($profile["onlycoupon"])&& !empty($profile["sauce"])) { ?>
+                <td><?php echo implode(", ",$profile["sauce"]); ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+    <tr><td>Extras</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!isset($profile["onlycoupon"]) && !empty($profile["extras"])) { ?>
+                <td><?php echo implode(", ",$profile["extras"]); ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+    <tr><td>Gutscheine</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!empty($profile["coupon"])) { ?>
+                <td><?php echo str_replace("_"," ",implode(", ",$profile["coupon"])); ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+    </tr>
+    <tr><td>Bemerkung</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!empty($profile["Bemerkung"])) { ?>
+                <td style="word-break:break-all;word-wrap:break-word"><?php echo $profile["Bemerkung"]; ?></td><?php
+                } else {?>
+                <td>-</td>
+                <?php }
+            }
+    }?>
+    </tr>
+
+    </table>
 </body>
