@@ -10,10 +10,10 @@
                 !empty($profile["bread"])&&
                 !empty($profile["size"])&&
                 !empty($profile["meat"])&&
-                file_get_contents("subday.txt")=="ja"
+                file_get_contents("subday.txt")=="yes"
             ) {
         include"paypal.php";
-    } else if(file_get_contents("subday.txt")=="ja") { ?>
+    } else if(file_get_contents("subday.txt")=="yes") { ?>
     <script>
         alert("Stellen sie sicher das Brot, Größe und Fleisch festgelegt sind!");
         $(".tab-content").load("helper/show.php");
