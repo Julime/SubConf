@@ -66,15 +66,8 @@
                 <?php if(!empty($profile["coupon"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Gutscheine</span>
-                        <?php foreach ($gutschein as $gutscheine) {
-                                    foreach ($gutscheine as $Sub) {
-                                        if (is_array($Sub) and in_array($Sub["name"],$profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
-                                            ?><p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p> <?php
-                                        };
-                                    };
-                              };?>
-
-                </li>
+                        <p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p>
+                    </li>
                 <?php } ?>
                 <?php if(!empty($profile["Bemerkung"])) { ?>
                     <li class="list-group-item">
