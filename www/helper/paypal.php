@@ -100,6 +100,25 @@
                         <p><?php print(implode( ', ', $profile["extras"])); ?></p>
                     </li>
                 <?php } ?>
+            <?php if(!empty($profile["coupon"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Gutscheine</span>
+                        <?php foreach ($gutschein as $gutscheine) {
+                                    foreach ($gutscheine as $Sub) {
+                                        if (is_array($Sub) and in_array($Sub["name"],$profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
+                                            ?><p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p> <?php
+                                        };
+                                    };
+                              };?>
+
+                </li>
+                <?php } ?>
+                <?php if(!empty($profile["Bemerkung"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Bemerkung</span>
+                        <p><?php echo $profile["Bemerkung"]; ?></p>
+                    </li>
+                <?php } ?>
             </ul>
                 <?php } ?>
             </div>
@@ -142,6 +161,9 @@
    <input type="hidden" name="item_name_8"
       value="Extras: <?php echo implode(", ", $profile["extras"]); ?>" />
     <input type="hidden" name="amount_8" value="0.00" />
+    <input type="hidden" name="item_name_9"
+      value="Gutscheine: <?php echo implode(", ", $profile["coupon"]); ?>" />
+    <input type="hidden" name="amount_9" value="0.00" />
    <input type="hidden" name="currency_code" value="EUR">
    <input type="hidden" name="custom" value="<?php echo $profile["profileid"]; ?>" />
    <input type="submit" hidden/>
