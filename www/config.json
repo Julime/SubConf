@@ -178,12 +178,6 @@
 		},
 		{
 			"name": "Hot Sauce"
-		},
-		{
-			"name": "Essig"
-		},
-		{
-			"name": "Öl"
 		}
     ],
 	"Extras": [
@@ -198,6 +192,12 @@
 		},
 		{
 			"name": "Oregano"
+		},
+		{
+			"name": "Essig"
+		},
+		{
+			"name": "Öl"
 		}
 	],
     "Cookie": [
