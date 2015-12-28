@@ -39,7 +39,7 @@
                                             <h4 class="list-group-item-heading"><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?><?php if(isset($profile["price"])) { ?> <span class="badge pull-right"><?php echo $profile["price"]; ?></span><?php } ?></h4>
                                             <p class="list-group-item-text" id="list-group-item-text-<?php echo $profile["profileid"]; ?>">
                                                 <?php
-if(isset($profile["meat"])&&isset($profile["size"])) { ?><small><?php print(implode(", ", $profile["meat"])); ?> - <?php echo $profile["size"]; ?> - <?php include "helper/getprice.php"; echo $price; ?>€</small><?php } ?>
+if(isset($profile["meat"])&&isset($profile["size"])) { if(!isset($profile["onlycoupon"])) {?><small><?php print(implode(", ", $profile["meat"])); ?> - <?php echo $profile["size"]; ?> - <?php }include "helper/getprice.php"; echo $price; ?>€</small><?php } ?>
                                             </p>
                                         </a>
                                     </div>

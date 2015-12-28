@@ -50,7 +50,8 @@
             (
                 !empty($profile["bread"])&&
                 !empty($profile["size"])&&
-                !empty($profile["meat"])
+                !empty($profile["meat"])&&
+                !isset($profile["onlycoupon"])
             ) { ?>
 
             <ul class="list-group">
@@ -120,7 +121,22 @@
                     </li>
                 <?php } ?>
             </ul>
-                <?php } ?>
+                <?php } else if(isset($profile["onlycoupon"])) { ?>
+                <?php if(!empty($profile["coupon"])) { ?>
+                <ul>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Gutscheine</span>
+                        <?php foreach ($gutschein as $gutscheine) {
+                                    foreach ($gutscheine as $Sub) {
+                                        if (is_array($Sub) and in_array($Sub["name"],$profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
+                                            ?><p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p> <?php
+                                        };
+                                    };
+                              };?>
+
+                    </li>
+                </ul>
+                <?php } } ?>
             </div>
             <div class="modal-body">
                 <center>
@@ -132,7 +148,7 @@
         </div>
     </div>
 </div>
-
+<?php if(!isset($profile["onlycoupon"])) {?>
    <input type="hidden" name="cmd" value="_cart" />
    <input type="hidden" name="upload" value="1" />
    <input type="hidden" name="business"
@@ -167,5 +183,16 @@
    <input type="hidden" name="currency_code" value="EUR">
    <input type="hidden" name="custom" value="<?php echo $profile["profileid"]; ?>" />
    <input type="submit" hidden/>
-
+<?php } else { ?>
+   <input type="hidden" name="cmd" value="_cart" />
+   <input type="hidden" name="upload" value="1" />
+   <input type="hidden" name="business"
+      value="<?php echo $mail ?>" />
+   <input type="hidden" name="item_name_1"
+      value="Dein Gutschein" />
+   <input type="hidden" name="amount_1" value="<?php echo $price ?>" />
+   <input type="hidden" name="currency_code" value="EUR">
+   <input type="hidden" name="custom" value="<?php echo $profile["profileid"]; ?>" />
+   <input type="submit" hidden/>
+    <?php } ?>
 </form>
