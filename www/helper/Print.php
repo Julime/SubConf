@@ -38,8 +38,7 @@
             if($profile["signed"]=="true"){
 
                 if(!isset($profile["onlycoupon"])) { ?>
-                <td><?php echo $profile["bread"]; ?></td>
-<!--    <tr><td><?php echo $number.". ". $profile['vorname']." ". $profile['nachname']; ?></td><td><?php echo $profile["bread"]; ?></td><td><?php echo $profile["size"]; ?></td><td><?php if(isset($profile["meat"])){ echo implode(", ",$profile["meat"]); }?></td><td><?php if(isset($profile["cheese"])){echo implode(", ",$profile["cheese"]);} ?></td><td><?php  if(isset($profile["salad"])){ echo implode(", ",$profile["salad"]);} ?></td><td><?php if(isset($profile["sauce"])){ echo implode(", ",$profile["sauce"]);} ?></td><td><?php if(isset($profile["extras"])){ echo implode(", ",$profile["extras"]);} ?></td><td><?php if(isset($profile["coupon"])){ echo str_replace("_"," ",implode(", ",$profile["coupon"]));} ?></td><td><?php if(isset($profile["bemerkung"])){ echo $profile["bemerkung"];} ?></td></tr>--> <?php
+                <td><?php echo $profile["bread"]; ?></td><?php
                 } else {?>
     <td>-</td>
                 <?php }
