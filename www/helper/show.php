@@ -72,7 +72,7 @@
                 <?php if(!empty($profile["Bemerkung"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Bemerkung</span>
-                        <p><?php echo $profile["Bemerkung"]; ?></p>
+                        <p style="word-break:break-all;word-wrap:break-word"><?php echo $profile["Bemerkung"]; ?></p>
                     </li>
                 <?php } ?>
             </ul>
@@ -89,7 +89,7 @@
             <?php if(!empty($profile["Bemerkung"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Bemerkung</span>
-                        <p><?php echo $profile["Bemerkung"]; ?></p>
+                        <p style="word-break:break-all;word-wrap:break-word"><?php echo $profile["Bemerkung"]; ?></p>
                     </li>
                 <?php } ?>
         </ul> <?php
