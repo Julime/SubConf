@@ -12,7 +12,7 @@
         $(function(){
         $(".tab-content").load("helper/show.php");
 
-        $('.member-list a').click(function() {
+        $(document).on("click", ".member-list a",function() {
             var str = this.toString();
             var profileid = str.substring(str.length-32);//get profileid
             if($(this).hasClass("active")) {
@@ -23,25 +23,25 @@
             };
         });
             <?php
-//            $subday = file_get_contents("helper/subday.txt");
-//           if(date("D")=="Tue" && $subday == " ") { ?>
-//            $(".user-list").load("helper/mail.php", function(){
-//                $( ".user-list").load("index.php .user-list", function(){
-//                    $(".tab-content").load("helper/show.php");
-//                });
-//            });
-            <?php //} ?>
+            $subday = file_get_contents("helper/subday.txt");
+           if(date("D")=="Tue" && $subday == " ") { ?>
+            $(".user-list").load("helper/mail.php", function(){
+                $( ".user-list").load("index.php .user-list", function(){
+                    $(".tab-content").load("helper/show.php");
+                });
+            });
+            <?php } ?>
             <?php
-//            if(date("D")=="Tue") {
-//                unlink("helper/subday.txt");
-//                ob_start();
-//                echo " ";
-//                $content = ob_get_contents();
-//
-//                $file = fopen("helper/subday.txt", "w");
-//                fwrite($file, $content);
-//                ob_clean();
-//           } ?>
+            if(date("D")=="Tue") {
+                unlink("helper/subday.txt");
+                ob_start();
+                echo " ";
+                $content = ob_get_contents();
+
+                $file = fopen("helper/subday.txt", "w");
+                fwrite($file, $content);
+                ob_clean();
+           } ?>
 
 
             // save-button in edit view
@@ -99,12 +99,18 @@
                     success: function(data)
                     {
                         console.log(data); // show response from the php script.
-                        $( ".user-list" ).load("index.php .user-list",function(){
-                            $( ".tab-content" ).load("helper/edit.php?profileid="+data.profileid);
-                            $('.member-list a.active').removeClass('active', function() {
-                                $(".user-list #user-"+data.profileid).addClass('active');
-                            });
-                        });
+//                        $( ".user-list" ).load("index.php .user-list",function(){
+//                            $( ".tab-content" ).load("helper/edit.php?profileid="+data.profileid);
+//                            $('.member-list a.active').removeClass('active', function() {
+//                                $(".user-list #user-"+data.profileid).addClass('active');
+//                            });
+//                        });
+                        var gf ="'";
+                        var newprofile = document.createElement("div");
+                        newprofile.className="input-group";
+                        newprofile.innerHTML = '<span class="input-group-addon"><input type="checkbox" id="cb-'+data.profileid+'"  onClick='+gf+'$(".tab-content").load("helper/teilnehmer.php?profileid='+data.profileid+'"); document.getElementById("cb-'+data.profileid+'").checked=false;'+gf+'></span> <a href="#user-'+data.profileid+'" data-toggle="tab" class="list-group-item active" onClick='+gf+'if(!document.getElementById("cb-'+data.profileid+'").disabled==true){ if($(this).hasClass("active")){ $(".tab-content").load("helper/show.php"); } else { $(".tab-content").load("helper/edit.php?profileid='+data.profileid+'") } }'+gf+'> <h4 class="list-group-item-heading">'+data.vorname+' '+data.nachname+'</h4> <p class="list-group-item-text" id="list-group-item-text-'+data.profileid+'"></p></a>';
+                        document.getElementById("listgroup").appendChild(newprofile);
+                        $( ".tab-content" ).load("helper/edit.php?profileid="+data.profileid);
                     }
                 });
                 $(".form-control").val('');

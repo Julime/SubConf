@@ -18,7 +18,7 @@
                                     </div>
                                 </h3>
 
-                            <div class="list-group member-list">
+                            <div class="list-group member-list" id="listgroup">
 
                             <?php
                             foreach ($profiles as $path)
@@ -49,7 +49,8 @@ if(isset($profile["meat"])&&isset($profile["size"])) { if(!isset($profile["onlyc
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-5 col-sm-5 tab-content border-left">
+<!--                        <div class="col-lg-8 col-md-5 col-sm-5 border-left"></div>-->
+                    <div class="tab-content col-lg-8 col-md-5 col-sm-5 border-left">
                     </div>
                 </div>
             </div>
