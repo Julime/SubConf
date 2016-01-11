@@ -147,6 +147,26 @@
             }
     }?>
     </tr>
+    <tr><td>Cookies</td>
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);?>
+        <td><?php
+                if(!empty($profile["cookies"])) {
+                            $empty=true;
+                foreach($config["Cookie"] as $cookie){
+                    if(intval($profile["cookies"][$cookie["name"]])>0){
+                ?><?php $empty=false; echo $cookie["name"].": ". $profile["cookies"][$cookie["name"]].", ";
+                    }
+                }
+                } else {?>
+                -
+                <?php } ?>
+    </td><?php
+    }?>
+    </tr>
     <tr><td>Gutscheine</td>
     <?php
     foreach ($profiles as $path)
