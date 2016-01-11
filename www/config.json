@@ -152,7 +152,10 @@
 		},
 		{
 			"name": "Gewürzgurken"
-		}
+		},
+        {
+            "name": "Salad"
+        }
     ],
     "Sauce": [
 		{
