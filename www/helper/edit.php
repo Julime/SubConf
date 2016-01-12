@@ -162,9 +162,9 @@
                 { ?>
 
                     <label class="btn-primary <?php if(in_array($cookie['name'], $profile['cookie'])): echo 'active'; endif; ?>">
-                         <?php echo $cookie['name']; ?>
+                         <?php echo $cookie['name']; ?><input style="width:40px; color:black;" type="number" min="0" name="cookie[<?php echo $cookie["name"]; ?>]" value="<?php if(isset($profile["cookie"][$cookie["name"]])){ echo $profile["cookie"][$cookie["name"]]; } else {echo "0";} ?>">
                     </label>
-                <input style="width:40px;" type="number" min="0" name="cookie[<?php echo $cookie["name"]; ?>]" value="<?php if(isset($profile["cookie"][$cookie["name"]])){ echo $profile["cookie"][$cookie["name"]]; } else {echo "0";} ?>">
+
                 <?php } ?>
 
             </div>
