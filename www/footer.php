@@ -23,25 +23,25 @@
             };
         });
             <?php
-            $subday = file_get_contents("helper/subday.txt");
-           if(date("D")=="Tue" && $subday == " ") { ?>
-            $(".user-list").load("helper/mail.php", function(){
-                $( ".user-list").load("index.php .user-list", function(){
-                    $(".tab-content").load("helper/show.php");
-                });
-            });
-            <?php } ?>
+//            $subday = file_get_contents("helper/subday.txt");
+//           if(date("D")=="Tue" && $subday == " ") { ?>
+//            $(".user-list").load("helper/mail.php", function(){
+//                $( ".user-list").load("index.php .user-list", function(){
+//                    $(".tab-content").load("helper/show.php");
+//                });
+//            });
+            <?php //} ?>
             <?php
-            if(date("D")=="Tue") {
-                unlink("helper/subday.txt");
-                ob_start();
-                echo " ";
-                $content = ob_get_contents();
-
-                $file = fopen("helper/subday.txt", "w");
-                fwrite($file, $content);
-                ob_clean();
-           } ?>
+//            if(date("D")=="Tue") {
+//                unlink("helper/subday.txt");
+//                ob_start();
+//                echo " ";
+//                $content = ob_get_contents();
+//
+//                $file = fopen("helper/subday.txt", "w");
+//                fwrite($file, $content);
+//                ob_clean();
+//           } ?>
 
 
             // save-button in edit view
