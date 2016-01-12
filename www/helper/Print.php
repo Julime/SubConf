@@ -106,7 +106,7 @@
             if($profile["signed"]=="true"){
 
                 if(!isset($profile["onlycoupon"]) && !empty($profile["salad"])) { ?>
-                <td><?php echo implode(", ",$profile["salad"]); ?></td><?php
+                <td><?php echo $profile["saladtype"]; if($profile["saladtype"]!="Alles" && $profile["saladtype"]!="Nichts"){ echo " ". implode(", ",$profile["salad"]);}; ?></td><?php
                 } else {?>
                 <td>-</td>
                 <?php }
@@ -152,7 +152,8 @@
     foreach ($profiles as $path)
     {
         $string = file_get_contents($path);
-        $profile=json_decode($string,true);?>
+        $profile=json_decode($string,true);
+        if($profile["signed"]=="true"){?>
         <td><?php
                 if(!empty($profile["cookies"])) {
                             $empty=true;
@@ -164,7 +165,7 @@
                 } else {?>
                 -
                 <?php } ?>
-    </td><?php
+    </td><?php }
     }?>
     </tr>
     <tr><td>Gutscheine</td>
