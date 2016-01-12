@@ -153,6 +153,23 @@
             </div>
         </li>
         <li class="list-group-item">
+            <span class="lead clearfix">Cookies</span>
+
+            <div class="btn-group" data-toggle="buttons">
+
+                <?php
+                foreach ($config['Cookie'] as $cookie)
+                { ?>
+
+                    <label class="btn-primary <?php if(in_array($cookie['name'], $profile['cookie'])): echo 'active'; endif; ?>">
+                         <?php echo $cookie['name']; ?>
+                    </label>
+                <input style="width:40px;" type="number" min="0" name="cookie[<?php echo $cookie["name"]; ?>]" value="<?php if(isset($profile["cookie"][$cookie["name"]])){ echo $profile["cookie"][$cookie["name"]]; } else {echo "0";} ?>">
+                <?php } ?>
+
+            </div>
+        </li>
+        <li class="list-group-item">
             <span class ="lead clearfix">Bemerkung</span>
             <textarea rows="4" cols="25" name="Bemerkung"><?php if(isset($profile["Bemerkung"])){echo $profile["Bemerkung"];} ?></textarea>
         </li>

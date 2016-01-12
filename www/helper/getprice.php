@@ -36,9 +36,16 @@ if (!key_exists("onlycoupon", $profile)) {
         };
     };
 
+    foreach($config["Cookie"] as $cookie) {
+        $price=$price+$cookie["price"]*$profile["cookie"][$cookie["name"]];
+    };
 
 
-    foreach($gutschein as $gutscheine) {
+ } else {
+    $price=0;
+}
+
+foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
             if (is_array($Sub) and key_exists("coupon",$profile) and !empty($profile["coupon"]) and in_array($Sub["name"],$profile["coupon"]) and strpos($Sub["name"],"=€")!==false and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
                 $Subprice=str_replace("=€","",$Sub["price"]);
@@ -47,9 +54,6 @@ if (!key_exists("onlycoupon", $profile)) {
             }
         }
     }
- } else {
-    $price=0;
-}
 
 foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {

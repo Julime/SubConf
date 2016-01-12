@@ -156,15 +156,16 @@
         if($profile["signed"]=="true"){?>
         <td><?php
                 if(!empty($profile["cookies"])) {
-                            $empty=true;
-                foreach($config["Cookie"] as $cookie){
-                    if(intval($profile["cookies"][$cookie["name"]])>0){
-                ?><?php $empty=false; echo $cookie["name"].": ". $profile["cookies"][$cookie["name"]].", ";
+                    $empty=true;
+                    foreach($config["Cookie"] as $cookie){
+                        if(intval($profile["cookies"][$cookie["name"]])>0){
+                            $empty=false; echo $cookie["name"].": ". $profile["cookies"][$cookie["name"]].", ";
+                        }
                     }
-                }
-                } else {?>
-                -
-                <?php } ?>
+                    if($empty==true) {
+                        echo"-";
+                    }
+                }?>
     </td><?php }
     }?>
     </tr>
