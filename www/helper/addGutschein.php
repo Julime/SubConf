@@ -68,7 +68,39 @@
                         <br>date to:
                         <input class="form-control" type="date" required name="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][datee]" id="datee-<?php echo str_replace(" ","_",$Sub["name"]); ?>" value="<?php echo $Sub["datee"]; ?>">
                         <br>price:
-                            <div class="input-group price"><input class="form-control" type="text" step="0.01" required name="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][price]" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>" value="<?php echo $Sub["price"]; ?>"><span class="input-group-btn"><Button type="Button" class="btn btn-default einheit" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>-button-eu" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>-button-pr" value="%">%</Button><Button type="Button" class="btn btn-default einheit" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>-button-set" value="=€">set</Button></span></div>
+                            <div class="input-group price"><input class="form-control" type="text" step="0.01" required name="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][price]" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>" value="<?php echo $Sub["price"]; ?>">
+                        <select name="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][type]">
+                            <optgroup label="Subs">
+                                <optgroup label=" Footlong">
+                                    <option value="FL€mehr" <?php if($Sub["type"]=="FL€mehr") { echo "selected"; } ?> >[preis]€ mehr</option>
+                                    <option value="FL€weniger" <?php if($Sub["type"]=="FL€weniger") { echo "selected"; } ?> >[preis]€ weniger</option>
+                                    <option value="FL%weniger" <?php if($Sub["type"]=="FL%weniger") { echo "selected"; } ?> >[preis]% weniger</option>
+                                    <option value="FLk=p" <?php if($Sub["type"]=="FLk=p") { echo "selected"; } ?> >Kosten=[preis]</option>
+                                </optgroup>
+                                <optgroup label=" 15cm">
+                                    <option value="15€mehr" <?php if($Sub["type"]=="15€mehr") { echo "selected"; } ?> >[preis]€ mehr</option>
+                                    <option value="15€weniger" <?php if($Sub["type"]=="15€weniger") { echo "selected"; } ?> >[preis]€ weniger</option>
+                                    <option value="15%weniger" <?php if($Sub["type"]=="15%weniger") { echo "selected"; } ?> >[preis]% weniger</option>
+                                    <option value="15k=p" <?php if($Sub["type"]=="15k=p") { echo "selected"; } ?> >Kosten=[preis]</option>
+                                </optgroup>
+                            </optgroup>
+                            <optgroup label="Cookies">
+                                <optgroup label="X Cookies X=">
+                                    <option value="T-C1" <?php if($Sub["type"]=="-C1") { echo "selected"; } ?>>1</option>
+                                    <option value="T-C2" <?php if($Sub["type"]=="-C2") { echo "selected"; } ?>>2</option>
+                                    <option value="T-C3" <?php if($Sub["type"]=="-C3") { echo "selected"; } ?>>3</option>
+                                    <option value="T-C4" <?php if($Sub["type"]=="-C4") { echo "selected"; } ?>>4</option>
+                                    <option value="T-C5" <?php if($Sub["type"]=="-C5") { echo "selected"; } ?>>5</option>
+                                    <option value="T-C6" <?php if($Sub["type"]=="-C6") { echo "selected"; } ?>>6</option>
+                                    <option value="T-C7" <?php if($Sub["type"]=="-C7") { echo "selected"; } ?>>7</option>
+                                    <option value="T-C8" <?php if($Sub["type"]=="-C8") { echo "selected"; } ?>>8</option>
+                                    <option value="T-C9" <?php if($Sub["type"]=="-C9") { echo "selected"; } ?>>9</option>
+                                    <option value="T-C10" <?php if($Sub["type"]=="-C10") { echo "selected"; } ?>>10</option>
+                                    <option value="T-C11" <?php if($Sub["type"]=="-C11") { echo "selected"; } ?>>11</option>
+                                    <option value="T-C12" <?php if($Sub["type"]=="-C12") { echo "selected"; } ?>>12</option>
+                                </optgroup>
+                            </optgroup>
+                        </select><span class="input-group-btn"></span></div>
                         <br>sub:
                             <select class="form-control" id="sub-<?php echo str_replace(" ","_",$Sub["name"]); ?>" name="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][sub]">
                                 <option <?php if((!isset($Sub["sub"])) or ($Sub["sub"]=="None")){echo "selected";}; ?>>None</option>
@@ -79,6 +111,10 @@
                         </div><?php
                     }
                 } ?>
+
+
+<!--                    <Button type="Button" class="btn btn-default einheit" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>-button-eu" value="€">€</Button><Button type="Button" class="btn btn-default einheit" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>-button-pr" value="%">%</Button><Button type="Button" class="btn btn-default einheit" id="price-<?php echo str_replace(" ","_",$gutscheine["name"]); echo"-"; echo str_replace(" ","_",$Sub["name"]); ?>-button-set" value="=€">set</Button>-->
+
             </ul>
             <?php } ?>
             </li>
