@@ -86,18 +86,18 @@
                             </optgroup>
                             <optgroup label="Cookies">
                                 <optgroup label="X Cookies X=">
-                                    <option value="T-C1" <?php if($Sub["type"]=="-C1") { echo "selected"; } ?>>1</option>
-                                    <option value="T-C2" <?php if($Sub["type"]=="-C2") { echo "selected"; } ?>>2</option>
-                                    <option value="T-C3" <?php if($Sub["type"]=="-C3") { echo "selected"; } ?>>3</option>
-                                    <option value="T-C4" <?php if($Sub["type"]=="-C4") { echo "selected"; } ?>>4</option>
-                                    <option value="T-C5" <?php if($Sub["type"]=="-C5") { echo "selected"; } ?>>5</option>
-                                    <option value="T-C6" <?php if($Sub["type"]=="-C6") { echo "selected"; } ?>>6</option>
-                                    <option value="T-C7" <?php if($Sub["type"]=="-C7") { echo "selected"; } ?>>7</option>
-                                    <option value="T-C8" <?php if($Sub["type"]=="-C8") { echo "selected"; } ?>>8</option>
-                                    <option value="T-C9" <?php if($Sub["type"]=="-C9") { echo "selected"; } ?>>9</option>
-                                    <option value="T-C10" <?php if($Sub["type"]=="-C10") { echo "selected"; } ?>>10</option>
-                                    <option value="T-C11" <?php if($Sub["type"]=="-C11") { echo "selected"; } ?>>11</option>
-                                    <option value="T-C12" <?php if($Sub["type"]=="-C12") { echo "selected"; } ?>>12</option>
+                                    <option value="T-C1" <?php if($Sub["type"]=="T-C1") { echo "selected"; } ?>>1</option>
+                                    <option value="T-C2" <?php if($Sub["type"]=="T-C2") { echo "selected"; } ?>>2</option>
+                                    <option value="T-C3" <?php if($Sub["type"]=="T-C3") { echo "selected"; } ?>>3</option>
+                                    <option value="T-C4" <?php if($Sub["type"]=="T-C4") { echo "selected"; } ?>>4</option>
+                                    <option value="T-C5" <?php if($Sub["type"]=="T-C5") { echo "selected"; } ?>>5</option>
+                                    <option value="T-C6" <?php if($Sub["type"]=="T-C6") { echo "selected"; } ?>>6</option>
+                                    <option value="T-C7" <?php if($Sub["type"]=="T-C7") { echo "selected"; } ?>>7</option>
+                                    <option value="T-C8" <?php if($Sub["type"]=="T-C8") { echo "selected"; } ?>>8</option>
+                                    <option value="T-C9" <?php if($Sub["type"]=="T-C9") { echo "selected"; } ?>>9</option>
+                                    <option value="T-C10" <?php if($Sub["type"]=="T-C10") { echo "selected"; } ?>>10</option>
+                                    <option value="T-C11" <?php if($Sub["type"]=="T-C11") { echo "selected"; } ?>>11</option>
+                                    <option value="T-C12" <?php if($Sub["type"]=="T-C12") { echo "selected"; } ?>>12</option>
                                 </optgroup>
                             </optgroup>
                         </select><span class="input-group-btn"></span></div>
