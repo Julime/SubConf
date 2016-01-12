@@ -1,5 +1,4 @@
-    <?php 
-    
+<?php
     if (!isset($profile["profileid"]))
     {
         include($_SERVER['DOCUMENT_ROOT'].'/helper/read.php');
@@ -9,22 +8,27 @@
         $string = file_get_contents($path);
         $profile=json_decode($string, true);
     }
-    ?>
+
+?>
+<h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
 
 <form id="editform">
+
+    <input type="hidden" name="signed" value="<?php echo $profile["signed"]; ?>">
     <input type="hidden" name="vorname" value="<?php echo $profile["vorname"]; ?>">
     <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
     
     <ul class="list-group">
+        <span class="lead clearfix">Sub</span>
         <li class="list-group-item">
             <span class="lead clearfix">Brot</span>
             
             <div class="btn-group" data-toggle="buttons">
             
                 <?php
-                foreach ($config['Bread'] as $bread)
-                { ?>
+                foreach ($config["Bread"] as $bread)
+                {  ?>
 
                     <label class="btn btn-primary <?php if($profile['bread'] == $bread['name']): echo 'active'; endif; ?>">
                         <input type="radio" name="bread" value="<?php echo $bread['name']; ?>" <?php if($profile['bread'] == $bread['name']): echo 'checked'; endif; ?>> <?php echo $bread['name']; ?>
@@ -45,7 +49,7 @@
                 { ?>
                 
                     <label class="btn btn-primary <?php if($profile['size'] == $size['name']): echo 'active'; endif; ?>">
-                        <input type="radio" name="size" value="<?php echo $size['name']; ?>" <?php if($profile['size'] == $size['name']): echo 'checked'; endif; ?>> <?php echo $size['name']; ?>
+                        <input type="radio" name="size" id="<?php echo $size['name']; ?>" value="<?php echo $size['name']; ?>" <?php if($profile['size'] == $size['name']){ echo 'checked'; }; ?>> <?php echo $size['name'];?> <small> <?php echo $size["price"]; ?> </small>
                     </label>
                 
                 <?php } ?>
@@ -59,14 +63,20 @@
             <div class="btn-group" data-toggle="buttons">
             
                 <?php
-                foreach ($config['Meat']['sorts'] as $meat)
-                { ?>
-                
-                    <label class="btn btn-primary <?php if($profile['meat'] == $meat['name']): echo 'active'; endif; ?>">
-                        <input type="radio" name="meat" value="<?php echo $meat['name']; ?>" <?php if($profile['meat'] == $meat['name']): echo 'checked'; endif; ?>> <?php echo $meat['name']; ?>
+                    foreach ($config['Meat']['sorts'] as $meat) {
+                    if($meat["name"]!="Doppelt Fleisch") {
+                ?>
+
+                    <label class="btn btn-primary <?php if(in_array($meat['name'], $profile["meat"])): echo 'active'; endif; ?>">
+                        <input type="radio" name="meat[]" value="<?php echo $meat['name']; ?>" <?php if(in_array($meat['name'], $profile["meat"])){ echo 'checked'; }; ?>> <?php echo $meat['name'];?> <small> <?php echo $meat["price"]; ?></small>
                     </label>
                 
-                <?php } ?>
+                <?php } else { ?>
+                    <label class="btn btn-primary <?php if(in_array($meat['name'], $profile["meat"])): echo 'active'; endif; ?>">
+                        <input type="checkbox" name="meat[]" value="<?php echo $meat['name']; ?>" <?php if(in_array($meat['name'], $profile["meat"])){ echo 'checked'; }; ?>> <?php echo $meat['name'];?> <small> <?php echo $meat["price"];?></small>
+                    </label>
+                <?php }
+                }; ?>
                 
             </div>
 
@@ -81,7 +91,7 @@
                 { ?>
                 
                     <label class="btn btn-primary <?php if(in_array($cheese['name'], $profile['cheese'])): echo 'active'; endif; ?>">
-                        <input type="checkbox" name="cheese[]" value="<?php echo $cheese['name']; ?>" <?php if(in_array($cheese['name'], $profile['cheese'])): echo 'checked'; endif; ?>> <?php echo $cheese['name']; ?>
+                        <input type="checkbox" name="cheese[]" value="<?php echo $cheese['name']; ?>" <?php if(in_array($cheese['name'], $profile['cheese'])): echo 'checked'; endif; ?>> <?php echo $cheese['name']; ?><small><?php if (key_exists("price",$cheese)){ echo $cheese['price']; } ?></small>
                     </label>
                 
                 <?php } ?>
@@ -141,11 +151,36 @@
                 <?php } ?>
                 
             </div>
-
         </li>
+        <li class="list-group-item">
+            <span class ="lead clearfix">Bemerkung</span>
+            <textarea rows="4" cols="25" name="Bemerkung"><?php if(isset($profile["Bemerkung"])){echo $profile["Bemerkung"];} ?></textarea>
+        </li>
+        <span class="lead clearfix"><br>Gutscheine</span>
+        <?php foreach ($gutschein as $gutscheine) { ?>
+                <li class="list-group-item">
+                    <span class="lead clearfix"><?php echo $gutscheine["name"]; ?></span>
+                    <div class="btn-group" data-toggle="buttons"><?php
+                        foreach ($gutscheine as $Sub) {
+                            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
+                ?>
+
+                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>" data-toggle="popover" data-trigger="hover" title="Deine Bestellung kostet nur <?php echo str_replace("=","",$Sub["price"]); if(strpos($Sub["price"],"€") and strpos($Sub["price"],"=")===false){echo" mehr";}; ?>. Verfügbar vom <?php echo $Sub["dates"]; ?> bis zum <?php echo $Sub["datee"];?>. Dieser Gutschein bezieht sich <?php if ($Sub["sub"]=="None"){echo "nicht ";}?>auf deinen Sub">
+                        <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(!empty($profile["coupon"]) and in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?>> <?php echo str_replace("_"," ",$Sub['name']);?>
+                    </label>
+
+                <?php } }?>
+                    </div>
+                </li>
+                <?php }?>
+            <input type="hidden" name="signed" value="false">
     </ul>
+
     <div class="modal-footer">
+        <label class="btn btn-secondary <?php if(in_array($salad['name'], $profile['salad'])): echo 'active'; endif; ?>">
+        <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein
+    </label>
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
-        <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Speichern</button>
+        <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Änderungen speichern</button>
     </div>
 </form>

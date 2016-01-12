@@ -1,32 +1,21 @@
 <?php
-
-if (!isset($profile["profileid"]))
-{
-    include($_SERVER['DOCUMENT_ROOT'].'/helper/read.php');
-    $profileid = $_GET['profileid'];
-
-    $path = $_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json';
-    $string = file_get_contents($path);
-    $profile=json_decode($string, true);
-}
-
-foreach ($profiles as $path)
+    include"read.php";
+    foreach ($profiles as $path)
 {
     $string = file_get_contents($path);
-    $profile=json_decode($string, true);
+    $profile=json_decode($string,true);
 
-    ?>
+        if($profile["signed"]=="true"){
 
-    <div class="tab-pane" id="<?php echo $profile["profileid"]; ?>">
-        <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
-
-        <?php if
+        if
             (
-                isset($profile["bread"])&&
-                isset($profile["size"])&&
-                isset($profile["meat"])
+                !empty($profile["bread"])&&
+                !empty($profile["size"])&&
+                !empty($profile["meat"])&&
+                !key_exists("onlycoupon",$profile)
             ) { ?>
-
+<!--<div class="hidden-print">-->
+<h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
             <ul class="list-group">
                 <?php if(isset($profile["bread"])) { ?>
                     <li class="list-group-item">
@@ -43,7 +32,7 @@ foreach ($profiles as $path)
                 <?php if(isset($profile["meat"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Fleisch</span>
-                        <p><?php echo $profile["meat"]; ?>
+                        <p><?php print(implode( ', ', $profile["meat"]))?>
                             <?php if(isset($profile['doublemeat'])) { ?>
                                 <span class="label label-default">Doppelt</span>
                             <?php } ?>
@@ -74,14 +63,41 @@ foreach ($profiles as $path)
                         <p><?php print(implode( ', ', $profile["extras"])); ?></p>
                     </li>
                 <?php } ?>
+                <?php if(!empty($profile["coupon"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Gutscheine</span>
+                        <p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p>
+                    </li>
+                <?php } ?>
+                <?php if(!empty($profile["Bemerkung"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Bemerkung</span>
+                        <p style="word-break:break-all;word-wrap:break-word"><?php echo $profile["Bemerkung"]; ?></p>
+                    </li>
+                <?php } ?>
             </ul>
-        
-        
-        
-        <?php } else {
-            include 'helper/edit.php';
-        } ?>
 
-        <div><p><button id="LoadEditForm" type="button" class="btn btn-default pull-right clearfix" data-profileid="<?php echo $profile["profileid"]; ?>">Bearbeiten</button></p></div>
-    </div>
-<?php } ?>
+        <?php } else if(key_exists("onlycoupon",$profile)) { ?>
+        <ul class="list-group">  <?php
+           if(!empty($profile["coupon"])) { ?>
+            <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?> - <?php include "getprice.php"; echo $price; ?>€</h3>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Gutscheine</span>
+                        <p><?php print(implode(", ",str_replace("_"," ",$profile["coupon"]))); ?></p>
+                    </li>
+                <?php } ?>
+            <?php if(!empty($profile["Bemerkung"])) { ?>
+                    <li class="list-group-item">
+                        <span class="lead clearfix">Bemerkung</span>
+                        <p style="word-break:break-all;word-wrap:break-word"><?php echo $profile["Bemerkung"]; ?></p>
+                    </li>
+                <?php } ?>
+        </ul> <?php
+            };
+        };
+    };
+?>
+<!--</div>-->
+<script>
+    window.location.href="#top";
+</script>

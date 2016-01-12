@@ -1,0 +1,160 @@
+[2015-11-17 11:19 Europe/Berlin] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 1992
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+
+ for IPN payload: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=A9LC3Qajo-H2V8mPq4eIktgPvG2RAWF0TGU7E74yr0-hf-hQg4G4I47G&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Vollkorn&mc_handling8=0.00&item_name3=Groesse%3A+30cm&item_name4=Fleisch%3A+Salami&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Tomaten%2C+Zwiebeln&item_name7=Sosse%3A+Chipotle+Southwest%2C+Light+Mayonaise%2C+Joghurt%2C+%C3%96l&item_name8=Extras%3A+Parmesan%2C+Oregano&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=02G9732439155815E&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=5.69&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=d41d8cd98f00b204e9800998ecf8427e&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A19%3A00+Nov+17%2C+2015+PST&transaction_subject=d41d8cd98f00b204e9800998ecf8427e&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.46&notify_version=3.8&address_country=Germany&mc_gross=5.69&test_ipn=1&address_name=test+buyer&ipn_track_id=db6128c77d1bd
+[2015-11-17 11:19 Europe/Berlin] HTTP response of validation request: HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Date: Tue, 17 Nov 2015 10:19:20 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=FiESAEve0Uw3eL9nHkDgymBXCBIzLHDN1prjoS3-t1pqbTsq--k5VJ5WbD94luIDvj2hLqk91rNvFltgJl04sxSllNREGfiCBHZv4wnx64Ms-42bpn0dnBtsglBYm42LWURVvxteqtlIjv1mZjBckWRbC0imAZw4542qe_5rvRSvwDPU50tWSmyEH8QajYPQacQV1gVMQ9npQI9P-_-_zAuvshfCdFQolc1309sXlHIKuHE5fdviZaR7v1k6HGY2TNF14ujYWlABs53JUKw-JUR3TQ96FpkbA-qtcZ14GbVl2jH8OXLKs7plexnnFOMjGeCWVNbth7WWhKL4s0My7F7E76HGFqvTkTwKiQKJKSD4mzIg8CERgg7kxyqQ_ZlNAjwzqp5Pwg19_G7j-3Z8uktT44FAZWXXmDXmrmTnFyRIPtwR1tK6jY4lSLa; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 14-Nov-2025 10:19:20 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 16-Nov-2017 10:19:20 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.108.11.1447755560718131; path=/; expires=Thu, 09-Nov-45 10:19:20 GMT
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Paypal-Debug-Id: fe1cecbfa9ecb
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D687819350; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1447755560695738; path=/; expires=Thu, 09-Nov-45 10:19:20 GMT
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2015-11-17 11:19 Europe/Berlin] Verified IPN: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=A9LC3Qajo-H2V8mPq4eIktgPvG2RAWF0TGU7E74yr0-hf-hQg4G4I47G&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Vollkorn&mc_handling8=0.00&item_name3=Groesse%3A+30cm&item_name4=Fleisch%3A+Salami&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Tomaten%2C+Zwiebeln&item_name7=Sosse%3A+Chipotle+Southwest%2C+Light+Mayonaise%2C+Joghurt%2C+%C3%96l&item_name8=Extras%3A+Parmesan%2C+Oregano&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=02G9732439155815E&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=5.69&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=d41d8cd98f00b204e9800998ecf8427e&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A19%3A00+Nov+17%2C+2015+PST&transaction_subject=d41d8cd98f00b204e9800998ecf8427e&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.46&notify_version=3.8&address_country=Germany&mc_gross=5.69&test_ipn=1&address_name=test+buyer&ipn_track_id=db6128c77d1bd 
+[2015-11-17 11:33 Europe/Berlin] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 1933
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+
+ for IPN payload: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=AUaxvSojqajxsiGA9qXfGuCulUctALDYhEXT0hEt4Ei41n7G8-MieFgG&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Cheese+Oregano&mc_handling8=0.00&item_name3=Groesse%3A+15cm&item_name4=Fleisch%3A+Veggie+Delite&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Paprika&item_name7=Sosse%3A+BBQ-So%C3%9Fe&item_name8=Extras%3A+Pfeffer&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=2GA52428UP830271J&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=2.49&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=c58f89caefb1331ebd5e2f27794f82cc&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A32%3A59+Nov+17%2C+2015+PST&transaction_subject=c58f89caefb1331ebd5e2f27794f82cc&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.40&notify_version=3.8&address_country=Germany&mc_gross=2.49&test_ipn=1&address_name=test+buyer&ipn_track_id=b8b5380ac3a
+[2015-11-17 11:33 Europe/Berlin] HTTP response of validation request: HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Date: Tue, 17 Nov 2015 10:33:04 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=FDysFXbLXCzY3Xm-_SbY6s381Nx7079zRymgJ9Nz-0AC_XopJs165FnqDRaVWeW6opfMFlfcgwj83DE-KXuS-tcCPNfSX5vcy65C2FC0ju1z5756bzJtw3Kghezk88Tf8B0dy9Z-xtQ8a-dOi_xCKHiTL-14zMGYMhoJrC00sxc2_28Y3Im4vvNNo2S_zc5lBG86S3MHtgek4V6m5e1owatvq3_jFlaQEUFhmd-czrvVw1Z11wfnq1jUWREplW_OXWkNTUXzWOy979TyvfYJMaT0ua-7ifN73oIdkV-yUwVP4MfuUt3ydBQJXU3HIpgoWaR2pYhLpEw-i8HEQvkcM6Zxph7caruN7f7Kb9U-Njrg07ERVK5_D3u1oKIX4r_O6DWl0aMCAEKVu3M6DOP4A8rfvNKxdXAgka3ZJ7iWUyDALW5AvrQi2lmR6f0; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 14-Nov-2025 10:33:05 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 16-Nov-2017 10:33:05 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.108.11.1447756384791128; path=/; expires=Thu, 09-Nov-45 10:33:04 GMT
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Paypal-Debug-Id: d32c5530bbf1e
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D1610763094; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1447756384769088; path=/; expires=Thu, 09-Nov-45 10:33:04 GMT
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2015-11-17 11:33 Europe/Berlin] Verified IPN: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=AUaxvSojqajxsiGA9qXfGuCulUctALDYhEXT0hEt4Ei41n7G8-MieFgG&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Cheese+Oregano&mc_handling8=0.00&item_name3=Groesse%3A+15cm&item_name4=Fleisch%3A+Veggie+Delite&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Paprika&item_name7=Sosse%3A+BBQ-So%C3%9Fe&item_name8=Extras%3A+Pfeffer&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=2GA52428UP830271J&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=2.49&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=c58f89caefb1331ebd5e2f27794f82cc&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A32%3A59+Nov+17%2C+2015+PST&transaction_subject=c58f89caefb1331ebd5e2f27794f82cc&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.40&notify_version=3.8&address_country=Germany&mc_gross=2.49&test_ipn=1&address_name=test+buyer&ipn_track_id=b8b5380ac3a 
+[2015-11-17 11:36 Europe/Berlin] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 1935
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+
+ for IPN payload: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=A8N32td6z3ky8BUAuxTwjbfKlvKeAbl-KgXZgWKYTaF7RLUD2Whu4uTD&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Cheese+Oregano&mc_handling8=0.00&item_name3=Groesse%3A+15cm&item_name4=Fleisch%3A+Veggie+Delite&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Paprika&item_name7=Sosse%3A+BBQ-So%C3%9Fe&item_name8=Extras%3A+Pfeffer&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=4B3975334J218203J&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=2.49&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=c58f89caefb1331ebd5e2f27794f82cc&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A36%3A04+Nov+17%2C+2015+PST&transaction_subject=c58f89caefb1331ebd5e2f27794f82cc&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.40&notify_version=3.8&address_country=Germany&mc_gross=2.49&test_ipn=1&address_name=test+buyer&ipn_track_id=584d23b6a53b7
+[2015-11-17 11:36 Europe/Berlin] HTTP response of validation request: HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Date: Tue, 17 Nov 2015 10:36:16 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=fgriOc7qnMfvPhsRPbNwaPrebMHUbjujn3udYVZ-KXwIKQf55Fkk6f0tNlsSW1tnSziR51ykPsOophEMkDSaiY2nbx14YbFwg7Zr1oHo6u3C9erkxfChMKfU1m8fMlKMP_xCxJqJQCc3fKqMkxybDv03JCJwkvB64KH7ZdIezQqFpJ3NjACcIrch8SQ7fgjZd1MoUFbor-W_ZootK6iWVoqjbhHef5Ec8xKKfTKc9L796I905nE2CFynEpoC-UiMIxlHb4bLiGyvYHUvyThhwYTl2f62vwRN_P7G_mIyoqiWEjSPD7lqnJaIrMRVkuckserEy3Ys2YA1F1jLZHlSiyWuJhjRg9KAPqdyHzeqwOuiWnhSvfCHXOTb3dGR40UrENDk4t57XDLqfSPn0Ppt5ZAdMIH6wEZ69OsFdXYYhcbP0pJiUHDccVlsEJ4; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 14-Nov-2025 10:36:17 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 16-Nov-2017 10:36:17 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.108.11.1447756576922042; path=/; expires=Thu, 09-Nov-45 10:36:16 GMT
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Paypal-Debug-Id: 68ceb009dc844
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D537086806; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1447756576902212; path=/; expires=Thu, 09-Nov-45 10:36:16 GMT
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2015-11-17 11:36 Europe/Berlin] Verified IPN: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=A8N32td6z3ky8BUAuxTwjbfKlvKeAbl-KgXZgWKYTaF7RLUD2Whu4uTD&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Cheese+Oregano&mc_handling8=0.00&item_name3=Groesse%3A+15cm&item_name4=Fleisch%3A+Veggie+Delite&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Paprika&item_name7=Sosse%3A+BBQ-So%C3%9Fe&item_name8=Extras%3A+Pfeffer&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=4B3975334J218203J&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=2.49&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=c58f89caefb1331ebd5e2f27794f82cc&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A36%3A04+Nov+17%2C+2015+PST&transaction_subject=c58f89caefb1331ebd5e2f27794f82cc&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.40&notify_version=3.8&address_country=Germany&mc_gross=2.49&test_ipn=1&address_name=test+buyer&ipn_track_id=584d23b6a53b7 
+[2015-11-17 11:44 Europe/Berlin] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 1935
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+
+ for IPN payload: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=AaZm2xSjRnmA54GkJG9pseSZIqTdAowHEFyD5oSjO2XubafW62WLXxy3&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Cheese+Oregano&mc_handling8=0.00&item_name3=Groesse%3A+30cm&item_name4=Fleisch%3A+Turkey&payment_type=instant&item_name5=Kaese+%3A+Frischk%C3%A4se&item_name6=Gemuese%3A+Jalapenos&item_name7=Sosse%3A+Chipotle+Southwest&item_name8=Extras%3A+Parmesan&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=6CK66647AS522770A&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=5.69&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=098f6bcd4621d373cade4e832627b4f6&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A44%3A28+Nov+17%2C+2015+PST&transaction_subject=098f6bcd4621d373cade4e832627b4f6&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.46&notify_version=3.8&address_country=Germany&mc_gross=5.69&test_ipn=1&address_name=test+buyer&ipn_track_id=ea2ab2ea15e5b
+[2015-11-17 11:44 Europe/Berlin] HTTP response of validation request: HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Date: Tue, 17 Nov 2015 10:44:33 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=qx-j-mWpvHabtFliEewzPl9NhDpoPmwUpM8octcwAw4qFWnQFke4m_WnXyMvql7tTui6IQigcf1xQUM7flnB76EzV4F1ybqJoHAjYX22PlQaLeigrjzVlkFK-V7S-GDQfPoTtqWK8VM1xBKSbEEygHVzXuRLMquhvPGsGR2jUKs_Tmzw4K8TumWu0tCNQ6l270cpVypgLtJXGIHlAaFGflu5gbNN0dUk5cUaPowwicOGaihxpvF0UfDssPmmbGiscbMFd1_E61Q4GPBUORh65kAJ28FnChLtalUIcOAtkO6JbCy7sEynOz3ZeuW_7YCuqHd9bKSiSer4qCI0za1crufq74jSYIuaj26z3zGMa2R3gs7hxcVFS5AUls7o3IXe4og674Ye9bhSW_taYEJil_hHqozN1Zv4NCmX9lWKu-lJwn4IelYjw0RkBn8; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 14-Nov-2025 10:44:34 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 16-Nov-2017 10:44:34 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.108.11.1447757073826243; path=/; expires=Thu, 09-Nov-45 10:44:33 GMT
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Paypal-Debug-Id: cc38cbcc4ce9
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D285559638; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1447757073805794; path=/; expires=Thu, 09-Nov-45 10:44:33 GMT
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2015-11-17 11:44 Europe/Berlin] Verified IPN: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=AaZm2xSjRnmA54GkJG9pseSZIqTdAowHEFyD5oSjO2XubafW62WLXxy3&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Cheese+Oregano&mc_handling8=0.00&item_name3=Groesse%3A+30cm&item_name4=Fleisch%3A+Turkey&payment_type=instant&item_name5=Kaese+%3A+Frischk%C3%A4se&item_name6=Gemuese%3A+Jalapenos&item_name7=Sosse%3A+Chipotle+Southwest&item_name8=Extras%3A+Parmesan&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=6CK66647AS522770A&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=5.69&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=098f6bcd4621d373cade4e832627b4f6&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=02%3A44%3A28+Nov+17%2C+2015+PST&transaction_subject=098f6bcd4621d373cade4e832627b4f6&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.46&notify_version=3.8&address_country=Germany&mc_gross=5.69&test_ipn=1&address_name=test+buyer&ipn_track_id=ea2ab2ea15e5b 
+[2015-11-17 13:30 Europe/Berlin] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 1971
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+
+ for IPN payload: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=AOh0tu.5JUQyG2Aao4MpntBA2sFjAQyVAL4idsPrKe6tVyEMLjZbJf7x&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Vollkorn&mc_handling8=0.00&item_name3=Groesse%3A+30cm&item_name4=Fleisch%3A+Chicken+Faijta%2C+Doppelt+Fleisch&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Tomaten%2C+Jalapenos&item_name7=Sosse%3A+BBQ-So%C3%9Fe%2C+Essig&item_name8=Extras%3A+Pfeffer&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=8FN803230T7120124&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=8.99&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=d41d8cd98f00b204e9800998ecf8427e&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=04%3A29%3A58+Nov+17%2C+2015+PST&transaction_subject=d41d8cd98f00b204e9800998ecf8427e&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.52&notify_version=3.8&address_country=Germany&mc_gross=8.99&test_ipn=1&address_name=test+buyer&ipn_track_id=2e0d89a4cf89c
+[2015-11-17 13:30 Europe/Berlin] HTTP response of validation request: HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Date: Tue, 17 Nov 2015 12:30:04 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=1A9VqQMGVrivFMe3Q0Es_W63uJD-s6eK2qGVphVe7PVILLuU8Oz2VB1jKeG59wTLlRKhLQCbx-WtcDUh4ZsCzvmQ8gbh23YHKG-z357BOa3B3o5xKizSM8oj6MRDQKqs9U5pYO4kf5Om3WUkhZWd84Gk-BUp5r2exexWYvmBqciZ2ZIbww8uXo8az8_Dr3cRAo4bNjLLdxhfhNeM2ukGEbXbDF9uhlK7V_h0kP7UqEeKh_BvE_sItfIYHKsnbUSkniNprt2vzwXU2VneTmkV7doUpX4oQEPcMu97KJ3hWa6Mphp1yEcUk4CaVJ9A9r0Ba52cXoCF_UcZ872FYgMii9tY1Ph3Fhv8UjgP7BQ-lWrTiAVP_-KBmsuxPa1fkuABeDQBh4ysUaOHfaGmy7Llwm52E6Zks5mcmdFvXax7PcPdXoPkPzS61Xk615u; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 14-Nov-2025 12:30:04 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 16-Nov-2017 12:30:04 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.108.11.1447763404205087; path=/; expires=Thu, 09-Nov-45 12:30:04 GMT
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Paypal-Debug-Id: a2b94c7d2cd67
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D3424471894; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1447763404183348; path=/; expires=Thu, 09-Nov-45 12:30:04 GMT
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2015-11-17 13:30 Europe/Berlin] Verified IPN: cmd=_notify-validate&first_name=test&mc_shipping=0.00&mc_currency=EUR&payer_status=verified&payment_fee=&address_status=unconfirmed&payment_gross=&address_zip=79111&address_country_code=DE&mc_handling=0.00&num_cart_items=8&txn_type=cart&verify_sign=AOh0tu.5JUQyG2Aao4MpntBA2sFjAQyVAL4idsPrKe6tVyEMLjZbJf7x&payer_id=5XTZUFP38ZGD8&charset=windows-1252&tax1=0.00&receiver_id=CLM3XARS3H5KE&tax2=0.00&tax3=0.00&tax4=0.00&tax5=0.00&tax6=0.00&mc_handling1=0.00&tax7=0.00&mc_handling2=0.00&tax8=0.00&mc_handling3=0.00&mc_handling4=0.00&mc_handling5=0.00&tax=0.00&item_name1=Dein+Sub&mc_handling6=0.00&mc_handling7=0.00&item_name2=Brot%3A+Vollkorn&mc_handling8=0.00&item_name3=Groesse%3A+30cm&item_name4=Fleisch%3A+Chicken+Faijta%2C+Doppelt+Fleisch&payment_type=instant&item_name5=Kaese+%3A+Schmelzk%C3%A4se&item_name6=Gemuese%3A+Tomaten%2C+Jalapenos&item_name7=Sosse%3A+BBQ-So%C3%9Fe%2C+Essig&item_name8=Extras%3A+Pfeffer&address_street=ESpachstr.+1&mc_shipping1=0.00&mc_shipping2=0.00&mc_shipping3=0.00&txn_id=8FN803230T7120124&mc_shipping4=0.00&mc_shipping5=0.00&mc_shipping6=0.00&mc_shipping7=0.00&mc_shipping8=0.00&mc_gross_1=8.99&quantity1=1&mc_gross_2=0.00&quantity2=1&item_number1=&protection_eligibility=Eligible&mc_gross_3=0.00&quantity3=1&item_number2=&mc_gross_4=0.00&quantity4=1&item_number3=&custom=d41d8cd98f00b204e9800998ecf8427e&mc_gross_5=0.00&quantity5=1&item_number4=&mc_gross_6=0.00&quantity6=1&item_number5=&mc_gross_7=0.00&quantity7=1&item_number6=&mc_gross_8=0.00&quantity8=1&item_number7=&business=gbaumann-facilitator%40gmx.de&item_number8=&residence_country=DE&last_name=buyer&address_state=Empty&payer_email=gbaumann-buyer%40gmx.de&address_city=Freiburg&payment_status=Completed&payment_date=04%3A29%3A58+Nov+17%2C+2015+PST&transaction_subject=d41d8cd98f00b204e9800998ecf8427e&receiver_email=gbaumann-facilitator%40gmx.de&mc_fee=0.52&notify_version=3.8&address_country=Germany&mc_gross=8.99&test_ipn=1&address_name=test+buyer&ipn_track_id=2e0d89a4cf89c 

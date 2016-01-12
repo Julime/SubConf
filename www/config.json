@@ -24,11 +24,11 @@
 	"Size": [
 		{
 			"name": "15cm",
-			"price": "+0"
+			"price": "+0€"
 		},
 		{
 			"name": "30cm",
-			"price": "+2,69"
+			"price": "+2.70€"
 		}
 	],
     "Meat": {
@@ -37,82 +37,82 @@
             {
                 "number": "1",
                 "name": "Turkey&Ham",
-                "price": "2,99"
+                "price": "2.99€"
             },
             {
                 "number": "2",
                 "name": "Ham",
-                "price": "2,99"
+                "price": "2.99€"
             },
             {
                 "number": "3",
                 "name": "Turkey",
-                "price": "2,99"
+                "price": "2.99€"
             },
             {
                 "number": "4",
                 "name": "Salami",
-                "price": "2,99"
+                "price": "2.99€"
             },
             {
                 "number": "5",
                 "name": "Veggie Delite",
-                "price": "2,49"
+                "price": "2.49€"
             },
             {
                 "number": "6",
                 "name": "Roasted Chicken Breast",
-                "price": "3,79"
+                "price": "3.79€"
             },
             {
                 "number": "7",
                 "name": "Tuna",
-                "price": "3,79"
+                "price": "3.79€"
             },
             {
                 "number": "8",
                 "name": "Spicy Italian",
-                "price": "3,79"
+                "price": "3.79€"
             },
             {
                 "number": "9",
                 "name": "Turkey, Ham & Bacon Melt",
-                "price": "3,79"
+                "price": "3.79€"
             },
             {
                 "number": "10",
                 "name": "Veggy Patty",
-                "price": "3,79"
+                "price": "3.79€"
             },
             {
                 "number": "11",
                 "name": "Chicken Teriyaki",
-                "price": "4,29"
+                "price": "4.29€"
             },
             {
                 "number": "12",
                 "name": "Italian BMT",
-                "price": "4,29"
+                "price": "4.29€"
             },
             {
                 "number": "13",
                 "name": "Chicken Faijta",
-                "price": "4,29"
+                "price": "4.29€"
             },
             {
                 "number": "14",
                 "name": "Steak & Cheese",
-                "price": "4,29"
+                "price": "4.29€"
             },
             {
                 "number": "15",
                 "name": "BBQ Rib",
-                "price": "4,29"
+                "price": "4.29€"
             },
             {
                 "type": "double",
                 "name": "Doppelt Fleisch",
-                "price": "x2"
+                "price": "15cm:+1.00€, 30cm:+2.00€"
             }
         ]
     },
@@ -125,7 +125,11 @@
 		},
 		{
 			"name": "Monterey Cheddar Käse"
-		}
+		},
+        {
+            "name": "Doppelt",
+            "price": " 15cm: +0.30€, 30cm: +0.60€"
+        }
     ],
     "Salad": [
 		{
@@ -148,7 +152,10 @@
 		},
 		{
 			"name": "Gewürzgurken"
-		}
+		},
+        {
+            "name": "Salat"
+        }
     ],
     "Sauce": [
 		{
@@ -174,18 +181,6 @@
 		},
 		{
 			"name": "Hot Sauce"
-		},
-		{
-			"name": "Essig"
-		},
-		{
-			"name": "Öl"
-		},
-		{
-			"name": "Salz"
-		},
-		{
-			"name": "Pfeffer"
 		}
     ],
 	"Extras": [
@@ -200,24 +195,30 @@
 		},
 		{
 			"name": "Oregano"
+		},
+		{
+			"name": "Essig"
+		},
+		{
+			"name": "Öl"
 		}
 	],
     "Cookie": [
         {
             "name": "Chocolate Chip",
-            "price": "0,7"
+            "price": "0.7"
         },
         {
             "name": "Double Chocolate Chip",
-            "price": "0,7"
+            "price": "0.7"
         },
         {
             "name": "Chocolate Chip mit Rainbow Candy",
-            "price": "0,7"
+            "price": "0.7"
         },
         {
             "name": "White Chip Macadamia Nut",
-            "price": "0,7"
+            "price": "0.7"
         }
     ]
 }
