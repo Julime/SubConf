@@ -106,7 +106,7 @@
             if($profile["signed"]=="true"){
 
                 if(!isset($profile["onlycoupon"]) && !empty($profile["salad"])) { ?>
-                <td><?php echo $profile["saladtype"]; if($profile["saladtype"]!="Alles" && $profile["saladtype"]!="Nichts"){ echo " ". implode(", ",$profile["salad"]);}; ?></td><?php
+                <td><?php if(count($profile["salad"])==8) { echo "Alles"; } else if(count($profile["salad"])==0) { echo "Nichts"; } else if(count($profile["salad"])>4) { echo "Alles außer: "; foreach($config["Salad"] as $salad) { if(!in_array($salad["name"],$profile["salad"])) { echo $salad["name"].", "; } } } else { echo "Nur: "; foreach($config["Salad"] as $salad) { if(in_array($salad["name"],$profile["salad"])) { echo $salad["name"].", "; } } } ?></td><?php
                 } else {?>
                 <td>-</td>
                 <?php }
@@ -151,21 +151,19 @@
     <?php
     foreach ($profiles as $path)
     {
+        $empty=true;
         $string = file_get_contents($path);
         $profile=json_decode($string,true);
         if($profile["signed"]=="true"){?>
         <td><?php
-                if(!empty($profile["cookies"])) {
-                    $empty=true;
                     foreach($config["Cookie"] as $cookie){
                         if(intval($profile["cookies"][$cookie["name"]])>0){
                             $empty=false; echo $cookie["name"].": ". $profile["cookies"][$cookie["name"]].", ";
                         }
                     }
-                    if($empty==true) {
+                if($empty==true) {
                         echo"-";
-                    }
-                }?>
+                    }?>
     </td><?php }
     }?>
     </tr>

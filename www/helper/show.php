@@ -45,12 +45,10 @@
                         <p><?php print(implode( ', ', $profile["cheese"])); ?></p>
                     </li>
                 <?php } ?>
-                <?php if(isset($profile["salad"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Gemüse</span>
-                        <p><?php print(implode( ', ', $profile["salad"])); ?></p>
+                        <p><?php if(count($profile["salad"])==8) { echo "Alles"; } else if(count($profile["salad"])==0) { echo "Nichts"; } else if(count($profile["salad"])>4) { echo "Alles außer: "; foreach($config["Salad"] as $salad) { if(!in_array($salad["name"],$profile["salad"])) { echo $salad["name"].", "; } } } else { echo "Nur: "; foreach($config["Salad"] as $salad) { if(in_array($salad["name"],$profile["salad"])) { echo $salad["name"].", "; } } } ?></p>
                     </li>
-                <?php } ?>
                 <?php if(isset($profile["sauce"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix">Sauce</span>
