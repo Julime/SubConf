@@ -35,7 +35,7 @@
             echo "disabled";
         }
 ?>></span>
-                                        <a href="#user-<?php echo $profile["profileid"]; ?>" data-toggle="tab" class="list-group-item" onClick="if(!document.getElementById('cb-<?php echo $profile["profileid"] ?>').disabled==true) { if($(this).hasClass('active')) { $('.tab-content').load('helper/show.php'); } else { $('.tab-content').load('helper/edit.php?profileid=<?php echo $profile["profileid"]; ?>') } }">
+                                        <a href="#user-<?php echo $profile["profileid"]; ?>" id="id-<?php echo $profile["profileid"]; ?>" data-toggle="tab" class="list-group-item" onClick="if(!document.getElementById('cb-<?php echo $profile["profileid"] ?>').disabled==true) { if($(this).hasClass('active')) { $('.tab-content').load('helper/show.php'); } else { $('.tab-content').load('helper/edit.php?profileid=<?php echo $profile["profileid"]; ?>') } }">
                                             <h4 class="list-group-item-heading"><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?><?php if(isset($profile["price"])) { ?> <span class="badge pull-right"><?php echo $profile["price"]; ?></span><?php } ?></h4>
                                             <p class="list-group-item-text" id="list-group-item-text-<?php echo $profile["profileid"]; ?>">
                                                 <?php

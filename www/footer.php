@@ -10,6 +10,7 @@
         
         <script>
         $(function(){
+        var currentuser="";
         $(".tab-content").load("helper/show.php");
 
         $(document).on("click", ".member-list a",function() {
@@ -17,11 +18,21 @@
             var profileid = str.substring(str.length-32);//get profileid
             if($(this).hasClass("active")) {
                 $('.member-list a.active').removeClass('active');
+                currentuser="";
             } else if (document.getElementById("cb-"+profileid).checked==false){ // check if profile is not checked
                 $('.member-list a.active').removeClass('active');
                 $(this).addClass('active');
+                currentuser=str.substring(this.toString().length-32);
             };
         });
+
+            setInterval(function(){
+                $(".member-list").load("index.php .member-list", function(){
+                    var activeprofile = "#id-"+currentuser;
+                    $(activeprofile).addClass("active");
+                });
+            },2000);
+
             <?php
 //            $subday = file_get_contents("helper/subday.txt");
 //           if(date("D")=="Tue" && $subday == " ") { ?>
