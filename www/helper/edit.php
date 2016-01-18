@@ -195,7 +195,7 @@
 
     <div class="modal-footer">
         <label class="btn btn-secondary <?php if(in_array($salad['name'], $profile['salad'])): echo 'active'; endif; ?>">
-        <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein
+        <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-trigger="hover" title="Nur auswählen wenn du nur einen Gutschein haben willst der sich nicht auf deinen Sub bezieht! Das kannst du herausfinden indem du über dem Gutschein Hoverst"></span>
     </label>
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
         <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Änderungen speichern</button>
