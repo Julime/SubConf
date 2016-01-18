@@ -66,6 +66,7 @@
                     data: $("#editform").serialize(), // serializes the form's elements.
                     success: function(data)
                     {
+                        currentuser="";
                         console.log(data.profileid); // show response from the php script.
                         console.log("Loading show view");
                         $( "#edit-list" ).remove();
@@ -94,6 +95,7 @@
             $('.container').on('click', '#editform .dismiss-btn', function ( event ) {
                 console.log("Loading show view");
                 window.location.href="#top";
+                currentuser="";
                 $( ".tab-content" ).load("helper/show.php");
                 $('.member-list a.active').removeClass('active');
             });
@@ -116,6 +118,7 @@
 //                                $(".user-list #user-"+data.profileid).addClass('active');
 //                            });
 //                        });
+                        currentuser=data.profileid;
                         var gf ="'";
                         var newprofile = document.createElement("div");
                         newprofile.className="input-group";
