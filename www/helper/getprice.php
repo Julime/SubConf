@@ -14,7 +14,7 @@ $couponprice=0;
 
     foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
-            if (in_array($Sub["name"], $profile["coupon"])){
+            if ((isset($Sub["name"])&& key_exists("coupon",$profile) && is_array($profile["coupon"])) && in_array($Sub["name"], $profile["coupon"])){
                 if (strpos($Sub["type"],"FL")!==false) {
                     $profile["size"]="30cm";
                 } else if (strpos($Sub["type"],"15")!==false) {
@@ -42,7 +42,7 @@ $couponprice=0;
     }
 
     foreach($config["Cheese"] as $cheese) {
-        if(in_array($cheese["name"],$profile["cheese"]) and $cheese["name"]=="Doppelt") {
+        if((key_exists("cheese",$profile)) && in_array($cheese["name"],$profile["cheese"]) and $cheese["name"]=="Doppelt") {
             if ($profile["size"]=="15cm") {
                 $Subprice=$Subprice+0.3;
             } else {
@@ -60,7 +60,7 @@ $couponprice=0;
 
     foreach($gutschein as $gutscheine) { //Gutscheine
         foreach($gutscheine as $Sub) {
-            if (in_array($Sub["name"], $profile["coupon"])){
+            if ((isset($Sub["name"])&& key_exists("coupon",$profile) && is_array($profile["coupon"])) &&in_array($Sub["name"], $profile["coupon"])){
                 if (strpos($Sub["type"],"€mehr")!==false) {
                     $Subprice=$Subprice+$Sub["price"];
                 } else if (strpos($Sub["type"],"€weniger")!==false) {
