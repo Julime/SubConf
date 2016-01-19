@@ -211,7 +211,7 @@
         <h4 class="modal-title" id="myModalLabel">Passwort</h4>
       </div>
       <div class="modal-body">
-        <div class="col-lg-12"><input class="form-control" type="text" required name="passwort" placeholder="Passwort"></div>
+        <div class="col-lg-12"><input class="form-control" type="password" required name="passwort" placeholder="Passwort"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
