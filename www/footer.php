@@ -102,6 +102,7 @@
                             alert("Benutzername oder Passwort falsch");
                         }
                     }
+                    btn.button('loading').button('reset');
                 })
 
 
