@@ -102,9 +102,8 @@
                             alert("Benutzername oder Passwort falsch");
                         }
                     }
-                    btn.button('loading').button('reset');
                 })
-
+                 btn.button('loading').button('reset');
 
                 return false; // avoid to execute the actual submit of the form.
                 
