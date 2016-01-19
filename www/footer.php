@@ -59,33 +59,51 @@
             $('.container').on('click', '#editform .save-btn', function ( event ) {
                 var btn = $(this);
                 btn.button('loading');
+                var form = document.forms["editform"];
+                var datapw = form.elements["passwort"].value;
+                var profileid = form.elements["profileid"].value;
                 $.ajax({
                     type: "POST",
-                    url: "helper/write.php",
-                    dataType: "JSON",
-                    data: $("#editform").serialize(), // serializes the form's elements.
+                    url: "helper/hashverify.php",
+                    data: {pw: datapw, profileId: profileid},
                     success: function(data)
                     {
-                        currentuser="";
-                        console.log(data.profileid); // show response from the php script.
-                        console.log("Loading show view");
-                        $( "#edit-list" ).remove();
-                        $( "#modal-footer-edit" ).remove();
-                        $( ".tab-pane" ).remove();  //sorgt dafür das die alten Inhalte sofort verschwinden
-                        $( ".tab-content" ).load( "helper/show.php", function () {
-                            $('.member-list a.active').removeClass('active');
-                            $( "#list-group-item-text-"+data.profileid ).load( "index.php #list-group-item-text-"+data.profileid );
-                            window.location.href="#top";
-                            document.getElementById('cb-'+data.profileid).checked=false;
-                            document.getElementById('cb-'+data.profileid).disabled=false;
-                            $("#cb-"+data.profileid).load("index.php #cb-"+data.profileid);
-                        });
+                        if(data=="true"){
+                            $.ajax({
+                                type: "POST",
+                                url: "helper/write.php",
+                                dataType: "JSON",
+                                data: $("#editform").serialize(), // serializes the form's elements.
+                                success: function(data)
+                                {
+                                    alert("Änderungen gespeichert");
+                                    currentuser="";
+                                    console.log(data.profileid); // show response from the php script.
+                                    console.log("Loading show view");
+                                    $( "#edit-list" ).remove();
+                                    $( "#modal-footer-edit" ).remove();
+                                    $( ".tab-pane" ).remove();  //sorgt dafür das die alten Inhalte sofort verschwinden
+                                    $( ".tab-content" ).load( "helper/show.php", function () {
+                                        $('.member-list a.active').removeClass('active');
+                                        $( "#list-group-item-text-"+data.profileid ).load( "index.php #list-group-item-text-"+data.profileid );
+                                        window.location.href="#top";
+                                        document.getElementById('cb-'+data.profileid).checked=false;
+                                        document.getElementById('cb-'+data.profileid).disabled=false;
+                                        $("#cb-"+data.profileid).load("index.php #cb-"+data.profileid);
+                                        $("#passwortmodal").modal("hide");
+                                    });
 
-                        //load show view (überflüssig? weil doppelt)
-//                        console.log("Loading show view");
-//                        $( ".tab-pane" ).load("helper/show.php");
+                                    //load show view (überflüssig? weil doppelt)
+            //                        console.log("Loading show view");
+            //                        $( ".tab-pane" ).load("helper/show.php");
+                                    }
+                            });
+                        } else {
+                            alert("Benutzername oder Passwort falsch");
                         }
-                });
+                    }
+                })
+
 
                 return false; // avoid to execute the actual submit of the form.
                 
