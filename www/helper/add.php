@@ -8,9 +8,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-lg-4"><input class="form-control" type="text" required name="vorname" placeholder="Vorname"></div>
-                        <div class="col-lg-4"><input class="form-control" type="text" required name="nachname" placeholder="Nachname"></div>
-                        <div class="col-lg-4"><input class="form-control" type="email" required name="email" placeholder="E-Mail"></div>
+                        <div class="col-lg-3"><input class="form-control" type="text" required name="vorname" placeholder="Vorname"></div>
+                        <div class="col-lg-3"><input class="form-control" type="text" required name="nachname" placeholder="Nachname"></div>
+                        <div class="col-lg-3"><input class="form-control" type="email" required name="email" placeholder="E-Mail"></div>
+                        <div class="col-lg-3"><input class="form-control" type="password" required name="passwort" placeholder="Passwort"></div>
                     </div>
                 </div>
                 <div class="modal-footer">

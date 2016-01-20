@@ -1,0 +1,4 @@
+# Ignore pw.txt and subday.txt in this directory
+pw.txt
+subday.txt
+

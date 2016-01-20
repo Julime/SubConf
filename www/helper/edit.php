@@ -15,6 +15,7 @@
 <form id="editform">
 
     <input type="hidden" name="signed" value="<?php echo $profile["signed"]; ?>">
+    <input type="hidden" name="profileid" value="<?php echo $profile["profileid"]; ?>">
     <input type="hidden" name="vorname" value="<?php echo $profile["vorname"]; ?>">
     <input type="hidden" name="nachname" value="<?php echo $profile["nachname"]; ?>">
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
@@ -153,6 +154,23 @@
             </div>
         </li>
         <li class="list-group-item">
+            <span class="lead clearfix">Cookies</span>
+
+            <div class="btn-group" data-toggle="buttons">
+
+                <?php
+                foreach ($config['Cookie'] as $cookie)
+                { ?>
+
+                    <label class="btn-primary <?php if(in_array($cookie['name'], $profile['cookie'])): echo 'active'; endif; ?>">
+                         <?php echo $cookie['name']; ?><input style="width:40px; color:black;" type="number" min="0" name="cookie[<?php echo $cookie["name"]; ?>]" value="<?php if(isset($profile["cookie"][$cookie["name"]])){ echo $profile["cookie"][$cookie["name"]]; } else {echo "0";} ?>">
+                    </label>
+
+                <?php } ?>
+
+            </div>
+        </li>
+        <li class="list-group-item">
             <span class ="lead clearfix">Bemerkung</span>
             <textarea rows="4" cols="25" name="Bemerkung"><?php if(isset($profile["Bemerkung"])){echo $profile["Bemerkung"];} ?></textarea>
         </li>
@@ -178,9 +196,29 @@
 
     <div class="modal-footer">
         <label class="btn btn-secondary <?php if(in_array($salad['name'], $profile['salad'])): echo 'active'; endif; ?>">
-        <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein
+        <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-trigger="hover" title="Nur auswählen wenn du nur einen Gutschein haben willst der sich nicht auf deinen Sub bezieht! Das kannst du herausfinden indem du über dem Gutschein Hoverst"></span>
     </label>
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
-        <button type="submit" class="btn btn-primary pull-right clearfix save-btn" data-loading-text="Wird gespeichert ..." data-complete-text="Gespeichert!">Änderungen speichern</button>
+        <button type="button" class="btn btn-primary pull-right" data-loading-text="Wird gespeichert ..." data-toggle="modal" data-target="#passwortmodal">Änderungen speichern</button>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="passwortmodal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="passwortmodallabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Passwort</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-lg-12"><input class="form-control" type="password" required name="passwort" placeholder="Passwort"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary clearfix save-btn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </form>

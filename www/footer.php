@@ -10,6 +10,7 @@
         
         <script>
         $(function(){
+        var currentuser="";
         $(".tab-content").load("helper/show.php");
 
         $(document).on("click", ".member-list a",function() {
@@ -17,63 +18,92 @@
             var profileid = str.substring(str.length-32);//get profileid
             if($(this).hasClass("active")) {
                 $('.member-list a.active').removeClass('active');
+                currentuser="";
             } else if (document.getElementById("cb-"+profileid).checked==false){ // check if profile is not checked
                 $('.member-list a.active').removeClass('active');
                 $(this).addClass('active');
+                currentuser=str.substring(this.toString().length-32);
             };
         });
-            <?php
-            $subday = file_get_contents("helper/subday.txt");
-           if(date("D")=="Tue" && $subday == " ") { ?>
-            $(".user-list").load("helper/mail.php", function(){
-                $( ".user-list").load("index.php .user-list", function(){
-                    $(".tab-content").load("helper/show.php");
-                });
-            });
-            <?php } ?>
-            <?php
-            if(date("D")=="Tue") {
-                unlink("helper/subday.txt");
-                ob_start();
-                echo " ";
-                $content = ob_get_contents();
 
-                $file = fopen("helper/subday.txt", "w");
-                fwrite($file, $content);
-                ob_clean();
-           } ?>
+            setInterval(function(){
+                $(".member-list").load("index.php .member-list", function(){
+                    var activeprofile = "#id-"+currentuser;
+                    $(activeprofile).addClass("active");
+                });
+            },2000);
+
+            <?php
+//            $subday = file_get_contents("helper/subday.txt");
+//           if(date("D")=="Tue" && $subday == " ") { ?>
+//            $(".user-list").load("helper/mail.php", function(){
+//                $( ".user-list").load("index.php .user-list", function(){
+//                    $(".tab-content").load("helper/show.php");
+//                });
+//            });
+            <?php //} ?>
+            <?php
+//            if(date("D")=="Tue") {
+//                unlink("helper/subday.txt");
+//                ob_start();
+//                echo " ";
+//                $content = ob_get_contents();
+//
+//                $file = fopen("helper/subday.txt", "w");
+//                fwrite($file, $content);
+//                ob_clean();
+//           } ?>
 
 
             // save-button in edit view
             $('.container').on('click', '#editform .save-btn', function ( event ) {
                 var btn = $(this);
                 btn.button('loading');
+                var form = document.forms["editform"];
+                var datapw = form.elements["passwort"].value;
+                var profileid = form.elements["profileid"].value;
                 $.ajax({
                     type: "POST",
-                    url: "helper/write.php",
-                    dataType: "JSON",
-                    data: $("#editform").serialize(), // serializes the form's elements.
+                    url: "helper/hashverify.php",
+                    data: {pw: datapw, profileId: profileid},
                     success: function(data)
                     {
-                        console.log(data.profileid); // show response from the php script.
-                        console.log("Loading show view");
-                        $( "#edit-list" ).remove();
-                        $( "#modal-footer-edit" ).remove();
-                        $( ".tab-pane" ).remove();  //sorgt dafür das die alten Inhalte sofort verschwinden
-                        $( ".tab-content" ).load( "helper/show.php", function () {
-                            $('.member-list a.active').removeClass('active');
-                            $( "#list-group-item-text-"+data.profileid ).load( "index.php #list-group-item-text-"+data.profileid );
-                            window.location.href="#top";
-                            document.getElementById('cb-'+data.profileid).checked=false;
-                            document.getElementById('cb-'+data.profileid).disabled=false;
-                            $("#cb-"+data.profileid).load("index.php #cb-"+data.profileid);
-                        });
+                        if(data=="true"){
+                            $.ajax({
+                                type: "POST",
+                                url: "helper/write.php",
+                                dataType: "JSON",
+                                data: $("#editform").serialize(), // serializes the form's elements.
+                                success: function(data)
+                                {
+                                    alert("Änderungen gespeichert");
+                                    currentuser="";
+                                    console.log(data.profileid); // show response from the php script.
+                                    console.log("Loading show view");
+                                    $( "#edit-list" ).remove();
+                                    $( "#modal-footer-edit" ).remove();
+                                    $( ".tab-pane" ).remove();  //sorgt dafür das die alten Inhalte sofort verschwinden
+                                    $( ".tab-content" ).load( "helper/show.php", function () {
+                                        $('.member-list a.active').removeClass('active');
+                                        $( "#list-group-item-text-"+data.profileid ).load( "index.php #list-group-item-text-"+data.profileid );
+                                        window.location.href="#top";
+                                        document.getElementById('cb-'+data.profileid).checked=false;
+                                        document.getElementById('cb-'+data.profileid).disabled=false;
+                                        $("#cb-"+data.profileid).load("index.php #cb-"+data.profileid);
+                                        $("#passwortmodal").modal("hide");
+                                    });
 
-                        //load show view (überflüssig? weil doppelt)
-//                        console.log("Loading show view");
-//                        $( ".tab-pane" ).load("helper/show.php");
+                                    //load show view (überflüssig? weil doppelt)
+            //                        console.log("Loading show view");
+            //                        $( ".tab-pane" ).load("helper/show.php");
+                                    }
+                            });
+                        } else {
+                            alert("Benutzername oder Passwort falsch");
                         }
-                });
+                    }
+                })
+                 btn.button('loading').button('reset');
 
                 return false; // avoid to execute the actual submit of the form.
                 
@@ -83,6 +113,7 @@
             $('.container').on('click', '#editform .dismiss-btn', function ( event ) {
                 console.log("Loading show view");
                 window.location.href="#top";
+                currentuser="";
                 $( ".tab-content" ).load("helper/show.php");
                 $('.member-list a.active').removeClass('active');
             });
@@ -105,6 +136,7 @@
 //                                $(".user-list #user-"+data.profileid).addClass('active');
 //                            });
 //                        });
+                        currentuser=data.profileid;
                         var gf ="'";
                         var newprofile = document.createElement("div");
                         newprofile.className="input-group";

@@ -8,73 +8,77 @@ if(!isset($profile)) {
 $gutschein_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/helper/gutscheine.json');
 $gutschein = json_decode($gutschein_file, true);
 
-if (!key_exists("onlycoupon", $profile)) {
-    foreach($config["Size"] as $size) {
+$Subprice=0;
+$cookiecount=0;
+$couponprice=0;
+
+    foreach($gutschein as $gutscheine) {
+        foreach($gutscheine as $Sub) {
+            if ((isset($Sub["name"])&& key_exists("coupon",$profile) && is_array($profile["coupon"])) && in_array($Sub["name"], $profile["coupon"])){
+                if (strpos($Sub["type"],"FL")!==false) {
+                    $profile["size"]="30cm";
+                } else if (strpos($Sub["type"],"15")!==false) {
+                    $profile["size"]="15cm";
+                }
+            }
+        }
+    }
+
+    foreach($config["Size"] as $size) { //Subprice
         if($size["name"]==$profile["size"]) {
-            $price=$size["price"];
-        };
-    };
+            $Subprice=$Subprice+$size["price"];
+        }
+    }
     foreach($config["Meat"]["sorts"] as $meat) {
         if(in_array($meat["name"], $profile["meat"])) {
             if(($meat["name"]=="Doppelt Fleisch") && ($profile["size"]=="30cm")) {
-                $price=$price+2;
+                $Subprice=$Subprice+2;
             }else if(($meat["name"]=="Doppelt Fleisch")&&($profile["size"]=="15cm")){
-                $price=$price+1;
+                $Subprice=$Subprice+1;
             } else {
-                $price=$price+$meat["price"];
-            };
-        };
-    };
+                $Subprice=$Subprice+$meat["price"];
+            }
+        }
+    }
 
     foreach($config["Cheese"] as $cheese) {
-        if(in_array($cheese["name"],$profile["cheese"]) and $cheese["name"]=="Doppelt") {
+        if((key_exists("cheese",$profile)) && in_array($cheese["name"],$profile["cheese"]) and $cheese["name"]=="Doppelt") {
             if ($profile["size"]=="15cm") {
-                $price=$price+0.3;
+                $Subprice=$Subprice+0.3;
             } else {
-                $price=$price+0.6;
-            }
-        };
-    };
-
-
-
-    foreach($gutschein as $gutscheine) {
-        foreach($gutscheine as $Sub) {
-            if (is_array($Sub) and key_exists("coupon",$profile) and !empty($profile["coupon"]) and in_array($Sub["name"],$profile["coupon"]) and strpos($Sub["name"],"=€")!==false and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
-                $Subprice=str_replace("=€","",$Sub["price"]);
-                $Subprice=floatval($Subprice);
-                $price=$Subprice;
-            }
-        }
-    }
- } else {
-    $price=0;
-}
-
-foreach($gutschein as $gutscheine) {
-        foreach($gutscheine as $Sub) {
-            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and isset($profile["coupon"]) and is_array($profile["coupon"]) and in_array($Sub["name"], $profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
-        if (strpos($Sub["price"],"%")!==false){
-                        $subprice=str_replace("%","",$Sub["price"]);
-                        $subprice=floatval($subprice);
-                        $price=round(($price/100)*$subprice,2);
-                     }
-                }
-            }
-        }
-
-    foreach($gutschein as $gutscheine) {
-        foreach($gutscheine as $Sub) {
-            if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and !empty($profile["coupon"]) and is_array($profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
-                if (in_array($Sub["name"], $profile["coupon"])){
-                    if (strpos($Sub["price"],"€")!==false and strpos($Sub["price"],"=")===false) {
-                        $subprice=str_replace("€","",$Sub["price"]);
-                        $subprice=floatval($subprice);
-                        $price=$price+$subprice;
-                    }
-                }
+                $Subprice=$Subprice+0.6;
             }
         }
     }
 
+
+
+    foreach($config["Cookie"] as $cookie) {
+        $cookiecount=$cookiecount+intval($profile["cookie"][$cookie["name"]]);
+    }
+
+
+    foreach($gutschein as $gutscheine) { //Gutscheine
+        foreach($gutscheine as $Sub) {
+            if ((isset($Sub["name"])&& key_exists("coupon",$profile) && is_array($profile["coupon"])) &&in_array($Sub["name"], $profile["coupon"])){
+                if (strpos($Sub["type"],"€mehr")!==false) {
+                    $Subprice=$Subprice+$Sub["price"];
+                } else if (strpos($Sub["type"],"€weniger")!==false) {
+                    $Subprice=$Subprice-$Sub["price"];
+                } else if (strpos($Sub["type"],"%weniger")!==false) {
+                    $Subprice=$Subprice-(($Subprice/100)*$Sub["price"]);
+                } else if (strpos($Sub["type"],"k=p")!==false) {
+                    $Subprice=$Sub["price"];
+                } else if (strpos($Sub["type"],"T-C")!==false) {
+                    $cookiecount=$cookiecount-intval(str_replace("T-C","",$Sub["type"]));
+                    $couponprice=$couponprice+$Sub["price"];
+                }
+            }
+        }
+    }
+    if ($cookiecount<0) {
+        $cookiecount=0;
+    }
+
+    $price=$Subprice+$couponprice+floatval($cookiecount*0.7);
 ?>
