@@ -11,6 +11,9 @@ $gutschein = json_decode($gutschein_file, true);
 $Subprice=0;
 $cookiecount=0;
 $couponprice=0;
+$bacon=0;
+$extrakaese=0;
+$doppeltfleisch=0;
 
     foreach($gutschein as $gutscheine) {
         foreach($gutscheine as $Sub) {
@@ -32,9 +35,14 @@ $couponprice=0;
     foreach($config["Meat"]["sorts"] as $meat) {
         if(in_array($meat["name"], $profile["meat"])) {
             if(($meat["name"]=="Doppelt Fleisch") && ($profile["size"]=="30cm")) {
-                $Subprice=$Subprice+2;
+                $doppeltfleisch=$doppeltfleisch+2;
             }else if(($meat["name"]=="Doppelt Fleisch")&&($profile["size"]=="15cm")){
-                $Subprice=$Subprice+1;
+                $doppeltfleisch=$doppeltfleisch+1;
+            } else if($meat["name"]=="Bacon") {
+                $bacon=$bacon+0.6;
+                if($profile["size"]=="30cm") {
+                    $bacon=$bacon+0.6;
+                }
             } else {
                 $Subprice=$Subprice+$meat["price"];
             }
@@ -44,9 +52,9 @@ $couponprice=0;
     foreach($config["Cheese"] as $cheese) {
         if((key_exists("cheese",$profile)) && in_array($cheese["name"],$profile["cheese"]) and $cheese["name"]=="Doppelt") {
             if ($profile["size"]=="15cm") {
-                $Subprice=$Subprice+0.3;
+                $extrakaese=$extrakaese+0.3;
             } else {
-                $Subprice=$Subprice+0.6;
+                $extrakaese=$extrakaese+0.6;
             }
         }
     }
@@ -73,12 +81,20 @@ $couponprice=0;
                     $cookiecount=$cookiecount-intval(str_replace("T-C","",$Sub["type"]));
                     $couponprice=$couponprice+$Sub["price"];
                 }
+                if (strpos($Sub["type1"],"ex")!==false) {
+                    if (str_replace("ex","",$Sub["type1"])=="1") {
+                        $bacon=0;
+                    } else if (str_replace("ex","",$Sub["type1"])=="2") {
+                        $extrakaese=0;
+                    } else if (str_replace("ex","",$Sub["type1"])=="3") {
+                        $doppeltfleisch=0;
+                    }
+                }
             }
         }
     }
     if ($cookiecount<0) {
         $cookiecount=0;
     }
-
-    $price=$Subprice+$couponprice+floatval($cookiecount*0.7);
+    $price=$Subprice+$couponprice+floatval($cookiecount*0.7)+$bacon+$extrakaese+$doppeltfleisch;
 ?>

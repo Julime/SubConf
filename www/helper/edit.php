@@ -65,7 +65,7 @@
             
                 <?php
                     foreach ($config['Meat']['sorts'] as $meat) {
-                    if($meat["name"]!="Doppelt Fleisch") {
+                    if($meat["type"]!="double" && $meat["type"]!="extra") {
                 ?>
 
                     <label class="btn btn-primary <?php if(in_array($meat['name'], $profile["meat"])): echo 'active'; endif; ?>">
