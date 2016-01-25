@@ -99,7 +99,7 @@
                                     }
                             });
                         } else {
-                            alert("Benutzername oder Passwort falsch");
+                            alert("Passwort falsch");
                         }
                     }
                 })
