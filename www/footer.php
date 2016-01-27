@@ -99,7 +99,7 @@
                                     }
                             });
                         } else {
-                            alert("Benutzername oder Passwort falsch");
+                            alert("Passwort falsch");
                         }
                     }
                 })
@@ -187,7 +187,11 @@
 
             $("#Print").on("click", function(){
                 document.location.href = "helper/Print.php";
-            })
+            });
+
+            $(document).on("shown.bs.modal",".modal", function(){
+               $(this).find("[autofocus]").focus();
+            });
         });
         </script>
 

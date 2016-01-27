@@ -113,6 +113,11 @@
                 "type": "double",
                 "name": "Doppelt Fleisch",
                 "price": "15cm:+1.00€, 30cm:+2.00€"
+            },
+            {
+                "type": "extra",
+                "name": "Bacon",
+                "price": "15cm:+0.60€, 30cm:+1.20€"
             }
         ]
     },
