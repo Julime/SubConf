@@ -206,17 +206,19 @@
 <div class="modal fade" id="passwortmodal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="passwortmodallabel">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Passwort</h4>
-      </div>
-      <div class="modal-body">
-        <div class="col-lg-12"><input class="form-control" type="password" required name="passwort" placeholder="Passwort"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" data-dismiss="modal" class="btn btn-primary clearfix save-btn">Save changes</button>
-      </div>
+        <form>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Passwort</h4>
+          </div>
+          <div class="modal-body">
+            <div class="col-lg-12"><input class="form-control" type="password" required name="passwort" placeholder="Passwort" autofocus></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" data-dismiss="modal" class="btn btn-primary clearfix save-btn">Save changes</button>
+          </div>
+        </form>
     </div>
   </div>
 </div>
