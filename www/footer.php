@@ -192,6 +192,12 @@
             $(document).on("shown.bs.modal",".modal", function(){
                $(this).find("[autofocus]").focus();
             });
+
+            $(document).bind("keyup keydown", function(e){
+                if(e.ctrlKey && e.keyCode == 80){
+                    window.location.href = "/helper/print.php";
+                }
+            });
         });
         </script>
 
