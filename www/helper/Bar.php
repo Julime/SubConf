@@ -22,5 +22,5 @@
         <?php
         };
     };
-    header("Location: http://www.subconf.de");
+    header("Location: /");
 ?>

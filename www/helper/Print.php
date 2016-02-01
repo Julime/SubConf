@@ -5,7 +5,7 @@
 
         <link href="../css/theme.css" rel="stylesheet">
 
-<body OnLoad="window.print(); document.location.href = '../../';">
+<body OnLoad="window.print(); document.location.href = '/';">
 <table class="table table-striped table-bordered klein">
 <tr>
     <th>Name</th>

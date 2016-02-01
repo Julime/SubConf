@@ -23,6 +23,6 @@
             }
         ?>
 
-        setTimeout("location.href='http://subconf'",1);
+        setTimeout("location.href='/'",1);
     </script>
 </html>
