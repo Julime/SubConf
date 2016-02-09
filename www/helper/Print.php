@@ -184,7 +184,6 @@
             }
     }?>
     </tr>
-    </tr>
     <tr><td>Bemerkung</td>
     <?php
     foreach ($profiles as $path)
@@ -204,4 +203,26 @@
     </tr>
 
     </table>
+    <div style="page-break-before:always;">
+    <?php
+    foreach ($profiles as $path)
+    {
+        $string = file_get_contents($path);
+        $profile=json_decode($string,true);
+
+            if($profile["signed"]=="true"){
+
+                if(!empty($profile["coupon"])) {
+                    foreach($gutschein as $gutscheine) {
+                        foreach($gutscheine as $Sub) {
+                            if(isset($Sub["picture"]) && !empty($Sub["picture"]) && in_array($Sub["name"],$profile["coupon"])) {
+                                echo "<img src='../img/Gutscheine/".$Sub["picture"]."' class='picture'>";
+                            }
+                        }
+                    }
+                }
+            }
+    }?>
+    </div>
+
 </body>
