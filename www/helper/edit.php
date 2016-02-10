@@ -65,7 +65,7 @@
             
                 <?php
                     foreach ($config['Meat']['sorts'] as $meat) {
-                    if($meat["type"]!="double" && $meat["type"]!="extra") {
+                    if(!isset($meat["type"]) || ($meat["type"]!="double" && $meat["type"]!="extra")) {
                 ?>
 
                     <label class="btn btn-primary <?php if(in_array($meat['name'], $profile["meat"])): echo 'active'; endif; ?>">
@@ -183,8 +183,9 @@
                             if (is_array($Sub) and array_key_exists("name",$Sub) and array_key_exists("dates",$Sub) and array_key_exists("datee",$Sub) and array_key_exists("price",$Sub) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
                 ?>
 
-                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>" data-toggle="popover" data-trigger="hover" title="Deine Bestellung kostet nur <?php echo str_replace("=","",$Sub["price"]); if(strpos($Sub["price"],"€") and strpos($Sub["price"],"=")===false){echo" mehr";}; ?>. Verfügbar vom <?php echo $Sub["dates"]; ?> bis zum <?php echo $Sub["datee"];?>. Dieser Gutschein bezieht sich <?php if ($Sub["sub"]=="None"){echo "nicht ";}?>auf deinen Sub">
-                        <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(!empty($profile["coupon"]) and in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?>> <?php echo str_replace("_"," ",$Sub['name']);?>
+                    <label class="btn btn-primary <?php if(in_array($Sub["name"], $profile["coupon"])): echo 'active'; endif; ?>" data-toggle="popover" data-trigger="hover" title="Deine Bestellung kostet <?php if(!strpos($Sub["type"],"€weniger")){echo "nur "; }?><?php echo $Sub["price"]; echo "€ "; if(strpos($Sub["type"],"€mehr")){echo "mehr";} else if(strpos($Sub["type"],"€weniger")){echo" weniger";} ; ?>. Verfügbar vom <?php echo $Sub["dates"]; ?> bis zum <?php echo $Sub["datee"];?>. Dieser Gutschein bezieht sich <?php if ($Sub["sub"]=="None"){echo "nicht ";}?>auf deinen Sub">
+                        <img src="../img/Gutscheine/<?php echo $Sub["picture"]; ?>" class="<?php if(isset($Sub["picture"]) && !empty($Sub["picture"])){ echo "picture"; }  ?>" alt="<?php echo $Sub["picture"]; ?>">
+                        <input type="checkbox" name="coupon[]" value="<?php echo $Sub['name']; ?>" <?php if(!empty($profile["coupon"]) and in_array($Sub['name'],$profile["coupon"])): echo 'checked'; endif; ?> > <?php if(!isset($Sub["picture"]) || empty($Sub["picture"])){ echo str_replace("_"," ",$Sub['name']);};?>
                     </label>
 
                 <?php } }?>
@@ -199,7 +200,8 @@
         <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-trigger="hover" title="Nur auswählen wenn du nur einen Gutschein haben willst der sich nicht auf deinen Sub bezieht! Das kannst du herausfinden indem du über dem Gutschein Hoverst"></span>
     </label>
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
-        <button type="button" class="btn btn-primary pull-right" data-loading-text="Wird gespeichert ..." data-toggle="modal" data-target="#passwortmodal">Änderungen speichern</button>
+        <button type="button" id="save-btn" class="btn btn-primary pull-right" data-loading-text="Wird gespeichert ..." data-toggle="modal" data-target="#passwortmodal">Änderungen speichern</button>
+        <button type="button" id="delete-btn" class="btn btn-primary" data-toggle="modal" data-target="#passwortmodal">Delete</button>
     </div>
 
 <!-- Modal -->
@@ -214,13 +216,26 @@
           <div class="modal-body">
             <div class="col-lg-12"><input class="form-control" type="password" required name="passwort" placeholder="Passwort" autofocus></div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" id="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" data-dismiss="modal" class="btn btn-primary clearfix save-btn">Save changes</button>
-          </div>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">I will be changed</button></div>
         </form>
     </div>
   </div>
 </div>
 
 </form>
+
+<script>
+$(function(){
+
+
+    $('#passwortmodal').on("show.bs.modal", function(e) {
+        var esseyId = e.relatedTarget.id;
+        document.getElementById("modal-footer").lastChild.innerHTML=esseyId.replace("-btn","");
+        document.getElementById("modal-footer").lastChild.id=esseyId.replace("-btn","");
+    });
+
+})
+
+</script>

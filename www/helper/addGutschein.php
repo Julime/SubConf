@@ -8,7 +8,7 @@
 
 
 <?php include "read.php"; ?>
-        <nav class="test">
+        <nav class="navbar-left">
             <ul class="list-group" id="navbar-ul">
         <?php
             foreach ($gutschein as $gutscheine) {
@@ -41,7 +41,7 @@
 
 <div class="col-xs-2">
 <h3>
-<form id="formgutschein">
+<form id="formgutschein" enctype="multipart/form-data" method="post" action="upload.php">
     <div id="allcoupons">
     <input type="hidden" name="ignore[ignore]" value="ignore" >  <!-- ignore this. This exists to help creat the rigth array, without this the first point will be his own array, it will be removed in writeGutschein.php -->
         <ul class="group-list coupon-li" >
@@ -107,7 +107,7 @@
                                 <option value="ex0" <?php if($Sub["type1"]=="ex1") {echo "selected";} ?>>Nichts</option>
                                 <option value="ex1" <?php if($Sub["type1"]=="ex1") {echo "selected";} ?>>Bacon</option>
                                 <option value="ex2" <?php if($Sub["type1"]=="ex2") {echo "selected";} ?>>Käse</option>
-                                <option value="ex3" <?php if($Sub["type1"]=="ex3") {echo "selected";} ?>>Doppelt Fleisch  </option>
+                                <option value="ex3" <?php if($Sub["type1"]=="ex3") {echo "selected";} ?>>Doppelt Fleisch</option>
                             </optgroup>
                         </select>
                         <br><br>sub:
@@ -115,6 +115,15 @@
                                 <option <?php if((!isset($Sub["sub"])) or ($Sub["sub"]=="None")){echo "selected";}; ?>>None</option>
                                 <option <?php if($Sub["sub"]=="coustom"){echo "selected";}; ?>>coustom</option>
                             </select>
+                                <br>picture:
+                                <input type="file" name="userfile[]" class="upload" id="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][upload]">
+
+                                <input name="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][picture]" type="hidden" id="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][picture]" value="<?php if(isset($Sub["picture"])) {echo $Sub["picture"];} ?>">
+
+                    	        <button type="button" class="btn btn-primary form-control uploadbtn" id="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][uploadbtn]">Upload</button>
+                                <br>current picture:
+                                <div id="<?php echo str_replace(" ","_",$gutscheine["name"]); ?>[<?php echo str_replace(" ","_",$Sub["name"]); ?>][showpicture]" class="form-control showpicture picturediv"><?php if(isset($Sub["picture"]) && !empty($Sub["picture"])) { echo "<img src='../img/Gutscheine/".$Sub["picture"]."' alt='Picture of coupon' class='picture'>"; } else { echo "NONE";} ?></div>
+
                         <br>
                         </li>
                         </div><?php
@@ -130,12 +139,12 @@
     </h3>
 </div>
 
+
 <script>
     $(function(){
         var number = 0;
         var groupnumber=0;
         $("#savebtngutschein").on("click", function(){
-
             var serialized = $("#formgutschein").serialize();
             $.ajax({
                     type: "POST",
@@ -152,6 +161,47 @@
 
         });
 
+        $(document).on("click",".uploadbtn", function(){
+            var element = document.getElementById(this.id.replace("[uploadbtn]","[upload]"));
+                var formData = new FormData();
+                    var file = element.files[0];
+                    formData.append('userfile[]',file,file.name);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "upload.php", true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        // File(s) uploaded.
+                        alert("upload finished");
+
+                    } else {
+                        alert('An error occurred!');
+                    }
+                }
+                xhr.send(formData);
+                xhr.onreadystatechange = function() {
+
+
+                }
+
+
+            element = document.getElementById(this.id.replace("[uploadbtn]","[upload]"));
+            document.getElementById(element.id.replace("[upload]","[picture]")).value=element.value.replace("C:\\fakepath\\","");
+
+            element = document.getElementById(this.id.replace("[uploadbtn]","[showpicture]"));
+
+                var newelement = document.createElement("img");
+                var filename = document.getElementById(element.id.replace("[showpicture]","")+"[picture]").value;
+                newelement.src = "../img/Gutscheine/"+filename;
+                newelement.alt = "Picture from coupon";
+                newelement.className = "picture";
+                if(filename.length > 0) {
+                    element.innerHTML="";
+                    element.appendChild(newelement);
+                } else {
+                    element.innerHTML="NONE";
+                }
+        })
+
         $(document).on("click",".hinzufügen",function(){
             number = number+1; //creat new number so that the new coupons not overwrite themself
 
@@ -164,7 +214,7 @@
                 var divnew = document.createElement("div");
                 divnew.id = newid;
 
-                divnew.innerHTML = '<div id="last-group"><li class="list-group-item" id="group'+groupnumber+'-li"><div class="input-group groupname"><input class="form-control name" type="text" name="group'+groupnumber+'[name]" value="group'+groupnumber+'" id="group'+groupnumber+'-input-group"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+groupnumber+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'-li">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+groupnumber+'New'+number+'"><li class="list-group-item coupons"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control name" id="group'+groupnumber+'New'+number+'-input-coupon" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="number" required name="'+newid+'[price]" id="price-group'+groupnumber+'-New'+number+'" value="0"><select name="'+newid+'[type]"> <optgroup label="Subs"><optgroup label=" Footlong"><option value="FL€mehr" selected>[preis]€ mehr</option><option value="FL€weniger">[preis]€ weniger</option><option value="FL%weniger">[preis]% weniger</option><option value="FLk=p">Kosten=[preis]</option></optgroup><optgroup label=" 15cm"><option value="15€mehr">[preis]€ mehr</option><option value="15€weniger">[preis]€ weniger</option><option value="15%weniger">[preis]% weniger</option><option value="15k=p">Kosten=[preis]</option></optgroup></optgroup><optgroup label="Cookies"><optgroup label="X Cookies X="><option value="T-C1">1</option><option value="T-C2">2</option><option value="T-C3">3</option><option value="T-C4">4</option><option value="T-C5">5</option><option value="T-C6">6</option><option value="T-C7">7</option><option value="T-C8">8</option><option value="T-C9">9</option><option value="T-C10">10</option><option value="T-C11">11</option><option value="T-C12">12</option></optgroup></optgroup></select><select name="'+newid+'[type1]"><optgroup label="Free extras"><option value="ex0">Nichts</option><option value="ex1">Bacon</option><option value="ex2">Käse</option><option value="ex3">Doppelt Fleisch  </option></optgroup></select></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div></ul></li></ul></div>';
+                divnew.innerHTML = '<div id="last-group"><li class="list-group-item" id="group'+groupnumber+'-li"><div class="input-group groupname"><input class="form-control name" type="text" name="group'+groupnumber+'[name]" value="group'+groupnumber+'" id="group'+groupnumber+'-input-group"><span class="input-group-btn"><button type="button" class="hinzufügen btn btn-default" value="group'+groupnumber+'[New]">+</button><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'-li">-</button></span></div><ul id="group'+groupnumber+'" class="list-group coupon-li">  <div id="group'+groupnumber+'New'+number+'"><li class="list-group-item coupons"><button type="button" class="entfernen btn btn-default" value="group'+groupnumber+'New'+number+'">Delete</button><br>name:<input class="form-control name" id="group'+groupnumber+'New'+number+'-input-coupon" type="text" required name="'+newid+'[name]" value="New'+number+'"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="number" required name="'+newid+'[price]" id="price-group'+groupnumber+'-New'+number+'" value="0"><select name="'+newid+'[type]"> <optgroup label="Subs"><optgroup label=" Footlong"><option value="FL€mehr" selected>[preis]€ mehr</option><option value="FL€weniger">[preis]€ weniger</option><option value="FL%weniger">[preis]% weniger</option><option value="FLk=p">Kosten=[preis]</option></optgroup><optgroup label=" 15cm"><option value="15€mehr">[preis]€ mehr</option><option value="15€weniger">[preis]€ weniger</option><option value="15%weniger">[preis]% weniger</option><option value="15k=p">Kosten=[preis]</option></optgroup></optgroup><optgroup label="Cookies"><optgroup label="X Cookies X="><option value="T-C1">1</option><option value="T-C2">2</option><option value="T-C3">3</option><option value="T-C4">4</option><option value="T-C5">5</option><option value="T-C6">6</option><option value="T-C7">7</option><option value="T-C8">8</option><option value="T-C9">9</option><option value="T-C10">10</option><option value="T-C11">11</option><option value="T-C12">12</option></optgroup></optgroup></select><select name="'+newid+'[type1]"><optgroup label="Free extras"><option value="ex0">Nichts</option><option value="ex1">Bacon</option><option value="ex2">Käse</option><option value="ex3">Doppelt Fleisch  </option></optgroup></select></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br>picture:<input type="file" name="userfile[]" class="upload" id="'+newid+'[upload]"><input name="'+newid+'[picture]" type="hidden" id="'+newid+'[picture]"><button type="button" class="btn btn-primary form-control uploadbtn" id="'+newid+'[uploadbtn]">Upload</button><br>current picture:<div id="'+newid+'[showpicture]" class="form-control showpicture picturediv">NONE</div><br></li></div></ul></li></ul></div>';
 
                 objTo.appendChild(divnew);
 
@@ -187,7 +237,7 @@
                 newid = "New"+number;
             };
             newid = newid.replace("[New]","[New"+number+"]");
-            divnew.innerHTML = '<div id="'+id+'New'+number+'"><li class="list-group-item coupons" id=group'+groupnumber+'-li><button type="button" class="entfernen btn btn-default" value="'+id+'New'+number+'">Delete</button><br>name:<input class="form-control name" type="text" id="'+id+'New'+number+'-input-coupon" required name="'+newid+'[name]" value="New'+number+'"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" id="price-'+id+'-New'+number+'" value="0"><select name="'+newid+'[type]"> <optgroup label="Subs"><optgroup label=" Footlong"><option value="FL€mehr" selected>[preis]€ mehr</option><option value="FL€weniger">[preis]€ weniger</option><option value="FL%weniger">[preis]% weniger</option><option value="FLk=p">Kosten=[preis]</option></optgroup><optgroup label=" 15cm"><option value="15€mehr">[preis]€ mehr</option><option value="15€weniger">[preis]€ weniger</option><option value="15%weniger">[preis]% weniger</option><option value="15k=p">Kosten=[preis]</option></optgroup></optgroup><optgroup label="Cookies"><optgroup label="X Cookies X="><option value="T-C1">1</option><option value="T-C2">2</option><option value="T-C3">3</option><option value="T-C4">4</option><option value="T-C5">5</option><option value="T-C6">6</option><option value="T-C7">7</option><option value="T-C8">8</option><option value="T-C9">9</option><option value="T-C10">10</option><option value="T-C11">11</option><option value="T-C12">12</option></optgroup></optgroup></select><select name="'+newid+'[type1]"><optgroup label="Free extras"><option value="ex0">Nichts</option><option value="ex1">Bacon</option><option value="ex2">Käse</option><option value="ex3">Doppelt Fleisch  </option></optgroup></select></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br></li></div>';
+            divnew.innerHTML = '<div id="'+id+'New'+number+'"><li class="list-group-item coupons" id=group'+groupnumber+'-li><button type="button" class="entfernen btn btn-default" value="'+id+'New'+number+'">Delete</button><br>name:<input class="form-control name" type="text" id="'+id+'New'+number+'-input-coupon" required name="'+newid+'[name]" value="New'+number+'"><br>date from:<input class="form-control" type="date" required name="'+newid+'[dates]" value="<?php echo date('Y-m-d'); ?>"><br>date to:<input class="form-control" type="date" required name="'+newid+'[datee]" value="<?php echo date('Y-m-d'); ?>"><br>price:<div class="input-group price"><input class="form-control" type="number" step="0.01" required name="'+newid+'[price]" id="price-'+id+'-New'+number+'" value="0"><select name="'+newid+'[type]"> <optgroup label="Subs"><optgroup label=" Footlong"><option value="FL€mehr" selected>[preis]€ mehr</option><option value="FL€weniger">[preis]€ weniger</option><option value="FL%weniger">[preis]% weniger</option><option value="FLk=p">Kosten=[preis]</option></optgroup><optgroup label=" 15cm"><option value="15€mehr">[preis]€ mehr</option><option value="15€weniger">[preis]€ weniger</option><option value="15%weniger">[preis]% weniger</option><option value="15k=p">Kosten=[preis]</option></optgroup></optgroup><optgroup label="Cookies"><optgroup label="X Cookies X="><option value="T-C1">1</option><option value="T-C2">2</option><option value="T-C3">3</option><option value="T-C4">4</option><option value="T-C5">5</option><option value="T-C6">6</option><option value="T-C7">7</option><option value="T-C8">8</option><option value="T-C9">9</option><option value="T-C10">10</option><option value="T-C11">11</option><option value="T-C12">12</option></optgroup></optgroup></select><select name="'+newid+'[type1]"><optgroup label="Free extras"><option value="ex0">Nichts</option><option value="ex1">Bacon</option><option value="ex2">Käse</option><option value="ex3">Doppelt Fleisch  </option></optgroup></select></div><br>sub:<select class="form-control" type="checkbox" name="'+newid+'[sub]"><option selected>None</option><option>coustom</option></select><br>picture:<input type="file" name="userfile[]" class="upload" id="'+newid+'[upload]"><input name="'+newid+'[picture]" type="hidden" id="'+newid+'[picture]"><button type="button" class="btn btn-primary form-control uploadbtn" id="'+newid+'[uploadbtn]">Upload</button><br>current picture:<div id="'+newid+'[showpicture]" class="form-control showpicture picturediv">NONE</div><br></li></div>';
             objTo.appendChild(divnew);
 
             var idnew=document.getElementById(this.value.replace("[New]","-li-nav"));

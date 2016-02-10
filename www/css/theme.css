@@ -29,7 +29,7 @@
     max-width: 40em;
 }
 
-.test {
+.navbar-left {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -41,6 +41,11 @@
     z-index: 999;
 }
 
-.klein {
-    font-size: 8px;
+.picture {
+    width: 20em;
+    height: auto;
+}
+.picturediv {
+    width: 22em;
+    height: auto;
 }
