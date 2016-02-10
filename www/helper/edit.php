@@ -200,7 +200,8 @@
         <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-trigger="hover" title="Nur auswählen wenn du nur einen Gutschein haben willst der sich nicht auf deinen Sub bezieht! Das kannst du herausfinden indem du über dem Gutschein Hoverst"></span>
     </label>
         <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
-        <button type="button" class="btn btn-primary pull-right" data-loading-text="Wird gespeichert ..." data-toggle="modal" data-target="#passwortmodal">Änderungen speichern</button>
+        <button type="button" id="save-btn" class="btn btn-primary pull-right" data-loading-text="Wird gespeichert ..." data-toggle="modal" data-target="#passwortmodal">Änderungen speichern</button>
+        <button type="button" id="delete-btn" class="btn btn-primary" data-toggle="modal" data-target="#passwortmodal">Delete</button>
     </div>
 
 <!-- Modal -->
@@ -215,13 +216,26 @@
           <div class="modal-body">
             <div class="col-lg-12"><input class="form-control" type="password" required name="passwort" placeholder="Passwort" autofocus></div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" id="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" data-dismiss="modal" class="btn btn-primary clearfix save-btn">Save changes</button>
-          </div>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">I will be changed</button></div>
         </form>
     </div>
   </div>
 </div>
 
 </form>
+
+<script>
+$(function(){
+
+
+    $('#passwortmodal').on("show.bs.modal", function(e) {
+        var esseyId = e.relatedTarget.id;
+        document.getElementById("modal-footer").lastChild.innerHTML=esseyId.replace("-btn","");
+        document.getElementById("modal-footer").lastChild.id=esseyId.replace("-btn","");
+    });
+
+})
+
+</script>

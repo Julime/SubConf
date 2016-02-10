@@ -56,7 +56,7 @@
 
 
             // save-button in edit view
-            $('.container').on('click', '#editform .save-btn', function ( event ) {
+            $('.container').on('click', '#editform #save', function ( event ) {
                 var btn = $(this);
                 btn.button('loading');
                 var form = document.forms["editform"];
@@ -198,6 +198,37 @@
                     window.location.href = "/helper/print.php";
                 }
             });
+
+            $('.container').on('click', '#editform #delete', function ( event ) {
+                var btn = $(this);
+                btn.button('loading');
+                var form = document.forms["editform"];
+                var datapw = form.elements["passwort"].value;
+                var profileid = form.elements["profileid"].value;
+                $.ajax({
+                    type: "POST",
+                    url: "helper/hashverify.php",
+                    data: {pw: datapw, profileId: profileid},
+                    success: function(data)
+                    {
+
+                        if(data=="true"){
+                            $.ajax({
+                                type: "POST",
+                                url: "helper/delete.php",
+                                data: $("#editform").serialize(),
+                                success: function(e) {
+                                    alert(e);
+                                    currentuser="";
+                                    $(".tab-content").load("helper/show.php");
+                                }
+                            })
+                        } else {
+                            alert("passwort falsch");
+                        }
+                    }
+                })
+            })
         });
         </script>
 
