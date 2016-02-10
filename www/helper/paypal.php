@@ -1,5 +1,5 @@
 <?php
-    $mail="gbaumann-facilitator@gmx.de";
+    $mail="morgy@ewetel.net";
 
     $profileid = $_GET["profileid"];
     $profile = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json');
@@ -35,7 +35,7 @@ include "getprice.php";
 </script>
 </head>
 
-<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" methode="post">
+<form action="https://www.paypal.com/cgi-bin/webscr" methode="post">
 
 <div class="modal fade" id="paypalModal" data-backdrop="static" data-keyboard=false tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
