@@ -8,22 +8,23 @@
     $config_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/config.json');
     $config = json_decode($config_file, true);
 
-    foreach($config["Size"] as $size) {
-        if($size["name"]==$profile["size"]) {
-            $cost=$size["price"];
-        };
-    };
-    foreach($config["Meat"]["sorts"] as $meat) {
-        if(in_array($meat["name"], $profile["meat"])) {
-            if(($meat["name"]=="Doppelt Fleisch") && ($profile["size"]=="30cm")) {
-                $cost=$cost+2;
-            }else if(($meat["name"]=="Doppelt Fleisch")&&($profile["size"]=="15cm"))             {
-                $cost=$cost+1;
-            } else {
-                $cost=$cost+$meat["price"];
-            };
-        };
-    };
+//    foreach($config["Size"] as $size) {
+//        if($size["name"]==$profile["size"]) {
+//            $cost=$size["price"];
+//        };
+//    };
+//    foreach($config["Meat"]["sorts"] as $meat) {
+//        if(in_array($meat["name"], $profile["meat"])) {
+//            if(($meat["name"]=="Doppelt Fleisch") && ($profile["size"]=="30cm")) {
+//                $cost=$cost+2;
+//            }else if(($meat["name"]=="Doppelt Fleisch")&&($profile["size"]=="15cm"))             {
+//                $cost=$cost+1;
+//            } else {
+//                $cost=$cost+$meat["price"];
+//            };
+//        };
+//    };
+include "getprice.php";
 ?>
 
 <head>
@@ -155,7 +156,7 @@
       value="<?php echo $mail ?>" />
    <input type="hidden" name="item_name_1"
       value="Dein Sub" />
-    <input type="hidden" name="amount_1" value="<?php echo $cost ?>" />
+    <input type="hidden" name="amount_1" value="<?php echo $price ?>" />
    <input type="hidden" name="item_name_2"
       value="Brot: <?php echo $profile["bread"]; ?>" />
     <input type="hidden" name="amount_2" value="0.00" />
