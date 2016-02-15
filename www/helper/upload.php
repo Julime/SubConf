@@ -1,4 +1,8 @@
 <?php
+if (!file_exists("../img/Gutscheine")) {
+    mkdir("../img/Gutscheine");
+}
+
 var_dump($_FILES);
 $userfile = $_FILES['userfile']['tmp_name'];
 $userfile_name = $_FILES['userfile']['name'];

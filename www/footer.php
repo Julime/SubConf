@@ -1,9 +1,12 @@
         </div>
 
+        <link href="css/jquery.cssemoticons.css" media="screen" rel="stylesheet" type="text/css" />
         <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
         <script src="js/jquery-2.1.1-min.js"></script>
         <!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
         <script src="js/bootstrap.min.js"></script>
+
+        <script src="js/jquery.cssemoticons.js" type="text/javascript"></script>
 
 <!-- folgendes sorgt für Fehler -->
 <!--        <script src="js/jQuery.wait/jquery.wait.js"></script> -->
@@ -56,7 +59,7 @@
 
 
             // save-button in edit view
-            $('.container').on('click', '#editform #save', function ( event ) {
+            $('.container').on('click', '#editform #<?php echo str_replace(" ","_",$config["Text"]["Save-changes-btn"]); ?>', function ( event ) {
                 var btn = $(this);
                 btn.button('loading');
                 var form = document.forms["editform"];
@@ -196,10 +199,11 @@
             $(document).bind("keyup keydown", function(e){
                 if(e.ctrlKey && e.keyCode == 80){
                     window.location.href = "/helper/print.php";
+                    return false;
                 }
             });
 
-            $('.container').on('click', '#editform #delete', function ( event ) {
+            $('.container').on('click', '#editform #<?php echo str_replace(" ","_",$config["Text"]["Delete-btn"]); ?>', function ( event ) {
                 var btn = $(this);
                 btn.button('loading');
                 var form = document.forms["editform"];
@@ -228,7 +232,12 @@
                         }
                     }
                 })
-            })
+            });
+
+            window.onload = function(){
+                $(".comment").emoticonize();
+            };
+
         });
         </script>
 

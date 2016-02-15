@@ -251,6 +251,13 @@
             "New-profile":"Neues Profil",
             "Firstname":"Vorname",
             "Lastname":"Nachname",
-            "E-mail":"E-Mail"
+            "E-mail":"E-Mail",
+            "Pay-with-paypal":"Mit Paypal bezahlen",
+            "Pay-with-money":"Bar bezahlen"
+        },
+    "Data":
+        {
+            "Paypal":"example@123.com",
+            "Administrator-E-mail":"eyample@123.com"
         }
 }

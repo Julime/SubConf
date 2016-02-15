@@ -70,7 +70,7 @@
                 <?php if(!empty($profile["Bemerkung"])) { ?>
                     <li class="list-group-item">
                         <span class="lead clearfix"><?php echo $config["Text"]["Comment"]; ?></span>
-                        <p style="word-break:break-all;word-wrap:break-word"><?php echo $profile["Bemerkung"]; ?></p>
+                        <p  class="comment"><?php echo $profile["Bemerkung"]; ?></p>
                     </li>
                 <?php } ?>
             </ul>

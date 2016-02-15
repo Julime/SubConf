@@ -1,29 +1,7 @@
 <?php
-    $mail="morgy@ewetel.net";
+    include "read.php";
+    $mail=$config["Data"]["Paypal"];
 
-    $profileid = $_GET["profileid"];
-    $profile = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json');
-    $profile = json_decode($profile, true);
-
-    $config_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/config.json');
-    $config = json_decode($config_file, true);
-
-//    foreach($config["Size"] as $size) {
-//        if($size["name"]==$profile["size"]) {
-//            $cost=$size["price"];
-//        };
-//    };
-//    foreach($config["Meat"]["sorts"] as $meat) {
-//        if(in_array($meat["name"], $profile["meat"])) {
-//            if(($meat["name"]=="Doppelt Fleisch") && ($profile["size"]=="30cm")) {
-//                $cost=$cost+2;
-//            }else if(($meat["name"]=="Doppelt Fleisch")&&($profile["size"]=="15cm"))             {
-//                $cost=$cost+1;
-//            } else {
-//                $cost=$cost+$meat["price"];
-//            };
-//        };
-//    };
 include "getprice.php";
 ?>
 
@@ -58,19 +36,19 @@ include "getprice.php";
             <ul class="list-group">
                 <?php if(isset($profile["bread"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Brot</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Bread"]; ?></span>
                         <p><?php echo $profile["bread"]; ?></p>
                     </li>
                 <?php } ?>
                 <?php if(isset($profile["size"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Größe</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Size"]; ?></span>
                         <p><?php echo $profile["size"]; ?></p>
                     </li>
                 <?php } ?>
                 <?php if(isset($profile["meat"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Fleisch</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Meat"]; ?></span>
                         <p><?php print(implode( ', ', $profile["meat"]))?>
                             <?php if(isset($profile['doublemeat'])) { ?>
                                 <span class="label label-default">Doppelt</span>
@@ -80,31 +58,31 @@ include "getprice.php";
                 <?php } ?>
                 <?php if(isset($profile["cheese"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Käse</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Cheese"]; ?></span>
                         <p><?php print(implode( ', ', $profile["cheese"])); ?></p>
                     </li>
                 <?php } ?>
                 <?php if(isset($profile["salad"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Gemüse</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Salad"]; ?></span>
                         <p><?php print(implode( ', ', $profile["salad"])); ?></p>
                     </li>
                 <?php } ?>
                 <?php if(isset($profile["sauce"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Sauce</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Sauce"]; ?></span>
                         <p><?php print(implode( ', ', $profile["sauce"])); ?></p>
                     </li>
                 <?php } ?>
                 <?php if(isset($profile["extras"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Extras</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Extras"]; ?></span>
                         <p><?php print(implode( ', ', $profile["extras"])); ?></p>
                     </li>
                 <?php } ?>
             <?php if(!empty($profile["coupon"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Gutscheine</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Coupon"]; ?></span>
                         <?php foreach ($gutschein as $gutscheine) {
                                     foreach ($gutscheine as $Sub) {
                                         if (is_array($Sub) and in_array($Sub["name"],$profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
@@ -117,7 +95,7 @@ include "getprice.php";
                 <?php } ?>
                 <?php if(!empty($profile["Bemerkung"])) { ?>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Bemerkung</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Comment"]; ?></span>
                         <p style="word-break:break-all;word-wrap:break-word"><?php echo $profile["Bemerkung"]; ?></p>
                     </li>
                 <?php } ?>
@@ -126,7 +104,7 @@ include "getprice.php";
                 <?php if(!empty($profile["coupon"])) { ?>
                 <ul>
                     <li class="list-group-item">
-                        <span class="lead clearfix">Gutscheine</span>
+                        <span class="lead clearfix"><?php echo $config["Text"]["Coupons"]; ?></span>
                         <?php foreach ($gutschein as $gutscheine) {
                                     foreach ($gutscheine as $Sub) {
                                         if (is_array($Sub) and in_array($Sub["name"],$profile["coupon"]) and strtotime(date("d.m.Y")) >= strtotime($Sub["dates"]) and strtotime(date("d.m.Y")) <= strtotime($Sub["datee"])) {
@@ -141,9 +119,9 @@ include "getprice.php";
             </div>
             <div class="modal-body">
                 <center>
-                    <button type="submit" class="btn btn-primary" id="paypalYes">Mit Paypal bezahlen</button>
-                    <a href="#kunde-<?php echo $profile["profileid"]; ?>" type="button" class="btn btn-primary" id="barYes">Bar bezahlen</a>
-                    <button type="button" class="btn btn-secondary" id="paypalNo">Abbrechen</button>
+                    <button type="submit" class="btn btn-primary" id="paypalYes"><?php echo $config["Text"]["Pay-with-paypal"]; ?></button>
+                    <a href="#kunde-<?php echo $profile["profileid"]; ?>" type="button" class="btn btn-primary" id="barYes"><?php echo $config["Text"]["Pay-with-money"]; ?></a>
+                    <button type="button" class="btn btn-secondary" id="paypalNo"><?php echo $config["Text"]["Close-btn"]; ?></button>
                 </center>
             </div>
         </div>
