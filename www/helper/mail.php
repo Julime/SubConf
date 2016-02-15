@@ -11,7 +11,7 @@
         fwrite($file, $content);
         ob_clean();
 
-        $email = "Littellittel@gmx.de";
+        $email = $config["Data"]["Administrator-E-mail"];
         $subject = "Subday am ".$date."?";
         $message = "Ist Heute Subday? <br><a href='http://subconf/helper/Ja.php?pw=".$pw."'>Ja</a> <br> <a href='http://subconf/helper/Nein.php?pw=".$pw."'>Nein</a>";
 

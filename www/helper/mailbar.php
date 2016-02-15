@@ -10,7 +10,7 @@
 
     include 'getprice.php';
 
-    $email = "Littellittel@gmx.de";
+    $email = $config["Data"]["Administrator-E-mail"];
     $subject = $profile["vorname"]." ".$profile["nachname"]." moechte Bar bezahlen.";
     $message = $profile["vorname"]." ".$profile["nachname"]." moechte Bar bezahlen. Sein/Ihr Sub kostet ".$price."EURO. Wenn er/sie bezahlt hat klicke auf diesen <a href='http://subconf/helper/Bar.php?pw=".$pw."&profileid=".$profile['profileid']."'>Link</a>.";
 

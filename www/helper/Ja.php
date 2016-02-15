@@ -55,7 +55,7 @@
                 $mail->AddAddress(trim($adresse));
             };
 
-            $mail->From = "subconfulpr@gmail.com";
+            $mail->From = $config["Data"]["Administrator-E-mail"];
             $mail->FromName = "Subconf-Server";
             $mail->Subject = $subject;
             $mail->Body = $message;
