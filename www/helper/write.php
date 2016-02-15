@@ -1,4 +1,8 @@
 <?php
+if (!file_exists("../profiles")) {
+    mkdir("../profiles");
+}
+
     $profileid =  hash('md5', $_POST['email']);
     $file = $_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json';
     $_POST['profileid'] = $profileid;
