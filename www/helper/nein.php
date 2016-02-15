@@ -2,7 +2,7 @@
     <head>
     </head>
         <div>
-        fals sie nicht weitergeleitet werden klicken sie <a href="http://subconf"> Hier</a>
+        fals sie nicht weitergeleitet werden klicken sie <a href="/"> Hier</a>
         </div>
         <script>
         <?php

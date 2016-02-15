@@ -28,7 +28,7 @@
                 ) { $number=$number+1;?>
     <th><?php echo $number.". ". $profile["vorname"]." ".$profile["nachname"]; ?></th>
     <?php } } }?>
-</tr><tr><td>Brot</td>
+</tr><tr><td><?php echo $config["Text"]["Bread"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -45,7 +45,7 @@
             }
     }?>
     </tr>
-    <tr><td>Größe</td>
+    <tr><td><?php echo $config["Text"]["Size"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -62,7 +62,7 @@
             }
     }?>
     </tr>
-    <tr><td>Fleisch</td>
+    <tr><td><?php echo $config["Text"]["Meat"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -79,7 +79,7 @@
             }
     }?>
     </tr>
-    <tr><td>Käse</td>
+    <tr><td><?php echo $config["Text"]["Cheese"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -96,7 +96,7 @@
             }
     }?>
     </tr>
-    <tr><td>Gemüse</td>
+    <tr><td><?php echo $config["Text"]["Salad"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -113,7 +113,7 @@
             }
     }?>
     </tr>
-    <tr><td>Sauce</td>
+    <tr><td><?php echo $config["Text"]["Sauce"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -130,7 +130,7 @@
             }
     }?>
     </tr>
-    <tr><td>Extras</td>
+    <tr><td><?php echo $config["Text"]["Extras"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -147,7 +147,7 @@
             }
     }?>
     </tr>
-    <tr><td>Cookies</td>
+    <tr><td><?php echo $config["Text"]["Cookies"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -167,7 +167,7 @@
     </td><?php }
     }?>
     </tr>
-    <tr><td>Gutscheine</td>
+    <tr><td><?php echo $config["Text"]["Coupons"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
@@ -184,7 +184,7 @@
             }
     }?>
     </tr>
-    <tr><td>Bemerkung</td>
+    <tr><td><?php echo $config["Text"]["Comment"]; ?></td>
     <?php
     foreach ($profiles as $path)
     {
