@@ -1,19 +1,19 @@
 <?php include 'header.php'; ?>
 
             <div class="page-header">
-                <h1>SubConf</h1>
+                <h1><?php echo $config["Text"]["Title"]; ?></h1>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="user-list hidden-print">
 
                             <div class="col-sm-4">
-                                <h3>Besteller
+                                <h3><?php echo $config["Text"]["Accounts"]; ?>
                                     <div class="pull-right">
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AddNewProfile">
                                             <span class="glyphicon glyphicon-plus"></span>
                                         </button>
                                         <button type="button" class="btn btn-default" data-toggle="modal" id="Print">
-                                            Print
+                                            <?php echo $config["Text"]["Print-btn"]; ?>
                                         </button>
                                     </div>
                                 </h3>

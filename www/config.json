@@ -225,5 +225,32 @@
             "name": "White Chip Macadamia Nut",
             "price": "0.7"
         }
-    ]
+    ],
+    "Text":
+        {
+            "Title":"SubConf",
+            "Accounts":"Besteller",
+            "Print-btn":"Print",
+            "Sub":"sub",
+            "Bread":"Brot",
+            "Size":"Größe",
+            "Meat":"Fleisch",
+            "Cheese":"Käse",
+            "Salad":"Gemüse",
+            "Sauce":"Soße",
+            "Extras":"Extras",
+            "Cookies":"Cookies",
+            "Comment":"Bemerkung",
+            "Coupons":"Gutscheine",
+            "Only-coupon-btn":"Nur Gutschein",
+            "Close-btn":"Schließen",
+            "Delete-btn":"Löschen",
+            "Save-btn":"Speichern",
+            "Save-changes-btn":"Änderungen speichern",
+            "Password":"Passwort",
+            "New-profile":"Neues Profil",
+            "Firstname":"Vorname",
+            "Lastname":"Nachname",
+            "E-mail":"E-Mail"
+        }
 }

@@ -21,9 +21,9 @@
     <input type="hidden" name="email" value="<?php echo $profile["email"]; ?>">
     
     <ul class="list-group">
-        <span class="lead clearfix">Sub</span>
+        <span class="lead clearfix"><?php echo $config["Text"]["Sub"]; ?></span>
         <li class="list-group-item">
-            <span class="lead clearfix">Brot</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Bread"]; ?></span>
             
             <div class="btn-group" data-toggle="buttons">
             
@@ -41,7 +41,7 @@
             
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Größe</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Size"]; ?></span>
 
             <div class="btn-group" data-toggle="buttons">
             
@@ -59,7 +59,7 @@
 
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Fleisch</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Meat"]; ?></span>
 
             <div class="btn-group" data-toggle="buttons">
             
@@ -83,7 +83,7 @@
 
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Käse</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Cheese"]; ?></span>
 
             <div class="btn-group" data-toggle="buttons">
             
@@ -101,7 +101,7 @@
 
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Gemüse</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Salad"]; ?></span>
 
             <div class="btn-group" data-toggle="buttons">
             
@@ -119,7 +119,7 @@
 
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Soße</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Sauce"]; ?></span>
 
             <div class="btn-group" data-toggle="buttons">
             
@@ -137,7 +137,7 @@
 
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Extras</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Extras"]; ?></span>
 
             <div class="btn-group" data-toggle="buttons">
             
@@ -154,7 +154,7 @@
             </div>
         </li>
         <li class="list-group-item">
-            <span class="lead clearfix">Cookies</span>
+            <span class="lead clearfix"><?php echo $config["Text"]["Cookies"]; ?></span>
 
             <div class="btn-group" data-toggle="buttons">
 
@@ -171,7 +171,7 @@
             </div>
         </li>
         <li class="list-group-item">
-            <span class ="lead clearfix">Bemerkung</span>
+            <span class ="lead clearfix"><?php echo $config["Text"]["Comment"]; ?></span>
             <textarea rows="4" cols="25" name="Bemerkung"><?php if(isset($profile["Bemerkung"])){echo $profile["Bemerkung"];} ?></textarea>
         </li>
         <span class="lead clearfix"><br>Gutscheine</span>
@@ -197,11 +197,11 @@
 
     <div class="modal-footer">
         <label class="btn btn-secondary <?php if(in_array($salad['name'], $profile['salad'])): echo 'active'; endif; ?>">
-        <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> Nur Gutschein<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-trigger="hover" title="Nur auswählen wenn du nur einen Gutschein haben willst der sich nicht auf deinen Sub bezieht! Das kannst du herausfinden indem du über dem Gutschein Hoverst"></span>
+        <input type="checkbox" name="onlycoupon" <?php if(key_exists("onlycoupon", $profile)){echo "checked";} ?>> <?php echo $config["Text"]["Only-coupon-btn"]; ?><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-trigger="hover" title="Nur auswählen wenn du nur einen Gutschein haben willst der sich nicht auf deinen Sub bezieht! Das kannst du herausfinden indem du über dem Gutschein Hoverst"></span>
     </label>
-        <button class="btn btn-default dismiss-btn" type="button">Schließen</button>
-        <button type="button" id="save-btn" class="btn btn-primary pull-right" data-loading-text="Wird gespeichert ..." data-toggle="modal" data-target="#passwortmodal">Änderungen speichern</button>
-        <button type="button" id="delete-btn" class="btn btn-primary" data-toggle="modal" data-target="#passwortmodal">Delete</button>
+        <button class="btn btn-default dismiss-btn" type="button"><?php echo $config["Text"]["Close-btn"]; ?></button>
+        <button type="button" id="<?php echo $config["Text"]["Save-changes-btn"]; ?>-btn" class="btn btn-primary pull-right" data-loading-text="Wird gespeichert ..." data-toggle="modal" data-target="#passwortmodal"><?php echo $config["Text"]["Save-changes-btn"]; ?></button>
+        <button type="button" id="<?php echo $config["Text"]["Delete-btn"]; ?>-btn" class="btn btn-primary" data-toggle="modal" data-target="#passwortmodal"><?php echo $config["Text"]["Delete-btn"]; ?></button>
     </div>
 
 <!-- Modal -->
@@ -211,13 +211,13 @@
         <form>
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Passwort</h4>
+            <h4 class="modal-title" id="myModalLabel"><?php echo $config["Text"]["Password"]; ?></h4>
           </div>
           <div class="modal-body">
             <div class="col-lg-12"><input class="form-control" type="password" required name="passwort" placeholder="Passwort" autofocus></div>
           </div>
           <div class="modal-footer" id="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $config["Text"]["Close-btn"]; ?></button>
             <button type="submit" class="btn btn-primary" data-dismiss="modal">I will be changed</button></div>
         </form>
     </div>
