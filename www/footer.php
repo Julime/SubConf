@@ -196,6 +196,7 @@
             $(document).bind("keyup keydown", function(e){
                 if(e.ctrlKey && e.keyCode == 80){
                     window.location.href = "/helper/print.php";
+                    return false;
                 }
             });
 
