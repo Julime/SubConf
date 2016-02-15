@@ -233,7 +233,7 @@ $(function(){
     $('#passwortmodal').on("show.bs.modal", function(e) {
         var esseyId = e.relatedTarget.id;
         document.getElementById("modal-footer").lastChild.innerHTML=esseyId.replace("-btn","");
-        document.getElementById("modal-footer").lastChild.id=esseyId.replace("-btn","");
+        document.getElementById("modal-footer").lastChild.id=esseyId.replace("-btn","").replace(" ","_");
     });
 
 })
