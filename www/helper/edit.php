@@ -161,11 +161,14 @@
                 <?php
                 foreach ($config['Cookie'] as $cookie)
                 { ?>
-
-                    <label class="btn-primary <?php if(in_array($cookie['name'], $profile['cookie'])): echo 'active'; endif; ?>">
-                         <?php echo $cookie['name']; ?><input style="width:40px; color:black;" type="number" min="0" name="cookie[<?php echo $cookie["name"]; ?>]" value="<?php if(isset($profile["cookie"][$cookie["name"]])){ echo $profile["cookie"][$cookie["name"]]; } else {echo "0";} ?>">
-                    </label>
-
+                    <div class="input-group spinner">
+                        <span class="input-group-addon"><?php echo $cookie['name']; ?></span>
+                        <input type="text" class="form-control" name="cookie[<?php echo $cookie["name"]; ?>]" value="<?php if(isset($profile["cookie"][$cookie["name"]])){ echo $profile["cookie"][$cookie["name"]]; } else {echo "0";} ?>" min="0" max="5">
+                        <div class="input-group-btn-vertical">
+                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-menu-up"></i></button>
+                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-menu-down"></i></button>
+                        </div>
+                    </div>
                 <?php } ?>
 
             </div>
