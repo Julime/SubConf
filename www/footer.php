@@ -29,12 +29,12 @@
             };
         });
 
-            /*setInterval(function(){
+            setInterval(function(){
                 $(".member-list").load("index.php .member-list", function(){
                     var activeprofile = "#id-"+currentuser;
                     $(activeprofile).addClass("active");
                 });
-            },2000);*/
+            },2000);
 
             <?php
 //            $subday = file_get_contents("helper/subday.txt");
