@@ -258,6 +258,13 @@
     "Data":
         {
             "Paypal":"example@123.com",
-            "Administrator-E-mail":"eyample@123.com"
+            "Administrator-E-mail":"eyample@123.com",
+            "Subofday1":"Italian BMT",
+            "Subofday2":"Salami",
+            "Subofday3":"Turkey",
+            "Subofday4":"Chicken Faijta",
+            "Subofday5":"Tuna",
+            "Subofday6":"Turkey&Ham",
+            "Subofday7":"Roasted Chicken Breast"
         }
 }
