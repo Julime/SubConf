@@ -43,6 +43,8 @@ $doppeltfleisch=0;
                 if($profile["size"]=="30cm") {
                     $bacon=$bacon+0.6;
                 }
+            } else if($meat["name"]==$config["Data"]["Subofday".date("N")]) {
+                $Subprice=$Subprice+2.69;
             } else {
                 $Subprice=$Subprice+$meat["price"];
             }

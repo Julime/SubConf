@@ -10,6 +10,7 @@
     }
 
 ?>
+<?php include "read.php"; ?>
 <h3><?php echo $profile["vorname"]; ?> <?php echo $profile["nachname"]; ?></h3>
 
 <form id="editform">
@@ -58,8 +59,7 @@
             </div>
 
         </li>
-        <li class="list-group-item">
-            <span class="lead clearfix"><?php echo $config["Text"]["Meat"]; ?></span>
+        <li class="list-group-item"><span class="lead clearfix"><?php echo $config["Text"]["Meat"]; ?> <small>(Sub des Tages: <?php echo $config["Data"]["Subofday".date("N")]; ?>)</small> </span>
 
             <div class="btn-group" data-toggle="buttons">
             
@@ -69,7 +69,7 @@
                 ?>
 
                     <label class="btn btn-primary <?php if(in_array($meat['name'], $profile["meat"])): echo 'active'; endif; ?>">
-                        <input type="radio" name="meat[]" value="<?php echo $meat['name']; ?>" <?php if(in_array($meat['name'], $profile["meat"])){ echo 'checked'; }; ?>> <?php echo $meat['name'];?> <small> <?php echo $meat["price"]; ?></small>
+                        <input type="radio" name="meat[]" value="<?php echo $meat['name']; ?>" <?php if(in_array($meat['name'], $profile["meat"])){ echo 'checked'; }; ?>> <?php echo $meat['name'];?> <small> <?php if($meat["name"]==$config["Data"]["Subofday".date("N")]) { echo "2.69€";} else { echo $meat["price"]; } ?></small>
                     </label>
                 
                 <?php } else { ?>
