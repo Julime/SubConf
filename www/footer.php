@@ -197,7 +197,7 @@
             });
 
             $(document).bind("keyup keydown", function(e){
-                if(e.ctrlKey && e.keyCode == 80){
+                if((e.ctrlKey || e.keyCode == 224 || e.keyCode == 91  || e.keyCode == 93) && e.keyCode == 80){
                     window.location.href = "/helper/Print.php";
                     return false;
                 }
