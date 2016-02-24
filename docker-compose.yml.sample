@@ -1,0 +1,9 @@
+php:
+  image: php:apache
+  volumes:
+    - /root/subconf/www:/var/www/html
+  environment:
+    - VIRTUAL_HOST=subconf.ulpr.de
+  ports:
+    - 81:80
+  restart: always

@@ -1,12 +1,12 @@
         </div>
 
-        <link href="css/jquery.cssemoticons.css" media="screen" rel="stylesheet" type="text/css" />
+        <!--<link href="css/jquery.cssemoticons.css" media="screen" rel="stylesheet" type="text/css" />-->
         <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
         <script src="js/jquery-2.1.1-min.js"></script>
         <!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
         <script src="js/bootstrap.min.js"></script>
 
-        <script src="js/jquery.cssemoticons.js" type="text/javascript"></script>
+        <!--<script src="js/jquery.cssemoticons.js" type="text/javascript"></script>-->
 
 <!-- folgendes sorgt für Fehler -->
 <!--        <script src="js/jQuery.wait/jquery.wait.js"></script> -->
@@ -119,6 +119,26 @@
                 currentuser="";
                 $( ".tab-content" ).load("helper/show.php");
                 $('.member-list a.active').removeClass('active');
+            });
+
+            // cookie buttons
+            $('html').on('click', '.spinner .btn:first-of-type', function() {
+              var btn = $(this);
+              var input = btn.closest('.spinner').find('input');
+              if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {
+                input.val(parseInt(input.val(), 10) + 1);
+              } else {
+                btn.next("disabled", true);
+              }
+            });
+            $('html').on('click', '.spinner .btn:last-of-type', function() {
+              var btn = $(this);
+              var input = btn.closest('.spinner').find('input');
+              if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {
+                input.val(parseInt(input.val(), 10) - 1);
+              } else {
+                btn.prev("disabled", true);
+              }
             });
 
             // save-button in "new-profile" view
@@ -234,9 +254,9 @@
                 })
             });
 
-            window.onload = function(){
+            /*window.onload = function(){
                 $(".comment").emoticonize();
-            };
+            };*/
 
         });
         </script>
