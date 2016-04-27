@@ -1,9 +1,10 @@
 php:
-  image: php:apache
+  image: julime/subconf:latest
   volumes:
-    - /root/subconf/www:/var/www/html
+    - ./www:/var/www/html
   environment:
-    - VIRTUAL_HOST=subconf.ulpr.de
+    - VIRTUAL_HOST=your-host.de
+    - HOSTNAME=your-host.de   
   ports:
-    - 81:80
+    - 80:80
   restart: always
