@@ -260,7 +260,7 @@
             "PaypalMe":"https://www.paypal.me/example",
             "IPN":true,
             "Paypal":"example@123.com",
-            "Administrator-E-mail":"marcel@ulfertsprygoda.de",
+            "Administrator-E-mail":"example@123.com",
             "Subofday1":"Italian BMT",
             "Subofday2":"Salami",
             "Subofday3":"Turkey",
