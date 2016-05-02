@@ -119,7 +119,7 @@ include "getprice.php";
             </div>
             <div class="modal-body">
                 <center>
-                    <button type="submit" class="btn btn-primary" id="paypalYes"><?php echo $config["Text"]["Pay-with-paypal"]; ?></button>
+                    <?php if(!$config["Data"]["IPN"]) {echo '<button type="submit" class="btn btn-primary" id="paypalYes">'.$config["Text"]["Pay-with-paypal"].'</button>';} else {echo '<a href="#kunde-'.$profile["profileid"].'" type="button" class="btn btn-primary" id="paypalMe">Paypal</a>';}?>
                     <a href="#kunde-<?php echo $profile["profileid"]; ?>" type="button" class="btn btn-primary" id="barYes"><?php echo $config["Text"]["Pay-with-money"]; ?></a>
                     <button type="button" class="btn btn-secondary" id="paypalNo"><?php echo $config["Text"]["Close-btn"]; ?></button>
                 </center>

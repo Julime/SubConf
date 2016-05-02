@@ -257,6 +257,8 @@
         },
     "Data":
         {
+            "PaypalMe":"https://www.paypal.me/example",
+            "IPN":true,
             "Paypal":"example@123.com",
             "Administrator-E-mail":"marcel@ulfertsprygoda.de",
             "Subofday1":"Italian BMT",

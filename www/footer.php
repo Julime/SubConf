@@ -207,7 +207,13 @@
                     alert("E-mail wird gesendet");
                 });
             });
+            
+            $('.container').on("click","#paypalModal #paypalMe", function(e) {
+                var str = this.toString();
+                var profileid = str.substring(str.length-32);//get profileid
 
+                $(".tab-content").load("helper/paypalMe.php?profileid="+profileid);
+            });
             $("#Print").on("click", function(){
                 document.location.href = "helper/Print.php";
             });
