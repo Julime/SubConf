@@ -1,4 +1,5 @@
 <?php
+    //generate the link and the email for the paypal.me option just like in mailbar.php
     include "read.php";
     $profileid=$_GET["profileid"];
     $string = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json');

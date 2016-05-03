@@ -1,4 +1,4 @@
-<div class="modal fade" id="AddNewProfile" tabindex="-1" role="dialog" aria-labelledby="AddNewProfile" aria-hidden="true">
+<div class="modal fade" id="AddNewProfile" tabindex="-1" role="dialog" aria-labelledby="AddNewProfile" aria-hidden="true"> <!-- modal to creat a new profile -->
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="addform">

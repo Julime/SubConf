@@ -1,3 +1,4 @@
+<!-- Paypal modal and form it shows the sub like in the show.php -->
 <?php
     include "read.php";
     $mail=$config["Data"]["Paypal"];
@@ -119,7 +120,8 @@ include "getprice.php";
             </div>
             <div class="modal-body">
                 <center>
-                    <?php if(!$config["Data"]["IPN"]) {echo '<button type="submit" class="btn btn-primary" id="paypalYes">'.$config["Text"]["Pay-with-paypal"].'</button>';} else {echo '<a href="#kunde-'.$profile["profileid"].'" type="button" class="btn btn-primary" id="paypalMe">Paypal</a>';}?>
+                    <!-- show the button to paypal.me or to the normal paypal site (see config.json) -->
+                    <?php if(!$config["Data"]["IPN"]) {echo '<button type="submit" class="btn btn-primary" id="paypalYes">'.$config["Text"]["Pay-with-paypal"].'</button>';} else {echo '<a href="#kunde-'.$profile["profileid"].'" type="button" class="btn btn-primary" id="paypalMe">Paypal</a>';} ?>
                     <a href="#kunde-<?php echo $profile["profileid"]; ?>" type="button" class="btn btn-primary" id="barYes"><?php echo $config["Text"]["Pay-with-money"]; ?></a>
                     <button type="button" class="btn btn-secondary" id="paypalNo"><?php echo $config["Text"]["Close-btn"]; ?></button>
                 </center>
@@ -128,10 +130,9 @@ include "getprice.php";
     </div>
 </div>
 <?php if(!isset($profile["onlycoupon"])) {?>
-   <input type="hidden" name="cmd" value="_cart" />
-   <input type="hidden" name="upload" value="1" />
-   <input type="hidden" name="business"
-      value="<?php echo $mail ?>" />
+   <input type="hidden" name="cmd" value="_cart" /> <!-- the kind of order -->
+   <input type="hidden" name="upload" value="1" /> <!-- the value (always one order) -->
+   <input type="hidden" name="business" value="<?php echo $mail ?>" /> <!-- email of the paypal account -->
    <input type="hidden" name="item_name_1"
       value="Dein Sub" />
     <input type="hidden" name="amount_1" value="<?php echo $price ?>" />
@@ -170,8 +171,8 @@ include "getprice.php";
    <input type="hidden" name="item_name_1"
       value="Dein Gutschein" />
    <input type="hidden" name="amount_1" value="<?php echo $price ?>" />
-   <input type="hidden" name="currency_code" value="EUR">
+   <input type="hidden" name="currency_code" value="EUR"> <!-- the currency -->
    <input type="hidden" name="custom" value="<?php echo $profile["profileid"]; ?>" />
-   <input type="submit" hidden/>
+   <input type="submit" hidden/> <!-- submit automatically -->
     <?php } ?>
 </form>

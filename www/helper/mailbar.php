@@ -1,4 +1,5 @@
 <?php
+    //send mail to the admin to notify him that someone wants to pay with papermoney
     $profileid=$_GET["profileid"];
     $string = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/profiles/'.$profileid.'.json');
     $profile=json_decode($string,true);

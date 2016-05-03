@@ -1,4 +1,57 @@
 {
+    "Text":
+        {
+            "Title":"SubConf",
+            "Accounts":"Besteller",
+            "Print-btn":"Print",
+            "Sub":"sub",
+            "Bread":"Brot",
+            "Size":"Größe",
+            "Meat":"Fleisch",
+            "doubleMeat":"Doppelt Fleisch",
+            "Bacon":"Bacon",
+            "Cheese":"Käse",
+            "doubleCheese":"Doppelt Käse",
+            "Salad":"Gemüse",
+            "Sauce":"Soße",
+            "Extras":"Extras",
+            "Cookies":"Cookies",
+            "Comment":"Bemerkung",
+            "Coupons":"Gutscheine",
+            "Only-coupon-btn":"Nur Gutschein",
+            "Close-btn":"Schließen",
+            "Delete-btn":"Löschen",
+            "Save-btn":"Speichern",
+            "Save-changes-btn":"Änderungen speichern",
+            "Password":"Passwort",
+            "New-profile":"Neues Profil",
+            "Firstname":"Vorname",
+            "Lastname":"Nachname",
+            "E-mail":"E-Mail",
+            "Pay-with-paypal":"Mit Paypal bezahlen",
+            "Pay-with-money":"Bar bezahlen",
+            "Nothing":"Nichts",
+            "changesSaved":"Änderungen gespeichert",
+            "uploadfinished":"Upload fertiggestellt",
+            "error":"Ein Fehler ist aufgetreten",
+            "profileDelete":"Profile erfolgreich gelöscht",
+            "redirect":"fals sie nicht weitergeleitet werden klicken sie",
+            "here":"hier"
+        },
+    "Data":
+        {
+            "PaypalMe":"https://www.paypal.me/example",
+            "IPN":true, 
+            "Paypal":"example@123.com", 
+            "Administrator-E-mail":"example@123.com", 
+            "Subofday1":"Italian BMT",
+            "Subofday2":"Salami",
+            "Subofday3":"Turkey",
+            "Subofday4":"Chicken Faijta",
+            "Subofday5":"Tuna",
+            "Subofday6":"Turkey&Ham",
+            "Subofday7":"Roasted Chicken Breast"
+        },    
     "Type": [
         "Sandwich",
         "Wrap",
@@ -225,48 +278,5 @@
             "name": "White Chip Macadamia Nut",
             "price": "0.7"
         }
-    ],
-    "Text":
-        {
-            "Title":"SubConf",
-            "Accounts":"Besteller",
-            "Print-btn":"Print",
-            "Sub":"sub",
-            "Bread":"Brot",
-            "Size":"Größe",
-            "Meat":"Fleisch",
-            "Cheese":"Käse",
-            "Salad":"Gemüse",
-            "Sauce":"Soße",
-            "Extras":"Extras",
-            "Cookies":"Cookies",
-            "Comment":"Bemerkung",
-            "Coupons":"Gutscheine",
-            "Only-coupon-btn":"Nur Gutschein",
-            "Close-btn":"Schließen",
-            "Delete-btn":"Löschen",
-            "Save-btn":"Speichern",
-            "Save-changes-btn":"Änderungen speichern",
-            "Password":"Passwort",
-            "New-profile":"Neues Profil",
-            "Firstname":"Vorname",
-            "Lastname":"Nachname",
-            "E-mail":"E-Mail",
-            "Pay-with-paypal":"Mit Paypal bezahlen",
-            "Pay-with-money":"Bar bezahlen"
-        },
-    "Data":
-        {
-            "PaypalMe":"https://www.paypal.me/example",
-            "IPN":true,
-            "Paypal":"example@123.com",
-            "Administrator-E-mail":"example@123.com",
-            "Subofday1":"Italian BMT",
-            "Subofday2":"Salami",
-            "Subofday3":"Turkey",
-            "Subofday4":"Chicken Faijta",
-            "Subofday5":"Tuna",
-            "Subofday6":"Turkey&Ham",
-            "Subofday7":"Roasted Chicken Breast"
-        }
+    ]
 }

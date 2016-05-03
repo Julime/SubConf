@@ -2,7 +2,7 @@
     <head>
     </head>
         <div>
-        fals sie nicht weitergeleitet werden klicken sie <a href="/"> Hier</a>
+        <?php echo $config["Text"]["redirect"]; ?> <a href="/"> <?php echo $config["Text"]["here"]; ?></a>
         </div>
         <script>
         <?php

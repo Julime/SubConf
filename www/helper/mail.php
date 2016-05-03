@@ -1,4 +1,5 @@
 <?php
+        //send mail to ask if a subday is happening
         $date = strftime("%d.%m.%Y");
 
         $pw = mt_rand(1000,9999);

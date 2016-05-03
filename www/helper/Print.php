@@ -1,14 +1,14 @@
-        <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
+        <!-- script to creat a nice print overview -->
         <script src="../js/jquery-2.1.1-min.js"></script>
 
         <link href="../css/bootstrap.min.css" rel="stylesheet">
 
         <link href="../css/theme.css" rel="stylesheet">
 
-<body OnLoad="window.print(); document.location.href = '/';">
-<table class="table table-striped table-bordered klein">
+<body OnLoad="window.print(); document.location.href = '/';"> <!-- print instandly on pageload -->
+<table class="table table-striped table-bordered klein"> <!-- creat a table -->
 <tr>
-    <th>Name</th>
+    <th>Name</th> <!-- write all names from profiles that payed (make that for every point (like cheese, meat...)) -->
     <?php
     include"read.php";
     $number=0;
@@ -203,8 +203,9 @@
     </tr>
 
     </table>
-    <div style="page-break-before:always;">
+    <div style="page-break-before:always;"> <!-- new page -->
     <?php
+    //print all coupons if pictures are set
     foreach ($profiles as $path)
     {
         $string = file_get_contents($path);
